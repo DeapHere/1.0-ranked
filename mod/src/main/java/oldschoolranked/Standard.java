@@ -49,6 +49,14 @@ public final class Standard {
         originSet = false;
     }
 
+    /** A player reset their world: the drop and dragon sequences carry on (so resetting can't reroll luck), the enderman
+     * distance count starts again. */
+    public static void worldReset() {
+        originSet = false;
+        wasDead = false;
+        pendingSpawns = 0;
+    }
+
     /** Pearls from one enderman: 0 to 1 + looting, like vanilla, from the shared sequence. */
     public static int pearls(int vanilla, int looting) {
         return Ranked.inMatchWorld() && pearls != null ? pearls.nextInt(2 + looting) : vanilla;

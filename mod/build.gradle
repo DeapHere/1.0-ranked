@@ -56,6 +56,8 @@ loom {
 			source sourceSets.selftest
 			runDir 'run/a'
 			vmArg "-Dranked.selftest=TesterA"
+			vmArg "-Dranked.drawtest=${project.findProperty('drawtest') ?: 'false'}"
+			vmArg "-Dranked.seedtest=${project.findProperty('seedtest') ?: 'false'}"
 			vmArg "-Dranked.droptest=${project.findProperty('droptest') ?: 'false'}"
 			vmArg "-Dranked.private=${project.findProperty('private') ?: 'false'}"
 			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
@@ -102,6 +104,8 @@ loom {
 			source sourceSets.selftest
 			runDir 'run/b'
 			vmArg "-Dranked.selftest=TesterB"
+			vmArg "-Dranked.drawtest=${project.findProperty('drawtest') ?: 'false'}"
+			vmArg "-Dranked.seedtest=${project.findProperty('seedtest') ?: 'false'}"
 			vmArg "-Dranked.lobbytest=${project.findProperty('lobbytest') ?: 'false'}"
 			vmArg "-Dranked.droptest=${project.findProperty('droptest') ?: 'false'}"
 			vmArg "-Dranked.server=${project.findProperty('server') ?: 'http://127.0.0.1:8080'}"

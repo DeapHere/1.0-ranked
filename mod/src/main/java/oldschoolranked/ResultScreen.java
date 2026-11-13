@@ -46,6 +46,9 @@ public final class ResultScreen extends Screen {
         if (Ranked.solo) {
             title = Ranked.lastReason.equals("finish") ? "RUN COMPLETE" : "RUN ENDED";
             color = Ranked.lastReason.equals("finish") ? 0x55FFFF : 0xAAAAAA;
+        } else if (Ranked.lastReason.equals("draw")) {
+            title = "DRAW";
+            color = 0xFFFF55;
         } else if (Ranked.lastDraw) {
             title = "NO RESULT";
             color = 0xAAAAAA;
@@ -66,7 +69,7 @@ public final class ResultScreen extends Screen {
             y += 11;
         }
         // after the title: what each player's elo did, counting up to the new value
-        if (Ranked.rankedMatch && !Ranked.lastDraw && age >= 30) {
+        if (Ranked.rankedMatch && (!Ranked.lastDraw || Ranked.lastReason.equals("draw")) && age >= 30) {
             float k = Math.min(1f, (age - 30 + tickDelta) / 30f);
             y += 4;
             y = eloLine(Ranked.name, Ranked.elo, Ranked.lastChange, k, "§b", cx, y);

@@ -73,6 +73,10 @@ public final class Ranked {
     public static boolean lastWon, lastDraw;
     public static String lastReason = "";
     public static long lastChange, lastOppElo, lastOppChange;
+    /** Draw offers in this match, as local clock times they run out (0 = none): theirs to us, and ours to them. */
+    public static long theirDrawUntil, myDrawUntil;
+    /** The same for a new seed vote. */
+    public static long theirSeedUntil, mySeedUntil;
     public static final Map<String, Long> oppSplits = new LinkedHashMap<>();
     public static final List<String> resultLines = new ArrayList<>();
     private static boolean worldPending;
@@ -286,6 +290,65 @@ public final class Ranked {
         return state == State.LOADING || state == State.COUNTDOWN || state == State.RUNNING;
     }
 
+    /** Pause menu: offer a draw, or accept the one on the table. */
+    public static void draw() {
+        if (state != State.RUNNING || solo || matchId == null) return;
+        final boolean accepting = drawPending();
+        Net.post("/api/draw", Net.map("match", matchId), (r, err) -> {
+            if (err != null) {
+                chat("§c" + err);
+            } else if (r != null && Json.bool(r, "pending") && !accepting) {
+                myDrawUntil = Json.num(r, "expires", 0) - Net.clockOffset;
+                chat("§7You offered a draw. " + opponent + " has 30s to accept.");
+            }
+        });
+    }
+
+    /** Pause menu: ask for a new seed, or accept their ask. A private room gets one at once. */
+    public static void newSeed() {
+        if (state != State.RUNNING || matchId == null) return;
+        final boolean accepting = seedPending();
+        Net.post("/api/newseed", Net.map("match", matchId), (r, err) -> {
+            if (err != null) {
+                chat("§c" + err);
+            } else if (r != null && Json.bool(r, "pending") && !accepting) {
+                mySeedUntil = Json.num(r, "expires", 0) - Net.clockOffset;
+                chat("§7You asked for a new seed. " + opponent + " has 30s to accept.");
+            }
+        });
+    }
+
+    /** They've asked for a new seed and it hasn't run out. */
+    public static boolean seedPending() {
+        return theirSeedUntil > System.currentTimeMillis();
+    }
+
+    /** They've offered a draw and it hasn't run out. */
+    public static boolean drawPending() {
+        return theirDrawUntil > System.currentTimeMillis();
+    }
+
+    /** Pause menu: start your own world again on the same seed. The clock keeps running and splits you've hit stay. */
+    public static void resetWorld() {
+        if (state != State.RUNNING) return;
+        try {
+            mc.setWorld(null);
+            mc.getWorldStorageSource().delete(FOLDER);
+            mc.interactionManager = new net.minecraft.client.SurvivalInteractionManager(mc);
+            resetBiomeArrayPool();
+            Standard.noDesertCaves = true;
+            Standard.worldReset();
+            mc.startGame(FOLDER, "Ranked match", newWorldSettings(seed));
+            mc.openScreen(null);
+            lastDim = 0;
+            chat("§7World reset. The clock is still running.");
+        } catch (RuntimeException e) {
+            log("couldn't reset the world: " + e);
+            chat("§cCouldn't reset the world: " + e);
+            forfeit();
+        }
+    }
+
     /** Pause menu "Forfeit and quit", or leaving the world any other way. */
     public static void forfeit() {
         if (!inMatch() || matchId == null) return;
@@ -324,11 +387,41 @@ public final class Ranked {
                 finishSent = false;
                 lastDim = 0;
                 dragonDead = false;
+                theirDrawUntil = 0;
+                myDrawUntil = 0;
+                theirSeedUntil = 0;
+                mySeedUntil = 0;
                 ticks = 0;
                 roomCode = null;
                 state = State.LOADING;
                 worldPending = true;
                 log("match " + matchId + " vs " + opponent); // never the seed: the game log is visible to the player
+                break;
+            case "drawOffer":
+                if (Json.str(ev, "match", "").equals(matchId)) {
+                    theirDrawUntil = Json.num(ev, "expires", 0) - Net.clockOffset;
+                    chat("§e" + opponent + "§r offers a draw. Esc, then §aAccept draw§r (30s).");
+                }
+                break;
+            case "drawExpired":
+                if (Json.str(ev, "match", "").equals(matchId) && (theirDrawUntil != 0 || myDrawUntil != 0)) {
+                    theirDrawUntil = 0;
+                    myDrawUntil = 0;
+                    chat("§7The draw offer ran out.");
+                }
+                break;
+            case "seedOffer":
+                if (Json.str(ev, "match", "").equals(matchId)) {
+                    theirSeedUntil = Json.num(ev, "expires", 0) - Net.clockOffset;
+                    chat("§e" + opponent + "§r wants a new seed. Esc, then §aAccept seed§r (30s).");
+                }
+                break;
+            case "seedExpired":
+                if (Json.str(ev, "match", "").equals(matchId) && (theirSeedUntil != 0 || mySeedUntil != 0)) {
+                    theirSeedUntil = 0;
+                    mySeedUntil = 0;
+                    chat("§7The new seed vote ran out.");
+                }
                 break;
             case "opponentReady":
                 opponentReady = true;
@@ -381,23 +474,31 @@ public final class Ranked {
             else losses++;
         }
         resultLines.clear();
-        String head = draw ? "§7No result" : won ? "§aYou won!" : "§cYou lost";
+        String head = reason.equals("draw") ? "§eDraw" : draw ? "§7No result" : won ? "§aYou won!" : "§cYou lost";
         if (solo) {
             resultLines.add(reason.equals("finish") ? "§aFinished in " + time(t) : "§7Private run ended (" + reason + ")");
         } else {
             resultLines.add(head + "§r vs " + opponent + " (" + reasonText(reason, won) + (t >= 0 ? ", " + time(t) : "") + ")");
         }
         if (rankedMatch) resultLines.add("Elo " + elo + " (" + (change >= 0 ? "+" : "") + change + ")");
-        for (String l : resultLines) chat(l);
-        if (mc != null && mc.world != null) chat("§7Esc, then Save and quit, to go back to the lobby.");
+        if (reason.equals("new seed")) {
+            // called off by vote: the next match (new seed) follows straight away
+            resultLines.clear();
+            chat("§7New seed agreed, no elo either way. Loading the new world...");
+        } else {
+            for (String l : resultLines) chat(l);
+            if (mc != null && mc.world != null) chat("§7Esc, then Save and quit, to go back to the lobby.");
+        }
         state = State.DONE;
         matchId = null;
-        if (mc != null && mc.world != null) mc.openScreen(new ResultScreen());
+        if (mc != null && mc.world != null && !reason.equals("new seed")) mc.openScreen(new ResultScreen());
     }
 
     private static String reasonText(String reason, boolean won) {
         switch (reason) {
             case "finish": return won ? "finished first" : "they finished first";
+            case "draw": return "draw agreed";
+            case "new seed": return "new seed";
             case "forfeit": return won ? "they forfeited" : "forfeited";
             case "opponent disconnected": return won ? "they disconnected" : "you disconnected";
             case "opponent did not load": return won ? "they never loaded in" : "you didn't load in time";
@@ -616,6 +717,11 @@ public final class Ranked {
             lines.add("§f" + time(elapsed()));
             // F3 is off in matches; the height (feet) is the one coordinate players get
             if (mc != null && mc.player != null) lines.add("§7Y §f" + (int) Math.floor(mc.player.shape.minY));
+            long now = System.currentTimeMillis();
+            if (theirDrawUntil > now) lines.add("§eDraw offered: Esc to accept §7(" + ((theirDrawUntil - now) / 1000 + 1) + "s)");
+            else if (myDrawUntil > now) lines.add("§7You offered a draw (" + ((myDrawUntil - now) / 1000 + 1) + "s)");
+            if (theirSeedUntil > now) lines.add("§eNew seed asked: Esc to accept §7(" + ((theirSeedUntil - now) / 1000 + 1) + "s)");
+            else if (mySeedUntil > now) lines.add("§7You asked for a new seed (" + ((mySeedUntil - now) / 1000 + 1) + "s)");
         }
         for (int i = 0; i < SPLITS.length; i++) {
             Long mine = mySplits.get(SPLITS[i]), theirs = oppSplits.get(SPLITS[i]);

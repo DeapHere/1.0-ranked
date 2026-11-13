@@ -23,10 +23,13 @@ async function poll(c) {
   for (const e of b.events) c.since = Math.max(c.since, e.seq);
   return b.events;
 }
+// events that came in one poll but weren't asked for yet are kept, so two events in one reply both count
 async function until(c, type) {
+  c.queue = c.queue || [];
   for (let i = 0; i < 10; i++) {
-    const ev = (await poll(c)).find(e => e.type === type);
-    if (ev) return ev;
+    const at = c.queue.findIndex(e => e.type === type);
+    if (at >= 0) return c.queue.splice(at, 1)[0];
+    c.queue.push(...await poll(c));
   }
   throw new Error('no ' + type);
 }
@@ -84,6 +87,44 @@ async function until(c, type) {
   assert.strictEqual((await post('/api/finish', { token: A.token, match: pm.match, igt: 4 })).status, 200);
   const pres = await until(A, 'result');
   assert.ok(pres.won && pres.eloChange === 0 && pres.reason === 'finish');
+  // draw vote: ranked match, A offers, B accepts: a draw with no elo for either
+  await post('/api/queue', { token: A.token });
+  await post('/api/queue', { token: B.token });
+  const va = await until(A, 'match');
+  await until(B, 'match');
+  await post('/api/ready', { token: A.token, match: va.match });
+  await post('/api/ready', { token: B.token, match: va.match });
+  const vs = await until(A, 'start');
+  await sleep(vs.startAt - vs.serverTime + 100);
+  assert.ok((await post('/api/draw', { token: A.token, match: va.match })).body.pending, 'offer is pending');
+  assert.ok((await post('/api/draw', { token: A.token, match: va.match })).body.pending, 'offering twice just waits');
+  await until(B, 'drawOffer');
+  assert.ok((await post('/api/draw', { token: B.token, match: va.match })).body.accepted, 'accepted');
+  const vra = await until(A, 'result'), vrb = await until(B, 'result');
+  assert.ok(vra.draw && vra.reason === 'draw' && vra.eloChange === 0 && vrb.eloChange === 0, 'a draw moves no elo');
+  // new seed vote: B offers, A accepts: called off with no elo, then a new ranked match on a new seed
+  await post('/api/queue', { token: A.token });
+  await post('/api/queue', { token: B.token });
+  const na = await until(A, 'match');
+  await until(B, 'match');
+  await post('/api/ready', { token: A.token, match: na.match });
+  await post('/api/ready', { token: B.token, match: na.match });
+  const ns = await until(A, 'start');
+  await sleep(ns.startAt - ns.serverTime + 100);
+  assert.ok((await post('/api/newseed', { token: B.token, match: na.match })).body.pending);
+  await until(A, 'seedOffer');
+  assert.ok((await post('/api/newseed', { token: A.token, match: na.match })).body.accepted);
+  const nr = await until(A, 'result');
+  assert.ok(nr.reason === 'new seed' && nr.eloChange === 0);
+  const nn = await until(A, 'match');
+  assert.ok(nn.ranked && nn.match !== na.match && nn.seed !== na.seed, 'new match on a new seed');
+  await post('/api/ready', { token: A.token, match: nn.match });
+  await post('/api/ready', { token: B.token, match: nn.match });
+  const n2 = await until(A, 'start');
+  await sleep(n2.startAt - n2.serverTime + 100);
+  await post('/api/draw', { token: A.token, match: nn.match });
+  await post('/api/draw', { token: B.token, match: nn.match }); // tidy up with a draw
+  await until(A, 'result');
   const lb = await (await fetch(base + '/api/leaderboard')).json();
   assert.deepStrictEqual(lb.players.map(p => [p.name, p.elo]), [['Alice', 1024], ['Bob', 976]]);
   const html = await (await fetch(base + '/')).text();

@@ -18,6 +18,8 @@ public abstract class SelfTestMixin {
     private static final String NAME = System.getProperty("ranked.selftest");
     private static final int FORFEIT_AFTER = Integer.getInteger("ranked.forfeitAfter", 0);
     private static int t, runTicks, doneTicks;
+    private static boolean drawAccepted;
+    private static int drawSeen, seedSeen;
     private static boolean queued, logged, forfeited;
 
     private static int countItems(Minecraft mc, int id) {
@@ -128,6 +130,45 @@ public abstract class SelfTestMixin {
                         + (int) Math.floor(mc.player.y) + " " + (int) Math.floor(mc.player.z) + " worldTime " + mc.world.getTime() + " igt " + Ranked.ticks);
             }
             if (Boolean.getBoolean("ranked.droptest")) dropTest(mc);
+            if (Boolean.getBoolean("ranked.seedtest")) {
+                if (NAME.endsWith("A") && runTicks == 60) {
+                    System.out.println("[selftest] asking for a new seed, match " + Ranked.matchId + " seed " + mc.world.getSeed());
+                    Ranked.newSeed();
+                }
+                if (NAME.endsWith("B") && Ranked.seedPending() && seedSeen == 0) {
+                    seedSeen = runTicks;
+                    System.out.println("[selftest] new seed asked, hud " + Ranked.hud());
+                    mc.openScreen(new net.minecraft.client.gui.screen.GameMenuScreen());
+                }
+                if (NAME.endsWith("B") && seedSeen > 0 && runTicks == seedSeen + 60) {
+                    System.out.println("[selftest] accepting new seed");
+                    Ranked.newSeed();
+                    mc.openScreen(null);
+                }
+                if (runTicks == 400) System.out.println("[selftest] later: match " + Ranked.matchId + " state " + Ranked.state + " seed " + mc.world.getSeed() + " timer " + Ranked.time(Ranked.elapsed()));
+            }
+            if (Boolean.getBoolean("ranked.drawtest")) {
+                if (NAME.endsWith("A") && runTicks == 60) {
+                    System.out.println("[selftest] resetting world, timer " + Ranked.time(Ranked.elapsed()));
+                    Ranked.resetWorld();
+                }
+                if (NAME.endsWith("A") && runTicks == 100) System.out.println("[selftest] after reset: world " + (mc.world != null) + ", state " + Ranked.state + ", timer " + Ranked.time(Ranked.elapsed()) + ", spawn " + (int) mc.player.x + " " + (int) mc.player.z);
+                if (NAME.endsWith("A") && runTicks == 140) {
+                    System.out.println("[selftest] offering draw");
+                    Ranked.draw();
+                }
+                if (NAME.endsWith("B") && Ranked.drawPending() && drawSeen == 0) {
+                    drawSeen = runTicks;
+                    System.out.println("[selftest] draw offered to me, hud " + Ranked.hud());
+                    mc.openScreen(new net.minecraft.client.gui.screen.GameMenuScreen());
+                }
+                if (NAME.endsWith("B") && drawSeen > 0 && runTicks == drawSeen + 60 && !drawAccepted) {
+                    drawAccepted = true;
+                    System.out.println("[selftest] accepting");
+                    Ranked.draw();
+                    mc.openScreen(null);
+                }
+            }
             if (FORFEIT_AFTER > 0 && runTicks == FORFEIT_AFTER && !forfeited) {
                 forfeited = true;
                 System.out.println("[selftest] forfeiting");

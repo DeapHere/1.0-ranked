@@ -1,10 +1,10 @@
-# Oldschool Ranked 1.0.1
+# Oldschool Ranked 1.0.2
 
 1v1 ranked races for Minecraft 1.0. Two players queue, get the same seed, start at the same moment, and the first to kill the dragon and jump into the exit portal wins and takes elo. You can see your opponent's splits live as they happen.
 
 ## Installing the mod
 
-1. Drop `oldschoolranked-1.0.1.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
+1. Drop `oldschoolranked-1.0.2.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
 2. On the title screen, click the **blaze rod button** to the right of Singleplayer.
 3. That's it: the mod connects to the ranked server on its own.
 
@@ -21,7 +21,12 @@ When a match is found:
 1. Both games build the world from the same seed (structures on, survival). Seeds come from a filtered pool (see Seeds below), and you never get a seed you've already played until you've played them all.
 2. The game is frozen behind a waiting screen until both of you have loaded in, then there's a 5 second countdown. Since the world doesn't tick while you wait, both worlds start on the same tick.
 3. The timer, your height (Y) and the splits show in the top left. F3 is turned off in match worlds, and the seed is never shown or written to the game log. The splits are: Nether, Fortress (first step on nether brick), Blaze rod, First eye (first eye of ender thrown), Stronghold (first step on stone bricks, or near an end portal frame), End, and Finish. Your times are in blue and your opponent's in yellow. Chat tells you when your opponent hits a split and whether you're ahead.
-4. The run ends when you jump into the exit portal after killing the dragon (the moment the credits would start), and the first one there wins. A Victory or Defeat screen pops up for both players with how it ended, both players' elo changes and both sets of splits. **Back to lobby** leaves the world, and **Keep looking around** closes it. In a match, the pause menu's **Save and quit** becomes **Forfeit and quit**. Leaving the world, closing the game, or losing connection for more than a minute also counts as a forfeit.
+4. The run ends when you jump into the exit portal after killing the dragon (the moment the credits would start), and the first one there wins. A Victory or Defeat screen pops up for both players with how it ended, both players' elo changes and both sets of splits. **Back to lobby** leaves the world, and **Keep looking around** closes it. In a match, the pause menu's **Save and quit** becomes **Forfeit and quit**, and Achievements and Statistics make way for three match buttons:
+   - **Reset world** starts your own world again on the same seed. Click it twice to confirm. The clock keeps running, splits you've already hit stay, and your drops carry on from where they were, so resetting can't reroll luck.
+   - **Vote new seed** asks your opponent to switch seeds. If they click **Accept seed** within 30 seconds, the match is called off with no elo either way and you both start a new one on a new seed. In a private room you get a new seed straight away.
+   - **Offer draw** asks your opponent for a draw. If they click **Accept draw** within 30 seconds, the match ends as a draw and nobody's elo changes.
+
+   Leaving the world, closing the game, or losing connection for more than a minute also counts as a forfeit.
 
 Elo starts at 1000. Each win or loss moves it by up to 32 (48 for your first 5 games), weighted by the elo gap.
 
@@ -59,6 +64,7 @@ Every match seed comes from a hand-checked pool, and every seed in it has:
 
 ## Changes
 
+- 1.0.2: Reset world, Vote new seed and Offer draw buttons in the pause menu during a match. Needs the 1.0.2 server.
 - 1.0.1: death resets can no longer farm endermen. A night death reset brings 3 only if you'd gone at least 150 blocks from where you last spawned.
 - 1.0.0: New splits for Fortress, First eye and entering the Stronghold. The run now ends when you jump into the exit portal, not on the dragon kill. Victory and Defeat screens show both players' elo changes. Leaderboard button in the Ranked lobby (top 100 by elo). Your sign-in is shared by every instance on your PC for the same name (saved in `.oldschoolranked` in your user folder), so a second instance no longer says your name is registered on another PC. F3 is off in matches, with a Y readout instead, and the seed is never shown (not even on the loading screen) or logged. The GO message shows your opponent's elo. The dragon's choices are standardised, spiders always drop string, and desert chunks have no caves, ravines or mineshafts.
 - 0.2.1: skeletons always drop at least 1 arrow and pigs at least 1 porkchop in match worlds. Same server as 0.2.0, so only the mod jar changes.

@@ -15,6 +15,7 @@ const K_FACTOR = parseInt(process.env.K_FACTOR || '32', 10);
 const PLACEMENT_K = 48; // first 5 ranked games move faster
 const MIN_RUN_MS = parseInt(process.env.MIN_RUN_MS || '90000', 10); // a finish faster than this is rejected
 const READY_TIMEOUT_MS = 120000; // both players must have their world loaded by then
+const VOTE_MS = 30000; // how long a draw or new seed offer stays open
 const COUNTDOWN_MS = 5000;
 const AFK_MS = 60000; // no poll for this long while in a match = forfeit
 const MAX_MATCH_MS = 3 * 60 * 60 * 1000;
@@ -198,6 +199,35 @@ function endMatch(m, winnerKey, reason) {
   console.log(`match ${m.id} over: ${record.winner || 'no winner'} (${reason})`);
 }
 
+function vote(b, kind) {
+  const key = auth(b);
+  const m = ownMatch(key, b.match);
+  if (m.solo && kind === 'draw') throw { status: 400, error: 'no draws in a private room' };
+  if (m.state !== 'running') throw { status: 409, error: 'the match has not started yet' };
+  const now = Date.now();
+  m.offers = m.offers || {};
+  const offer = m.offers[kind] && now - m.offers[kind].at < VOTE_MS ? m.offers[kind] : null;
+  if (m.solo || (offer && offer.by !== key)) {
+    if (kind === 'draw') {
+      endMatch(m, null, 'draw');
+    } else {
+      const [a, bKey] = m.players;
+      const ranked = m.ranked;
+      endMatch(m, null, 'new seed');
+      createMatch(a, bKey || null, ranked);
+    }
+    return { ok: true, accepted: true };
+  }
+  if (offer) return { ok: true, pending: true, expires: offer.at + VOTE_MS };
+  m.lastOffer = m.lastOffer || {};
+  const last = m.lastOffer[kind + key] || 0;
+  if (now - last < VOTE_MS * 2) throw { status: 429, error: 'wait a minute before asking again' };
+  m.offers[kind] = { by: key, at: now };
+  m.lastOffer[kind + key] = now;
+  push(opponentOf(m, key), { type: kind + 'Offer', match: m.id, expires: now + VOTE_MS });
+  return { ok: true, pending: true, expires: now + VOTE_MS };
+}
+
 function opponentOf(m, key) { return m.players.length < 2 ? null : m.players[0] === key ? m.players[1] : m.players[0]; }
 
 // ---------- matchmaking loop ----------
@@ -237,6 +267,13 @@ function tick() {
       if (m.solo) endMatch(m, null, 'cancelled');
       else endMatch(m, ready.length === 1 ? ready[0] : null, ready.length === 1 ? 'opponent did not load' : 'cancelled');
       continue;
+    }
+    for (const kind of ['draw', 'seed']) {
+      const o = (m.offers || {})[kind];
+      if (m.state === 'running' && o && now - o.at >= VOTE_MS) {
+        for (const k of m.players) push(k, { type: kind + 'Expired', match: m.id });
+        delete m.offers[kind];
+      }
     }
     if (m.state === 'running') {
       if (now - m.startAt > MAX_MATCH_MS) { endMatch(m, null, 'time limit'); continue; }
@@ -411,6 +448,12 @@ const routes = {
     else endMatch(m, m.state === 'running' || m.ranked ? opponentOf(m, key) : null, m.state === 'running' ? 'forfeit' : 'cancelled');
     return { ok: true };
   },
+
+  // votes: either player offers, the other has VOTE_MS to accept.
+  // draw: the match ends as a draw, no elo either way.
+  // seed: the match is called off (no elo) and both get a new match on a new seed straight away. Solo runs reroll at once.
+  'POST /api/draw': (b) => vote(b, 'draw'),
+  'POST /api/newseed': (b) => vote(b, 'seed'),
 
   'GET /api/leaderboard': () => {
     const list = Object.values(db.players).filter(p => p.wins + p.losses > 0)
