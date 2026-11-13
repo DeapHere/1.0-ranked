@@ -1,10 +1,10 @@
-# Oldschool Ranked 1.0.0
+# Oldschool Ranked 1.0.1
 
 1v1 ranked races for Minecraft 1.0. Two players queue, get the same seed, start at the same moment, and the first to kill the dragon and jump into the exit portal wins and takes elo. You can see your opponent's splits live as they happen.
 
 ## Installing the mod
 
-1. Drop `oldschoolranked-1.0.0.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
+1. Drop `oldschoolranked-1.0.1.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
 2. On the title screen, click the **blaze rod button** to the right of Singleplayer.
 3. That's it: the mod connects to the ranked server on its own.
 
@@ -59,7 +59,8 @@ Every match seed comes from a hand-checked pool, and every seed in it has:
 
 ## Changes
 
-- 1.0.0: New splits for Fortress, First eye and entering the Stronghold. The run now ends when you jump into the exit portal, not on the dragon kill. Victory and Defeat screens show both players' elo changes. Endermen: a night death reset brings 3 if you'd gone 150+ blocks from your last spawn (no all-night minimum, and dying on the spot can't farm them). Leaderboard button in the Ranked lobby (top 100 by elo). Your sign-in is shared by every instance on your PC for the same name (saved in `.oldschoolranked` in your user folder), so a second instance no longer says your name is registered on another PC. F3 is off in matches, with a Y readout instead, and the seed is never shown (not even on the loading screen) or logged. The GO message shows your opponent's elo. The dragon's choices are standardised, spiders always drop string, and desert chunks have no caves, ravines or mineshafts.
+- 1.0.1: death resets can no longer farm endermen. A night death reset brings 3 only if you'd gone at least 150 blocks from where you last spawned.
+- 1.0.0: New splits for Fortress, First eye and entering the Stronghold. The run now ends when you jump into the exit portal, not on the dragon kill. Victory and Defeat screens show both players' elo changes. Leaderboard button in the Ranked lobby (top 100 by elo). Your sign-in is shared by every instance on your PC for the same name (saved in `.oldschoolranked` in your user folder), so a second instance no longer says your name is registered on another PC. F3 is off in matches, with a Y readout instead, and the seed is never shown (not even on the loading screen) or logged. The GO message shows your opponent's elo. The dragon's choices are standardised, spiders always drop string, and desert chunks have no caves, ravines or mineshafts.
 - 0.2.1: skeletons always drop at least 1 arrow and pigs at least 1 porkchop in match worlds. Same server as 0.2.0, so only the mod jar changes.
 - 0.2.0: filtered seed pool (plains + desert, fortress, lava, animals) and no repeat seeds; shared pearl and blaze rod drop sequences; at least 1 feather per chicken; guaranteed endermen on night death resets. Default server is now ranked-1-0.fly.dev. Needs the 0.2.0 server.
 - 0.1.3: timer and splits moved to the top left, so achievement popups don't cover them. Same server as 0.1.2.
