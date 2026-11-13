@@ -65,9 +65,3 @@ Every match seed comes from a hand-checked pool, and every seed in it has:
 - 0.1.3: timer and splits moved to the top left, so achievement popups don't cover them. Same server as 0.1.2.
 - 0.1.2: Private room (solo runs). The room code now shows when OldschoolPrac is installed (the OldschoolPrac message used to cover it). Defaults to ranked-1-0.fly.dev. Needs the 0.1.2 server for Private room.
 - 0.1.1: works alongside OldschoolPrac (both mods fixed the same 1.0 world generation bug in a way that could clash on startup).
-
-## Not in 1.0.0 yet
-
-- Replays or run verification beyond the time checks
-- Seasons and rank tiers
-- Spectating
