@@ -42,6 +42,21 @@ With Node 18 or newer: `node server.js` in the `server` folder. It listens on po
 
 For a leaderboard site or bots later on: `GET /api/leaderboard` (top 100 and how many are online), `GET /api/matches` (last 50 matches with splits), and `GET /` (a simple leaderboard page).
 
-## Adding seeds
+## Finding more seeds
 
-Add lines from a seed finder's `ranked-seeds.txt` to `seeds.txt` and run `fly deploy`. Duplicates and notes are fine.
+`oldschoolranked-seedfinder-1.0.0.jar` is the seed finder as a mod. Use it in a **spare** 1.0 instance only, because it takes over the game:
+
+1. Make a copy of your 1.0 instance (in Prism: right-click, then Copy). Name it something like "Seed finder".
+2. In that copy's `mods` folder, keep `oldschoolranked-1.0.0.jar`, add `oldschoolranked-seedfinder-1.0.0.jar`, and remove every other mod (except Queue Wall, see below).
+3. Launch it. It immediately starts checking seeds. The window title shows how many it has checked and how many were good. Leave it running and minimise it.
+4. Good seeds are saved to `ranked-seeds.txt` in the instance's `.minecraft` folder, one per line with notes on what was found.
+5. Add the lines to `seeds.txt` here and run `fly deploy`. Duplicates and notes are fine.
+
+**Use every core:** Minecraft builds worlds on one core, so on its own the finder uses about one core's worth of CPU. Put `queuewall-0.6.1.jar` in the finder instance's `mods` folder too, and the finder checks several worlds at once (one per core, leaving 2 free) using Queue Wall's thread-safe world generation. The window title shows how many threads it's using and how many worlds a minute it checks. Don't open the wall in that instance. Give the instance at least 3 GB of memory (each thread needs about 250 MB). `threads` in the settings file sets the number of threads yourself.
+
+Without Queue Wall, running two or three copies at once does the same job. Close the window to stop it.
+
+The rules are in `config/ranked-seedfinder.properties` (created on first launch, with a note on each setting). Change a value, save, and restart the finder. `caveRadius=0` turns the cave rule off, and `caveIron` sets how much iron the cave needs.
+
+The finder builds worlds the way match worlds are built (no caves in desert chunks), so what it checks is what players get.
+

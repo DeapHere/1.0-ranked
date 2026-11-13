@@ -46,7 +46,7 @@ The mod also fixes the vanilla 1.0 bug where the same seed can put the spawn or 
 
 ## Seeds
 
-Every match seed comes from a pool of seeds that passed the seed finder:
+Every match seed comes from a hand-checked pool, and every seed in it has:
 
 - Plains spawn, with desert making up at least 8% of the area within 160 blocks
 - A desert you can walk to from spawn in a straight line over plains (no forest in the way), within 160 blocks
@@ -57,29 +57,11 @@ Every match seed comes from a pool of seeds that passed the seed finder:
 - A cave opening (open to the sky) within 64 blocks, with at least 6 iron ore you can see from inside the cave (seeds added from 1.0.0 on; older pool seeds only needed a cave within 128)
 - At least 4 food animals (pigs, cows, chickens) within 64 blocks and 2 sheep within 200
 
-The finder builds worlds the way match worlds are built (no caves in desert chunks), so what it checks is what you play.
-
-### Finding more seeds on your PC
-
-`oldschoolranked-seedfinder-1.0.0.jar` is the seed finder as a mod. Use it in a **spare** 1.0 instance only, because it takes over the game:
-
-1. Make a copy of your 1.0 instance (in Prism: right-click, then Copy). Name it something like "Seed finder".
-2. In that copy's `mods` folder, keep `oldschoolranked-1.0.0.jar`, add `oldschoolranked-seedfinder-1.0.0.jar`, and remove every other mod (except Queue Wall, see below).
-3. Launch it. It immediately starts checking seeds. The window title shows how many it has checked and how many were good. Leave it running and minimise it.
-4. Good seeds are saved to `ranked-seeds.txt` in the instance's `.minecraft` folder, one per line with notes on what was found.
-5. Send the good lines to DeapHere to get them added to the ranked seed pool.
-
-**Use every core:** Minecraft builds worlds on one core, so on its own the finder uses about one core's worth of CPU. Put `queuewall-0.6.1.jar` in the finder instance's `mods` folder too, and the finder checks several worlds at once (one per core, leaving 2 free) using Queue Wall's thread-safe world generation. The window title shows how many threads it's using and how many worlds a minute it checks. Don't open the wall in that instance. Give the instance at least 3 GB of memory (each thread needs about 250 MB). `threads` in the settings file sets the number of threads yourself.
-
-Without Queue Wall, running two or three copies at once does the same job. Close the window to stop it.
-
-The rules are in `config/ranked-seedfinder.properties` (created on first launch, with a note on each setting). Change a value, save, and restart the finder. `caveRadius=0` turns the cave rule off, and `caveIron` sets how much iron the cave needs.
-
 ## Changes
 
-- 1.0.0: New splits for Fortress, First eye and entering the Stronghold. The run now ends when you jump into the exit portal, not on the dragon kill. Victory and Defeat screens show both players' elo changes. Endermen: 3 guaranteed per night death reset (no all-night minimum any more). Leaderboard button in the Ranked lobby (top 100 by elo). Your sign-in is shared by every instance on your PC for the same name (saved in `.oldschoolranked` in your user folder), so a second instance no longer says your name is registered on another PC. F3 is off in matches, with a Y readout instead, and the seed is never shown (not even on the loading screen) or logged. The GO message shows your opponent's elo. The dragon's choices are standardised, spiders always drop string, and desert chunks have no caves, ravines or mineshafts. Seed finder: several worlds at once with Queue Wall, the whole checked area is generated properly, and new rules for caves (within 64 blocks, with at least 6 iron showing), an open path to the desert and real lava pools.
+- 1.0.0: New splits for Fortress, First eye and entering the Stronghold. The run now ends when you jump into the exit portal, not on the dragon kill. Victory and Defeat screens show both players' elo changes. Endermen: 3 guaranteed per night death reset (no all-night minimum any more). Leaderboard button in the Ranked lobby (top 100 by elo). Your sign-in is shared by every instance on your PC for the same name (saved in `.oldschoolranked` in your user folder), so a second instance no longer says your name is registered on another PC. F3 is off in matches, with a Y readout instead, and the seed is never shown (not even on the loading screen) or logged. The GO message shows your opponent's elo. The dragon's choices are standardised, spiders always drop string, and desert chunks have no caves, ravines or mineshafts.
 - 0.2.1: skeletons always drop at least 1 arrow and pigs at least 1 porkchop in match worlds. Same server as 0.2.0, so only the mod jar changes.
-- 0.2.0: filtered seed pool (plains + desert, fortress, lava, animals) and no repeat seeds; shared pearl and blaze rod drop sequences; at least 1 feather per chicken; guaranteed endermen on night death resets; seed finder mod. Default server is now ranked-1-0.fly.dev. Needs the 0.2.0 server.
+- 0.2.0: filtered seed pool (plains + desert, fortress, lava, animals) and no repeat seeds; shared pearl and blaze rod drop sequences; at least 1 feather per chicken; guaranteed endermen on night death resets. Default server is now ranked-1-0.fly.dev. Needs the 0.2.0 server.
 - 0.1.3: timer and splits moved to the top left, so achievement popups don't cover them. Same server as 0.1.2.
 - 0.1.2: Private room (solo runs). The room code now shows when OldschoolPrac is installed (the OldschoolPrac message used to cover it). Defaults to ranked-1-0.fly.dev. Needs the 0.1.2 server for Private room.
 - 0.1.1: works alongside OldschoolPrac (both mods fixed the same 1.0 world generation bug in a way that could clash on startup).
