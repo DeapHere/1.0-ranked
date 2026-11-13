@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SelfTestMixin {
     private static final String NAME = System.getProperty("ranked.selftest");
     private static final int FORFEIT_AFTER = Integer.getInteger("ranked.forfeitAfter", 0);
-    private static int t, runTicks, doneTicks;
+    private static int t, runTicks, doneTicks, cdTicks;
     private static boolean drawAccepted;
     private static int drawSeen, seedSeen;
     private static boolean queued, logged, forfeited;
@@ -122,14 +122,38 @@ public abstract class SelfTestMixin {
             for (Object b : ((oldschoolranked.selftest.ScreenAccess) mc.screen).ranked$buttons()) sb.append(((net.minecraft.client.gui.widget.ButtonWidget) b).id).append(' ');
             System.out.println("[selftest] title buttons: " + sb);
         }
+        if (Boolean.getBoolean("ranked.lbtest") && t == 120) mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen, true));
+        if (Boolean.getBoolean("ranked.chattest") && Ranked.state == Ranked.State.COUNTDOWN) {
+            cdTicks++;
+            if (NAME.endsWith("A") && cdTicks == 10) Ranked.sendChat("gl hf");
+            if (NAME.endsWith("B") && cdTicks == 30) Ranked.sendChat("you too, \u00a7cno colours");
+            if (cdTicks == 60) System.out.println("[selftest] load-in screen " + mc.screen + ", chat " + Ranked.matchChat);
+        }
         if (Ranked.state == Ranked.State.RUNNING) {
             runTicks++;
+            if (Boolean.getBoolean("ranked.chattest")) {
+                if (NAME.endsWith("B") && runTicks == 50) mc.player.sendChat("typed in game");
+                if (runTicks == 90) System.out.println("[selftest] chat in game " + Ranked.matchChat);
+            }
             if (!logged && runTicks == 40) {
                 logged = true;
                 System.out.println("[selftest] running: seed " + mc.world.getSeed() + " spawn " + (int) Math.floor(mc.player.x) + " "
                         + (int) Math.floor(mc.player.y) + " " + (int) Math.floor(mc.player.z) + " worldTime " + mc.world.getTime() + " igt " + Ranked.ticks);
             }
             if (Boolean.getBoolean("ranked.droptest")) dropTest(mc);
+            if (Boolean.getBoolean("ranked.eyetest") && runTicks == 60) {
+                int px = (int) mc.player.x, pz = (int) mc.player.z;
+                net.minecraft.util.math.BlockPos p0 = mc.world.findNearestStructure("Stronghold", px, 64, pz);
+                System.out.println("[selftest] eye from spawn " + px + " " + pz + ": " + p0.x + " " + p0.z);
+                // generate the area around another of the three (120 degrees round), then ask again from spawn
+                double a = Math.atan2(p0.z, p0.x) + Math.PI * 2 / 3, r = Math.sqrt((double) p0.x * p0.x + (double) p0.z * p0.z);
+                int qx = (int) (Math.cos(a) * r), qz = (int) (Math.sin(a) * r);
+                net.minecraft.util.math.BlockPos far = mc.world.findNearestStructure("Stronghold", qx, 64, qz);
+                System.out.println("[selftest] eye from far point " + qx + " " + qz + ": " + far.x + " " + far.z);
+                for (int cx = (far.x >> 4) - 2; cx <= (far.x >> 4) + 2; cx++) for (int cz = (far.z >> 4) - 2; cz <= (far.z >> 4) + 2; cz++) mc.world.getChunkAt(cx, cz);
+                net.minecraft.util.math.BlockPos p1 = mc.world.findNearestStructure("Stronghold", px, 64, pz);
+                System.out.println("[selftest] eye from spawn again: " + p1.x + " " + p1.z + (Math.abs(p1.x - p0.x) < 128 && Math.abs(p1.z - p0.z) < 128 ? " (closest, good)" : " (WRONG: the far one)"));
+            }
             if (Boolean.getBoolean("ranked.seedtest")) {
                 if (NAME.endsWith("A") && runTicks == 60) {
                     System.out.println("[selftest] asking for a new seed, match " + Ranked.matchId + " seed " + mc.world.getSeed());

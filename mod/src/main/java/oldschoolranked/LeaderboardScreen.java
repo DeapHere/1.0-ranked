@@ -8,30 +8,38 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
-/** The full elo leaderboard (top 100 from the match server), a page at a time (as many rows as fit). */
+/** The leaderboards from the match server (top 100 by elo, or fastest ranked wins), a page at a time (as many rows as fit). */
 public final class LeaderboardScreen extends Screen {
-    private static final int PREV = 0, NEXT = 1, BACK = 2, REFRESH = 3;
+    private static final int PREV = 0, NEXT = 1, BACK = 2, REFRESH = 3, MODE = 4;
 
     private final Screen parent;
-    private ButtonWidget prev, next;
+    private ButtonWidget prev, next, mode;
+    private boolean fastest;
     private final List<Object[]> rows = new ArrayList<>(); // rank, name, elo, wins, losses
     private String online = "", message = "§7Loading...";
     private int page;
 
     public LeaderboardScreen(Screen parent) {
+        this(parent, false);
+    }
+
+    public LeaderboardScreen(Screen parent, boolean fastest) {
         this.parent = parent;
+        this.fastest = fastest;
     }
 
     @Override
     public void init() {
         this.buttons.clear();
         int y = this.height - 28, cx = this.width / 2;
-        prev = new ButtonWidget(PREV, cx - 152, y, 70, 20, "< Prev");
-        next = new ButtonWidget(NEXT, cx - 78, y, 70, 20, "Next >");
+        prev = new ButtonWidget(PREV, cx - 152, y, 56, 20, "< Prev");
+        next = new ButtonWidget(NEXT, cx - 92, y, 56, 20, "Next >");
+        mode = new ButtonWidget(MODE, cx - 32, y, 64, 20, fastest ? "Elo" : "Fastest");
         this.buttons.add(prev);
         this.buttons.add(next);
-        this.buttons.add(new ButtonWidget(REFRESH, cx + 4, y, 70, 20, "Refresh"));
-        this.buttons.add(new ButtonWidget(BACK, cx + 78, y, 74, 20, "Back"));
+        this.buttons.add(mode);
+        this.buttons.add(new ButtonWidget(REFRESH, cx + 36, y, 56, 20, "Refresh"));
+        this.buttons.add(new ButtonWidget(BACK, cx + 96, y, 56, 20, "Back"));
         if (rows.isEmpty()) load();
         update();
     }
@@ -39,21 +47,25 @@ public final class LeaderboardScreen extends Screen {
     @SuppressWarnings("unchecked")
     private void load() {
         message = "§7Loading...";
+        rows.clear();
+        final boolean fast = fastest;
         new Thread(() -> {
             try {
-                Map<String, Object> r = Net.request("GET", "/api/leaderboard", null, 10000);
+                Map<String, Object> r = Net.request("GET", fast ? "/api/fastest" : "/api/leaderboard", null, 10000);
                 List<Object[]> list = new ArrayList<>();
                 int i = 1;
                 for (Object o : (List<Object>) r.get("players")) {
                     Map<String, Object> p = (Map<String, Object>) o;
-                    list.add(new Object[] {i++, Json.str(p, "name", "?"), Json.num(p, "elo", 0), Json.num(p, "wins", 0), Json.num(p, "losses", 0)});
+                    if (fast) list.add(new Object[] {i++, Json.str(p, "name", "?"), Json.num(p, "time", 0), Json.num(p, "at", 0)});
+                    else list.add(new Object[] {i++, Json.str(p, "name", "?"), Json.num(p, "elo", 0), Json.num(p, "wins", 0), Json.num(p, "losses", 0)});
                 }
-                String on = Json.num(r, "online", 0) + " online";
+                String on = fast ? "" : Json.num(r, "online", 0) + " online";
                 Net.inbox.add(() -> {
+                    if (fast != fastest) return; // switched while loading
                     rows.clear();
                     rows.addAll(list);
                     online = on;
-                    message = list.isEmpty() ? "§7Nobody has played a ranked match yet." : "";
+                    message = list.isEmpty() ? (fast ? "§7Nobody has won a ranked match by finishing yet." : "§7Nobody has played a ranked match yet.") : "";
                     // open on the page you're on
                     for (Object[] row : rows) {
                         if (Ranked.name != null && Ranked.name.equalsIgnoreCase((String) row[1])) page = ((Integer) row[0] - 1) / perPage();
@@ -103,6 +115,12 @@ public final class LeaderboardScreen extends Screen {
         if (button.id == PREV) page--;
         else if (button.id == NEXT) page++;
         else if (button.id == REFRESH) load();
+        else if (button.id == MODE) {
+            fastest = !fastest;
+            mode.message = fastest ? "Elo" : "Fastest";
+            page = 0;
+            load();
+        }
         else if (button.id == BACK) this.minecraft.openScreen(parent);
         update();
     }
@@ -111,8 +129,14 @@ public final class LeaderboardScreen extends Screen {
     public void render(int mouseX, int mouseY, float tickDelta) {
         this.renderBackground();
         int cx = this.width / 2;
-        this.drawCenteredString(this.textRenderer, "§6Ranked leaderboard", cx, 10, 0xFFFFFF);
-        String sub = online.isEmpty() ? "" : "§7" + online + "   page " + (page + 1) + " of " + pages();
+        this.drawCenteredString(this.textRenderer, fastest ? "§6Fastest times" : "§6Ranked leaderboard", cx, 10, 0xFFFFFF);
+        String sub = rows.isEmpty() ? "" : "§7" + (online.isEmpty() ? "" : online + "   ") + "page " + (page + 1) + " of " + pages();
+        if (fastest) {
+            renderFastest(cx);
+            super.render(mouseX, mouseY, tickDelta);
+            this.drawCenteredString(this.textRenderer, sub, cx, 22, 0xFFFFFF);
+            return;
+        }
         this.drawCenteredString(this.textRenderer, sub, cx, 22, 0xFFFFFF);
         int x0 = cx - 150, y = 40;
         this.drawString(this.textRenderer, "§7#", x0, y, 0xFFFFFF);
@@ -138,5 +162,37 @@ public final class LeaderboardScreen extends Screen {
             y += 11;
         }
         super.render(mouseX, mouseY, tickDelta);
+    }
+
+    /** Best ranked win by finishing, per player (forfeits and draws don't count). */
+    private void renderFastest(int cx) {
+        int x0 = cx - 150, y = 40;
+        this.drawString(this.textRenderer, "§7#", x0, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Player", x0 + 30, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Time", x0 + 160, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Date", x0 + 230, y, 0xFFFFFF);
+        y += 14;
+        if (!message.isEmpty()) this.drawCenteredString(this.textRenderer, message, cx, y + 20, 0xFFFFFF);
+        java.text.SimpleDateFormat day = new java.text.SimpleDateFormat("d MMM yyyy");
+        for (int i = page * perPage(); i < Math.min(rows.size(), (page + 1) * perPage()); i++) {
+            Object[] r = rows.get(i);
+            int rank = (Integer) r[0];
+            String name = (String) r[1];
+            long ms = (Long) r[2], at = (Long) r[3];
+            boolean me = Ranked.name != null && Ranked.name.equalsIgnoreCase(name);
+            if (me) fill(x0 - 4, y - 2, x0 + 300, y + 9, 0x40FFFF00);
+            String c = rank == 1 ? "§6" : rank == 2 ? "§f" : rank == 3 ? "§c" : "§7";
+            this.drawString(this.textRenderer, c + rank + ".", x0, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, (me ? "§e" : "§f") + name, x0 + 30, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, "§a" + clock(ms), x0 + 160, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, "§7" + (at > 0 ? day.format(new java.util.Date(at)) : ""), x0 + 230, y, 0xFFFFFF);
+            y += 11;
+        }
+    }
+
+    private static String clock(long ms) {
+        long s = ms / 1000;
+        String t = (s / 60) % 60 + ":" + String.format("%02d", s % 60) + "." + (ms % 1000) / 100;
+        return s >= 3600 ? s / 3600 + ":" + (s / 60 % 60 < 10 ? "0" : "") + t : t;
     }
 }

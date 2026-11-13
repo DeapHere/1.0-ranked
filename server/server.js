@@ -16,7 +16,9 @@ const PLACEMENT_K = 48; // first 5 ranked games move faster
 const MIN_RUN_MS = parseInt(process.env.MIN_RUN_MS || '90000', 10); // a finish faster than this is rejected
 const READY_TIMEOUT_MS = 120000; // both players must have their world loaded by then
 const VOTE_MS = 30000; // how long a draw or new seed offer stays open
-const COUNTDOWN_MS = 5000;
+const COUNTDOWN_MS = 10000; // the load-in screen before a match (players can chat)
+const SOLO_COUNTDOWN_MS = 5000;
+const CHAT_MAX = 100, CHAT_GAP_MS = 600;
 const AFK_MS = 60000; // no poll for this long while in a match = forfeit
 const MAX_MATCH_MS = 3 * 60 * 60 * 1000;
 const POLL_WAIT_MS = 20000;
@@ -175,7 +177,7 @@ function endMatch(m, winnerKey, reason) {
     l.elo += change[loserKey];
     w.wins++;
     l.losses++;
-    if (reason === 'finish' && (!w.best || elapsed < w.best)) w.best = elapsed;
+    if (reason === 'finish' && elapsed > 0 && (!w.best || elapsed < w.best)) { w.best = elapsed; w.bestAt = Date.now(); }
   }
   const record = {
     id: m.id, ranked: m.ranked, seed: m.seed, at: m.created, players: m.players.map(k => db.players[k].name), solo: m.solo,
@@ -405,7 +407,7 @@ const routes = {
     m.ready[key] = true;
     if (m.players.every(k => m.ready[k])) {
       m.state = 'running';
-      m.startAt = Date.now() + COUNTDOWN_MS;
+      m.startAt = Date.now() + (m.solo ? SOLO_COUNTDOWN_MS : COUNTDOWN_MS);
       for (const k of m.players) push(k, { type: 'start', match: m.id, startAt: m.startAt, serverTime: Date.now() });
     } else {
       push(opponentOf(m, key), { type: 'opponentReady', match: m.id }); // two-player only: solo is always all ready
@@ -452,6 +454,20 @@ const routes = {
   // votes: either player offers, the other has VOTE_MS to accept.
   // draw: the match ends as a draw, no elo either way.
   // seed: the match is called off (no elo) and both get a new match on a new seed straight away. Solo runs reroll at once.
+  // match chat: only the two players in the match see it, from the load-in screen to the end of the race
+  'POST /api/chat': (b) => {
+    const key = auth(b);
+    const m = ownMatch(key, b.match);
+    if (m.solo) throw { status: 409, error: 'nobody to chat with' };
+    const text = String(b.text || '').replace(/[\u0000-\u001f\u007f\u00a7]/g, '').trim().slice(0, CHAT_MAX);
+    if (!text) return { ok: true };
+    const l = liveOf(key), now = Date.now();
+    if (l.lastChat && now - l.lastChat < CHAT_GAP_MS) throw { status: 429, error: 'slow down' };
+    l.lastChat = now;
+    for (const k of m.players) push(k, { type: 'chat', match: m.id, from: db.players[key].name, text });
+    return { ok: true };
+  },
+
   'POST /api/draw': (b) => vote(b, 'draw'),
   'POST /api/newseed': (b) => vote(b, 'seed'),
 
@@ -460,6 +476,9 @@ const routes = {
       .sort((a, b) => b.elo - a.elo).slice(0, 100).map(publicPlayer);
     return { players: list, online: [...live.values()].filter(l => Date.now() - l.lastSeen < 30000).length };
   },
+
+  // fastest times: each player's best ranked win by finishing (forfeits and draws don't count)
+  'GET /api/fastest': () => ({ players: fastest().map(p => ({ name: p.name, time: p.best, at: p.bestAt || null, elo: p.elo })) }),
 
   'GET /api/matches': () => ({ matches: db.matches.slice(-50).reverse() }),
 
@@ -486,14 +505,20 @@ function poll(req, res, url) {
   req.on('close', () => { done = true; clearTimeout(timer); });
 }
 
+function fastest() {
+  return Object.values(db.players).filter(p => p.best > 0).sort((a, b) => a.best - b.best).slice(0, 100);
+}
+
 function page() {
   const rows = Object.values(db.players).filter(p => p.wins + p.losses > 0).sort((a, b) => b.elo - a.elo).slice(0, 100)
     .map((p, i) => `<tr><td>${i + 1}</td><td>${p.name}</td><td>${p.elo}</td><td>${p.wins}-${p.losses}</td><td>${p.best ? fmt(p.best) : ''}</td></tr>`).join('');
+  const fast = fastest().map((p, i) => `<tr><td>${i + 1}</td><td>${p.name}</td><td>${fmt(p.best)}</td><td>${p.bestAt ? new Date(p.bestAt).toISOString().slice(0, 10) : ''}</td></tr>`).join('');
   const recent = db.matches.filter(m => m.ranked).slice(-20).reverse()
     .map(m => `<tr><td>${m.players[0]} vs ${m.players[1]}</td><td>${m.winner || 'none'}</td><td>${m.reason}</td><td>${m.time ? fmt(m.time) : ''}</td></tr>`).join('');
   return `<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Oldschool Ranked</title>
 <style>body{font:15px system-ui;margin:24px auto;max-width:720px;padding:0 16px;background:#16161a;color:#ddd}table{width:100%;border-collapse:collapse;margin-bottom:32px}td,th{padding:6px 8px;border-bottom:1px solid #333;text-align:left}h1{font-size:22px}</style>
 <h1>Oldschool Ranked: Minecraft 1.0</h1><h2>Leaderboard</h2><table><tr><th>#</th><th>Player</th><th>Elo</th><th>W-L</th><th>Best</th></tr>${rows || '<tr><td colspan=5>No ranked games yet</td></tr>'}</table>
+<h2>Fastest times</h2><table><tr><th>#</th><th>Player</th><th>Time</th><th>Date</th></tr>${fast || '<tr><td colspan=4>No ranked wins by finishing yet</td></tr>'}</table>
 <h2>Recent matches</h2><table><tr><th>Match</th><th>Winner</th><th>How</th><th>Time</th></tr>${recent || '<tr><td colspan=4>None yet</td></tr>'}</table>`;
 }
 

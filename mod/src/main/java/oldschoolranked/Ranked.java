@@ -59,6 +59,8 @@ public final class Ranked {
 
     // current or last match
     public static String matchId;
+    /** The last few match chat lines, for the load-in screen. */
+    public static final java.util.List<String> matchChat = new java.util.ArrayList<>();
     public static long seed;
     public static boolean rankedMatch;
     public static String opponent;
@@ -305,6 +307,18 @@ public final class Ranked {
     }
 
     /** Pause menu: ask for a new seed, or accept their ask. A private room gets one at once. */
+    /** Match chat works from the load-in screen until the race is over, in two-player matches. */
+    public static boolean canChat() {
+        return matchId != null && !solo && (state == State.LOADING || state == State.COUNTDOWN || state == State.RUNNING);
+    }
+
+    public static void sendChat(String text) {
+        if (!canChat() || text == null || text.trim().isEmpty()) return;
+        Net.post("/api/chat", Net.map("match", matchId, "text", text.trim()), (r, err) -> {
+            if (err != null) chat("§c" + err);
+        });
+    }
+
     public static void newSeed() {
         if (state != State.RUNNING || matchId == null) return;
         final boolean accepting = seedPending();
@@ -391,11 +405,23 @@ public final class Ranked {
                 myDrawUntil = 0;
                 theirSeedUntil = 0;
                 mySeedUntil = 0;
+                matchChat.clear();
                 ticks = 0;
                 roomCode = null;
                 state = State.LOADING;
                 worldPending = true;
                 log("match " + matchId + " vs " + opponent); // never the seed: the game log is visible to the player
+                break;
+            case "chat":
+                if (Json.str(ev, "match", "").equals(matchId)) {
+                    String from = Json.str(ev, "from", "?");
+                    boolean me = name != null && name.equalsIgnoreCase(from);
+                    String line = (me ? "§b<" : "§e<") + from + ">§r " + Json.str(ev, "text", "");
+                    matchChat.add(line);
+                    if (matchChat.size() > 8) matchChat.remove(0);
+                    if (mc != null && mc.screen instanceof WaitingScreen) log("chat: " + line.replaceAll("§.", "")); // the load-in screen shows it
+                    else chat(line);
+                }
                 break;
             case "drawOffer":
                 if (Json.str(ev, "match", "").equals(matchId)) {

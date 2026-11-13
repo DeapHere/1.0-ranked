@@ -118,6 +118,12 @@ async function until(c, type) {
   assert.ok(nr.reason === 'new seed' && nr.eloChange === 0);
   const nn = await until(A, 'match');
   assert.ok(nn.ranked && nn.match !== na.match && nn.seed !== na.seed, 'new match on a new seed');
+  // match chat, while loading: both players get it, colour codes and control characters stripped
+  assert.ok((await post('/api/chat', { token: B.token, match: nn.match, text: '\u00a7cgl\nhf' })).body.ok);
+  const ca = await until(A, 'chat'), cb = await until(B, 'chat');
+  assert.ok(ca.from === 'Bob' && ca.text === 'cglhf' && cb.text === 'cglhf', 'chat reaches both players');
+  assert.strictEqual((await post('/api/chat', { token: B.token, match: nn.match, text: 'spam' })).status, 429, 'chat is rate limited');
+  assert.strictEqual((await post('/api/chat', { token: A.token, match: na.match, text: 'old' })).status, 404, 'no chat in a finished match');
   await post('/api/ready', { token: A.token, match: nn.match });
   await post('/api/ready', { token: B.token, match: nn.match });
   const n2 = await until(A, 'start');
@@ -127,8 +133,10 @@ async function until(c, type) {
   await until(A, 'result');
   const lb = await (await fetch(base + '/api/leaderboard')).json();
   assert.deepStrictEqual(lb.players.map(p => [p.name, p.elo]), [['Alice', 1024], ['Bob', 976]]);
+  const fa = await (await fetch(base + '/api/fastest')).json();
+  assert.ok(fa.players.length === 1 && fa.players[0].name === 'Alice' && fa.players[0].time > 0, 'fastest times: only the finished win');
   const html = await (await fetch(base + '/')).text();
-  assert.ok(html.includes('Alice'));
+  assert.ok(html.includes('Alice') && html.includes('Fastest times'));
   console.log('ALL TESTS PASSED');
   srv.kill();
   process.exit(0);
