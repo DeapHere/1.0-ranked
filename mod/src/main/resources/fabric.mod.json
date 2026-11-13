@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "oldschoolranked",
+  "version": "${version}",
+  "name": "Oldschool Ranked",
+  "description": "1v1 ranked races for Minecraft 1.0: matchmaking, the same seed for both players, live opponent splits and elo.",
+  "authors": ["DeapHere"],
+  "license": "MIT",
+  "environment": "client",
+  "mixins": ["oldschoolranked.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.0.0"
+  }
+}

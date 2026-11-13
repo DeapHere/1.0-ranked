@@ -1,0 +1,20 @@
+# builds and Gradle caches
+mod/build/
+mod/.gradle/
+.gradle/
+mod/run/
+mod/devmods/
+*.class
+
+# server data (players, elo, sign-in tokens) lives on the Fly volume, never in git
+server/data/
+node_modules/
+
+# local sign-in tokens
+oldschoolranked.properties
+.oldschoolranked/
+
+.idea/
+*.iml
+.vscode/
+.DS_Store

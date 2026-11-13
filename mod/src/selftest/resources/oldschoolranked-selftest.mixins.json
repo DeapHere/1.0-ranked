@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "oldschoolranked.selftest",
+  "compatibilityLevel": "JAVA_8",
+  "client": ["SelfTestMixin", "ScreenAccess", "DragonAccess"],
+  "injectors": { "defaultRequire": 1 }
+}

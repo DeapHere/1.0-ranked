@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "oldschoolranked.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "BiomeSourceMixin",
+    "BlazeEntityMixin",
+    "EndermanEntityMixin",
+    "EnderDragonEntityMixin",
+    "EntityAccessor",
+    "ChickenEntityMixin",
+    "GameGuiMixin",
+    "GameMenuScreenMixin",
+    "IntCacheAccessor",
+    "MinecraftMixin",
+    "MobEntityMixin",
+    "OverworldChunkGeneratorMixin",
+    "SkeletonEntityMixin",
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

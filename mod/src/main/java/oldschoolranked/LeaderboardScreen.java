@@ -1,0 +1,142 @@
+package oldschoolranked;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+
+/** The full elo leaderboard (top 100 from the match server), a page at a time (as many rows as fit). */
+public final class LeaderboardScreen extends Screen {
+    private static final int PREV = 0, NEXT = 1, BACK = 2, REFRESH = 3;
+
+    private final Screen parent;
+    private ButtonWidget prev, next;
+    private final List<Object[]> rows = new ArrayList<>(); // rank, name, elo, wins, losses
+    private String online = "", message = "§7Loading...";
+    private int page;
+
+    public LeaderboardScreen(Screen parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public void init() {
+        this.buttons.clear();
+        int y = this.height - 28, cx = this.width / 2;
+        prev = new ButtonWidget(PREV, cx - 152, y, 70, 20, "< Prev");
+        next = new ButtonWidget(NEXT, cx - 78, y, 70, 20, "Next >");
+        this.buttons.add(prev);
+        this.buttons.add(next);
+        this.buttons.add(new ButtonWidget(REFRESH, cx + 4, y, 70, 20, "Refresh"));
+        this.buttons.add(new ButtonWidget(BACK, cx + 78, y, 74, 20, "Back"));
+        if (rows.isEmpty()) load();
+        update();
+    }
+
+    @SuppressWarnings("unchecked")
+    private void load() {
+        message = "§7Loading...";
+        new Thread(() -> {
+            try {
+                Map<String, Object> r = Net.request("GET", "/api/leaderboard", null, 10000);
+                List<Object[]> list = new ArrayList<>();
+                int i = 1;
+                for (Object o : (List<Object>) r.get("players")) {
+                    Map<String, Object> p = (Map<String, Object>) o;
+                    list.add(new Object[] {i++, Json.str(p, "name", "?"), Json.num(p, "elo", 0), Json.num(p, "wins", 0), Json.num(p, "losses", 0)});
+                }
+                String on = Json.num(r, "online", 0) + " online";
+                Net.inbox.add(() -> {
+                    rows.clear();
+                    rows.addAll(list);
+                    online = on;
+                    message = list.isEmpty() ? "§7Nobody has played a ranked match yet." : "";
+                    // open on the page you're on
+                    for (Object[] row : rows) {
+                        if (Ranked.name != null && Ranked.name.equalsIgnoreCase((String) row[1])) page = ((Integer) row[0] - 1) / perPage();
+                    }
+                    update();
+                });
+            } catch (Exception e) {
+                Net.inbox.add(() -> message = "§cCan't reach the ranked server");
+            }
+        }, "Ranked leaderboard").start();
+    }
+
+    /** As many rows as fit between the header and the buttons. */
+    private int perPage() {
+        return Math.max(1, (this.height - 28 - 4 - 54) / 11);
+    }
+
+    private int pages() {
+        return Math.max(1, (rows.size() + perPage() - 1) / perPage());
+    }
+
+    private void update() {
+        page = Math.max(0, Math.min(page, pages() - 1));
+        prev.active = page > 0;
+        next.active = page < pages() - 1;
+    }
+
+    @Override
+    public void tick() {
+        int wheel = Mouse.getDWheel();
+        if (wheel < 0) page++;
+        else if (wheel > 0) page--;
+        update();
+    }
+
+    @Override
+    protected void keyPressed(char chr, int key) {
+        if (key == Keyboard.KEY_ESCAPE) this.minecraft.openScreen(parent);
+        else if (key == Keyboard.KEY_LEFT || key == Keyboard.KEY_PRIOR) page--;
+        else if (key == Keyboard.KEY_RIGHT || key == Keyboard.KEY_NEXT) page++;
+        update();
+    }
+
+    @Override
+    protected void buttonClicked(ButtonWidget button) {
+        if (!button.active) return;
+        if (button.id == PREV) page--;
+        else if (button.id == NEXT) page++;
+        else if (button.id == REFRESH) load();
+        else if (button.id == BACK) this.minecraft.openScreen(parent);
+        update();
+    }
+
+    @Override
+    public void render(int mouseX, int mouseY, float tickDelta) {
+        this.renderBackground();
+        int cx = this.width / 2;
+        this.drawCenteredString(this.textRenderer, "§6Ranked leaderboard", cx, 10, 0xFFFFFF);
+        String sub = online.isEmpty() ? "" : "§7" + online + "   page " + (page + 1) + " of " + pages();
+        this.drawCenteredString(this.textRenderer, sub, cx, 22, 0xFFFFFF);
+        int x0 = cx - 150, y = 40;
+        this.drawString(this.textRenderer, "§7#", x0, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Player", x0 + 30, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Elo", x0 + 160, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7W-L", x0 + 205, y, 0xFFFFFF);
+        this.drawString(this.textRenderer, "§7Win %", x0 + 260, y, 0xFFFFFF);
+        y += 14;
+        if (!message.isEmpty()) this.drawCenteredString(this.textRenderer, message, cx, y + 20, 0xFFFFFF);
+        for (int i = page * perPage(); i < Math.min(rows.size(), (page + 1) * perPage()); i++) {
+            Object[] r = rows.get(i);
+            int rank = (Integer) r[0];
+            String name = (String) r[1];
+            long w = (Long) r[3], l = (Long) r[4];
+            boolean me = Ranked.name != null && Ranked.name.equalsIgnoreCase(name);
+            if (me) fill(x0 - 4, y - 2, x0 + 300, y + 9, 0x40FFFF00);
+            String c = rank == 1 ? "§6" : rank == 2 ? "§f" : rank == 3 ? "§c" : "§7";
+            this.drawString(this.textRenderer, c + rank + ".", x0, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, (me ? "§e" : "§f") + name, x0 + 30, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, "§6" + r[2], x0 + 160, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, "§f" + w + "-" + l, x0 + 205, y, 0xFFFFFF);
+            this.drawString(this.textRenderer, "§7" + (w + l == 0 ? "-" : Math.round(w * 100.0 / (w + l)) + "%"), x0 + 260, y, 0xFFFFFF);
+            y += 11;
+        }
+        super.render(mouseX, mouseY, tickDelta);
+    }
+}

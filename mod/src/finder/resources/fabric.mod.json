@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "oldschoolranked-seedfinder",
+  "version": "${version}",
+  "name": "Oldschool Ranked Seed Finder",
+  "description": "Checks random 1.0 seeds non-stop and saves the good ones to ranked-seeds.txt. Install in a spare instance only: it takes over the game.",
+  "authors": ["DeapHere"],
+  "license": "MIT",
+  "environment": "client",
+  "mixins": ["oldschoolranked-seedfinder.mixins.json"],
+  "depends": { "fabricloader": ">=0.18.1", "minecraft": "1.0.0", "oldschoolranked": "*" }
+}

@@ -1,0 +1,178 @@
+plugins {
+	id 'fabric-loom' version '1.17-SNAPSHOT'
+	id 'ploceus' version '1.17-SNAPSHOT'
+}
+
+repositories {
+	exclusiveContent {
+		forRepository { maven { url = 'https://maven.ornithemc.net/releases' } }
+		filter { includeGroup 'net.ornithemc' }
+	}
+	exclusiveContent {
+		forRepository { maven { url = 'https://maven.fabricmc.net/' } }
+		filter { includeGroup 'net.fabricmc' }
+	}
+}
+
+base {
+	archivesName = project.archives_base_name
+}
+version = project.version
+group = project.maven_group
+
+sourceSets {
+	// development only: two clients race each other against a local server (./gradlew runSelfTestA / runSelfTestB)
+	selftest {
+		compileClasspath += main.compileClasspath + main.output
+		runtimeClasspath += main.runtimeClasspath + main.output
+	}
+	// the seed finder, as its own mod jar for a spare instance (./gradlew remapFinderJar)
+	finder {
+		compileClasspath += main.compileClasspath + main.output
+		runtimeClasspath += main.runtimeClasspath + main.output
+	}
+}
+
+loom {
+	// 1.0 has no server in the version manifest, and the mod is client only
+	clientOnlyMinecraftJar()
+
+	mods {
+		oldschoolranked {
+			sourceSet sourceSets.main
+		}
+		"oldschoolranked-selftest" {
+			sourceSet sourceSets.selftest
+		}
+		"oldschoolranked-seedfinder" {
+			sourceSet sourceSets.finder
+		}
+	}
+
+	runs {
+		selfTestA {
+			client()
+			name = 'Self test A'
+			source sourceSets.selftest
+			runDir 'run/a'
+			vmArg "-Dranked.selftest=TesterA"
+			vmArg "-Dranked.droptest=${project.findProperty('droptest') ?: 'false'}"
+			vmArg "-Dranked.private=${project.findProperty('private') ?: 'false'}"
+			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
+			vmArg "-Dranked.lobbytest=${project.findProperty('lobbytest') ?: 'false'}"
+			vmArg "-Dranked.server=${project.findProperty('server') ?: 'http://127.0.0.1:8080'}"
+			vmArg "-Dranked.forfeitAfter=${project.findProperty('forfeitAfter') ?: '0'}"
+		}
+		seedFinder {
+			client()
+			name = 'Seed finder'
+			source sourceSets.finder
+			runDir 'run/finder'
+			vmArg "-Dranked.finder=${project.findProperty('out') ?: file('run/finder/found.txt').absolutePath}"
+		}
+		// the finder on several threads: needs Queue Wall in devmods/
+		seedFinderParallel {
+			client()
+			name = 'Seed finder (parallel)'
+			source sourceSets.finder
+			runDir 'run/finderpar'
+			vmArg "-Dranked.finder=${project.findProperty('out') ?: file('run/finderpar/found.txt').absolutePath}"
+			vmArg "-Dranked.finderSeeds=${project.findProperty('seeds') ?: ''}"
+			vmArg "-Xmx${project.findProperty('xmx') ?: '2G'}"
+			vmArg "-Dranked.finderDebug=${project.findProperty('debug') ?: 'false'}"
+			vmArg "-Dranked.finderSerial=${project.findProperty('serial') ?: 'false'}"
+		}
+		seedFinder2 {
+			client()
+			name = 'Seed finder 2'
+			source sourceSets.finder
+			runDir 'run/finder2'
+			vmArg "-Dranked.finder=${project.findProperty('out') ?: file('run/finder2/found.txt').absolutePath}"
+		}
+		seedFinder3 {
+			client()
+			name = 'Seed finder 3'
+			source sourceSets.finder
+			runDir 'run/finder3'
+			vmArg "-Dranked.finder=${project.findProperty('out') ?: file('run/finder3/found.txt').absolutePath}"
+		}
+		selfTestB {
+			client()
+			name = 'Self test B'
+			source sourceSets.selftest
+			runDir 'run/b'
+			vmArg "-Dranked.selftest=TesterB"
+			vmArg "-Dranked.lobbytest=${project.findProperty('lobbytest') ?: 'false'}"
+			vmArg "-Dranked.droptest=${project.findProperty('droptest') ?: 'false'}"
+			vmArg "-Dranked.server=${project.findProperty('server') ?: 'http://127.0.0.1:8080'}"
+			vmArg "-Dranked.forfeitAfter=${project.findProperty('forfeitAfter') ?: '0'}"
+		}
+	}
+}
+
+ploceus {
+	setIntermediaryGeneration(1)
+	clientOnlyMappings()
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	if (project.raven_build) {
+		exceptions ploceus.raven(project.raven_build)
+	}
+	if (project.sparrow_build) {
+		signatures ploceus.sparrow(project.sparrow_build)
+	}
+	nests ploceus.nests(project.nests_build)
+	mappings ploceus.featherMappings(project.feather_build)
+
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	// development only: other mods' jars dropped in devmods/ run alongside in the dev client
+	modRuntimeOnly fileTree(dir: 'devmods', include: '*.jar')
+	// the seed finder uses Queue Wall's thread-safe world generation when it's installed (optional at runtime)
+	modCompileOnly files('libs/queuewall-0.6.1.jar')
+}
+
+processResources {
+	inputs.property 'version', version
+	filesMatching('fabric.mod.json') {
+		expand 'version': version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = 'UTF-8'
+	it.options.release = 8
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar {
+	from('LICENSE') {
+		rename { "${it}_${base.archivesName.get()}" }
+	}
+}
+
+processFinderResources {
+	inputs.property 'version', version
+	filesMatching('fabric.mod.json') {
+		expand 'version': version
+	}
+}
+
+tasks.register('finderJar', Jar) {
+	dependsOn tasks.finderClasses
+	from sourceSets.finder.output
+	archiveBaseName = 'oldschoolranked-seedfinder'
+	archiveClassifier = 'dev'
+}
+tasks.register('remapFinderJar', net.fabricmc.loom.task.RemapJarTask) {
+	dependsOn tasks.finderJar
+	inputFile = tasks.finderJar.archiveFile
+	archiveBaseName = 'oldschoolranked-seedfinder'
+	archiveClassifier = ''
+	addNestedDependencies = false
+}

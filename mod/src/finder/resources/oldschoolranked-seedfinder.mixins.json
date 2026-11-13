@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "oldschoolranked.finder",
+  "compatibilityLevel": "JAVA_8",
+  "client": ["SeedFinderMixin", "BiomeSourceAccessor", "TitleScreenMixin", "WorldMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "oldschoolranked-selftest",
+  "version": "0",
+  "environment": "client",
+  "mixins": ["oldschoolranked-selftest.mixins.json"],
+  "depends": { "oldschoolranked": "*" }
+}
