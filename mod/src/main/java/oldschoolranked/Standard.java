@@ -10,8 +10,8 @@ import net.minecraft.entity.mob.monster.EndermanEntity;
  *
  * - Drops: ender pearls and blaze rods come from their own random sequence, seeded from the match seed, so a player's
  *   1st, 2nd, 3rd... enderman (or blaze) drops exactly what their opponent's do. The odds are still vanilla (0 or 1).
- * - Endermen: the first death reset of each night brings 3 endermen on open ground 24 to 87 blocks around you. Later
- *   resets that night bring none, so dying over and over can't farm them. Vanilla spawning is untouched on top of that.
+ * - Endermen: a death reset at night brings 3 endermen on open ground 24 to 87 blocks around you, if you'd gone 150+
+ *   blocks from where you last spawned, so dying on the spot over and over can't farm them. Vanilla spawning is untouched.
  */
 public final class Standard {
     public static int endermenPerReset = 3;
@@ -28,8 +28,10 @@ public final class Standard {
     private static Random dragon;
     private static int pendingSpawns, spawnCooldown, floorCheck;
     private static boolean wasDead;
-    /** The day whose night already had its 3 endermen. */
-    private static long lastNight = -1;
+    /** How far (blocks) you must have gone from your last spawn for a death reset to bring endermen. */
+    private static final int RESET_DISTANCE = 150;
+    private static boolean originSet;
+    private static double originX, originZ, farthest;
 
     private Standard() {
     }
@@ -44,7 +46,7 @@ public final class Standard {
         spawnCooldown = 0;
         floorCheck = 0;
         wasDead = false;
-        lastNight = -1;
+        originSet = false;
     }
 
     /** Pearls from one enderman: 0 to 1 + looting, like vanilla, from the shared sequence. */
@@ -65,12 +67,26 @@ public final class Standard {
     public static void tick(Minecraft mc) {
         if (spots == null || mc.player == null || mc.world == null || mc.world.dimension.id != 0) return;
         boolean dead = mc.player.getHealth() <= 0;
-        // once per night: the first death reset of each night brings 3, later ones that night bring none (vanilla still spawns)
-        long day = mc.world.getTime() / 24000;
-        if (wasDead && !dead && night(mc) && day != lastNight) {
-            lastNight = day;
-            pendingSpawns = endermenPerReset;
-            spawnCooldown = 20; // a second after respawning
+        // a death reset only brings endermen if you'd gone 150+ blocks from where you last spawned, so dying on the spot
+        // over and over can't farm them
+        if (!dead && !originSet) {
+            originX = mc.player.x;
+            originZ = mc.player.z;
+            originSet = true;
+            farthest = 0;
+        }
+        if (!dead) {
+            double dx = mc.player.x - originX, dz = mc.player.z - originZ;
+            farthest = Math.max(farthest, dx * dx + dz * dz);
+        }
+        if (wasDead && !dead) {
+            if (night(mc) && farthest >= RESET_DISTANCE * RESET_DISTANCE) {
+                pendingSpawns = endermenPerReset;
+                spawnCooldown = 20; // a second after respawning
+            }
+            originX = mc.player.x;
+            originZ = mc.player.z;
+            farthest = 0;
         }
         wasDead = dead;
         if (dead) return;
