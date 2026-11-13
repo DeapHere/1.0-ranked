@@ -10,8 +10,8 @@ import net.minecraft.entity.mob.monster.EndermanEntity;
  *
  * - Drops: ender pearls and blaze rods come from their own random sequence, seeded from the match seed, so a player's
  *   1st, 2nd, 3rd... enderman (or blaze) drops exactly what their opponent's do. The odds are still vanilla (0 or 1).
- * - Endermen: each death reset at night guarantees 3 endermen on open ground 24 to 87 blocks around you. Vanilla spawning
- *   is untouched on top of that.
+ * - Endermen: each death reset at night tops you up to 3 endermen on open ground 24 to 87 blocks around you (any already
+ *   there count), so dying over and over can't farm them. Vanilla spawning is untouched on top of that.
  */
 public final class Standard {
     public static int endermenPerReset = 3;
@@ -63,7 +63,8 @@ public final class Standard {
         if (spots == null || mc.player == null || mc.world == null || mc.world.dimension.id != 0) return;
         boolean dead = mc.player.getHealth() <= 0;
         if (wasDead && !dead && night(mc)) {
-            pendingSpawns += endermenPerReset;
+            // a top-up, not a stack: dying again before they've come doesn't add more
+            pendingSpawns = endermenPerReset;
             spawnCooldown = 20; // a second after respawning
         }
         wasDead = dead;
@@ -75,7 +76,9 @@ public final class Standard {
         if (spawnCooldown > 0) {
             spawnCooldown--;
         } else if (pendingSpawns > 0) {
-            if (spawn(mc)) pendingSpawns--;
+            // only up to 3 endermen around you (vanilla ones count), so dying over and over can't farm them
+            if (nearby(mc) >= endermenPerReset) pendingSpawns = 0;
+            else if (spawn(mc)) pendingSpawns--;
             spawnCooldown = 20 + spots.nextInt(60); // trickle in over several seconds, not all at once
         }
         if (++floorCheck >= 100) {
