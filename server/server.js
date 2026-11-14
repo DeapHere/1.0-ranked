@@ -179,6 +179,11 @@ function endMatch(m, winnerKey, reason) {
     l.losses++;
     if (reason === 'finish' && elapsed > 0 && (!w.best || elapsed < w.best)) { w.best = elapsed; w.bestAt = Date.now(); }
   }
+  // private room (solo) runs get their own best time, kept apart from ranked
+  if (m.solo && winnerKey && reason === 'finish' && elapsed > 0) {
+    const p = db.players[winnerKey];
+    if (!p.soloBest || elapsed < p.soloBest) { p.soloBest = elapsed; p.soloBestAt = Date.now(); }
+  }
   const record = {
     id: m.id, ranked: m.ranked, seed: m.seed, at: m.created, players: m.players.map(k => db.players[k].name), solo: m.solo,
     winner: winnerKey ? db.players[winnerKey].name : null, reason, time: winnerKey && reason === 'finish' ? elapsed : null,
@@ -480,6 +485,9 @@ const routes = {
   // fastest times: each player's best ranked win by finishing (forfeits and draws don't count)
   'GET /api/fastest': () => ({ players: fastest().map(p => ({ name: p.name, time: p.best, at: p.bestAt || null, elo: p.elo })) }),
 
+  // fastest private room (solo) runs
+  'GET /api/fastest-private': () => ({ players: fastestPrivate().map(p => ({ name: p.name, time: p.soloBest, at: p.soloBestAt || null, elo: p.elo })) }),
+
   'GET /api/matches': () => ({ matches: db.matches.slice(-50).reverse() }),
 
   'GET /health': () => ({ ok: true, protocol: PROTOCOL }),
@@ -509,16 +517,22 @@ function fastest() {
   return Object.values(db.players).filter(p => p.best > 0).sort((a, b) => a.best - b.best).slice(0, 100);
 }
 
+function fastestPrivate() {
+  return Object.values(db.players).filter(p => p.soloBest > 0).sort((a, b) => a.soloBest - b.soloBest).slice(0, 100);
+}
+
 function page() {
   const rows = Object.values(db.players).filter(p => p.wins + p.losses > 0).sort((a, b) => b.elo - a.elo).slice(0, 100)
     .map((p, i) => `<tr><td>${i + 1}</td><td>${p.name}</td><td>${p.elo}</td><td>${p.wins}-${p.losses}</td><td>${p.best ? fmt(p.best) : ''}</td></tr>`).join('');
   const fast = fastest().map((p, i) => `<tr><td>${i + 1}</td><td>${p.name}</td><td>${fmt(p.best)}</td><td>${p.bestAt ? new Date(p.bestAt).toISOString().slice(0, 10) : ''}</td></tr>`).join('');
+  const priv = fastestPrivate().map((p, i) => `<tr><td>${i + 1}</td><td>${p.name}</td><td>${fmt(p.soloBest)}</td><td>${p.soloBestAt ? new Date(p.soloBestAt).toISOString().slice(0, 10) : ''}</td></tr>`).join('');
   const recent = db.matches.filter(m => m.ranked).slice(-20).reverse()
     .map(m => `<tr><td>${m.players[0]} vs ${m.players[1]}</td><td>${m.winner || 'none'}</td><td>${m.reason}</td><td>${m.time ? fmt(m.time) : ''}</td></tr>`).join('');
   return `<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Oldschool Ranked</title>
 <style>body{font:15px system-ui;margin:24px auto;max-width:720px;padding:0 16px;background:#16161a;color:#ddd}table{width:100%;border-collapse:collapse;margin-bottom:32px}td,th{padding:6px 8px;border-bottom:1px solid #333;text-align:left}h1{font-size:22px}</style>
 <h1>Oldschool Ranked: Minecraft 1.0</h1><h2>Leaderboard</h2><table><tr><th>#</th><th>Player</th><th>Elo</th><th>W-L</th><th>Best</th></tr>${rows || '<tr><td colspan=5>No ranked games yet</td></tr>'}</table>
 <h2>Fastest times</h2><table><tr><th>#</th><th>Player</th><th>Time</th><th>Date</th></tr>${fast || '<tr><td colspan=4>No ranked wins by finishing yet</td></tr>'}</table>
+<h2>Fastest private room runs</h2><table><tr><th>#</th><th>Player</th><th>Time</th><th>Date</th></tr>${priv || '<tr><td colspan=4>No finished private runs yet</td></tr>'}</table>
 <h2>Recent matches</h2><table><tr><th>Match</th><th>Winner</th><th>How</th><th>Time</th></tr>${recent || '<tr><td colspan=4>None yet</td></tr>'}</table>`;
 }
 

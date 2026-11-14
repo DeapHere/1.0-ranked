@@ -87,6 +87,8 @@ async function until(c, type) {
   assert.strictEqual((await post('/api/finish', { token: A.token, match: pm.match, igt: 4 })).status, 200);
   const pres = await until(A, 'result');
   assert.ok(pres.won && pres.eloChange === 0 && pres.reason === 'finish');
+  const fp = await (await fetch(base + '/api/fastest-private')).json();
+  assert.ok(fp.players.length === 1 && fp.players[0].name === 'Alice' && fp.players[0].time > 0, 'private room leaderboard');
   // draw vote: ranked match, A offers, B accepts: a draw with no elo for either
   await post('/api/queue', { token: A.token });
   await post('/api/queue', { token: B.token });
@@ -134,9 +136,9 @@ async function until(c, type) {
   const lb = await (await fetch(base + '/api/leaderboard')).json();
   assert.deepStrictEqual(lb.players.map(p => [p.name, p.elo]), [['Alice', 1024], ['Bob', 976]]);
   const fa = await (await fetch(base + '/api/fastest')).json();
-  assert.ok(fa.players.length === 1 && fa.players[0].name === 'Alice' && fa.players[0].time > 0, 'fastest times: only the finished win');
+  assert.ok(fa.players.length === 1 && fa.players[0].name === 'Alice' && fa.players[0].time !== fp.players[0].time && fa.players[0].time > 0, 'fastest times: only the finished win');
   const html = await (await fetch(base + '/')).text();
-  assert.ok(html.includes('Alice') && html.includes('Fastest times'));
+  assert.ok(html.includes('Alice') && html.includes('Fastest times') && html.includes('Fastest private room runs'));
   console.log('ALL TESTS PASSED');
   srv.kill();
   process.exit(0);

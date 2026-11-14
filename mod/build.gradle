@@ -57,6 +57,7 @@ loom {
 			runDir 'run/a'
 			vmArg "-Dranked.selftest=TesterA"
 			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
+			vmArg "-Dranked.lbview=${project.findProperty('lbview') ?: '1'}"
 			vmArg "-Dranked.eyetest=${project.findProperty('eyetest') ?: 'false'}"
 			vmArg "-Dranked.drawtest=${project.findProperty('drawtest') ?: 'false'}"
 			vmArg "-Dranked.chattest=${project.findProperty('chattest') ?: 'false'}"
@@ -64,6 +65,7 @@ loom {
 			vmArg "-Dranked.droptest=${project.findProperty('droptest') ?: 'false'}"
 			vmArg "-Dranked.private=${project.findProperty('private') ?: 'false'}"
 			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
+			vmArg "-Dranked.lbview=${project.findProperty('lbview') ?: '1'}"
 			vmArg "-Dranked.lobbytest=${project.findProperty('lobbytest') ?: 'false'}"
 			vmArg "-Dranked.server=${project.findProperty('server') ?: 'http://127.0.0.1:8080'}"
 			vmArg "-Dranked.forfeitAfter=${project.findProperty('forfeitAfter') ?: '0'}"

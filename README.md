@@ -1,10 +1,10 @@
-# Oldschool Ranked 1.0.3
+# Oldschool Ranked 1.0.4
 
 1v1 ranked races for Minecraft 1.0. Two players queue, get the same seed, start at the same moment, and the first to kill the dragon and jump into the exit portal wins and takes elo. You can see your opponent's splits live as they happen.
 
 ## Installing the mod
 
-1. Drop `oldschoolranked-1.0.3.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
+1. Drop `oldschoolranked-1.0.4.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
 2. On the title screen, click the **blaze rod button** to the right of Singleplayer.
 3. That's it: the mod connects to the ranked server on its own.
 
@@ -14,7 +14,7 @@ Your Minecraft username is your ranked name. The first time you connect, the ser
 
 - **Find ranked match** puts you in the queue. The server pairs you with the closest elo it can find. The range widens the longer you wait.
 - **Private room (solo run)** starts a match on your own, on a random seed, with the same countdown, timer and splits. It's handy for testing, or for practising full runs. No elo.
-- **Leaderboard** shows the top 100 by elo. Click **Fastest** to switch to the fastest times: each player's best ranked win by finishing the run (forfeits and draws don't count).
+- **Leaderboard** shows the top 100 by elo. The button at the bottom switches between three boards: **Elo**, **Fastest** (each player's best ranked win by finishing the run; forfeits and draws don't count) and **Private** (each player's best finished private room run).
 - **Create room** gives you a 4-digit code. Your friend types it next to **Join**. Room matches are unranked, so they're good for testing and for racing friends.
 
 When a match is found:
@@ -68,6 +68,7 @@ Every match seed comes from a hand-checked pool, and every seed in it has:
 
 ## Changes
 
+- 1.0.4: Private room leaderboard: each player's fastest finished private room run, as a third tab on the Leaderboard screen. Needs the 1.0.4 server.
 - 1.0.3: Match chat on the load-in screen and in game (T). The load-in screen shows both players, with a 10 second countdown. Fastest times leaderboard. Eyes of ender always go to the closest stronghold. Needs the 1.0.3 server.
 - 1.0.2: Reset world, Vote new seed and Offer draw buttons in the pause menu during a match. Needs the 1.0.2 server.
 - 1.0.1: death resets can no longer farm endermen. A night death reset brings 3 only if you'd gone at least 150 blocks from where you last spawned.

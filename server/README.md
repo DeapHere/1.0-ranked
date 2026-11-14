@@ -40,7 +40,7 @@ With Node 18 or newer: `node server.js` in the `server` folder. It listens on po
 
 ## The server API
 
-For a leaderboard site or bots later on: `GET /api/leaderboard` (top 100 and how many are online), `GET /api/fastest` (top 100 fastest ranked wins), `GET /api/matches` (last 50 matches with splits), and `GET /` (a simple leaderboard page).
+For a leaderboard site or bots later on: `GET /api/leaderboard` (top 100 and how many are online), `GET /api/fastest` (top 100 fastest ranked wins), `GET /api/fastest-private` (top 100 fastest private room runs), `GET /api/matches` (last 50 matches with splits), and `GET /` (a simple leaderboard page).
 
 ## Finding more seeds
 

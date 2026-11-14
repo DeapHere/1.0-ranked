@@ -122,7 +122,7 @@ public abstract class SelfTestMixin {
             for (Object b : ((oldschoolranked.selftest.ScreenAccess) mc.screen).ranked$buttons()) sb.append(((net.minecraft.client.gui.widget.ButtonWidget) b).id).append(' ');
             System.out.println("[selftest] title buttons: " + sb);
         }
-        if (Boolean.getBoolean("ranked.lbtest") && t == 120) mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen, true));
+        if (Boolean.getBoolean("ranked.lbtest") && t == 120) mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen, Integer.getInteger("ranked.lbview", 1)));
         if (Boolean.getBoolean("ranked.chattest") && Ranked.state == Ranked.State.COUNTDOWN) {
             cdTicks++;
             if (NAME.endsWith("A") && cdTicks == 10) Ranked.sendChat("gl hf");
