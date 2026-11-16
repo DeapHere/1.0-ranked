@@ -19,7 +19,8 @@
     "OverworldChunkGeneratorMixin",
     "SkeletonEntityMixin",
     "StructureFeatureMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "WorldMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -131,6 +131,10 @@ public abstract class SelfTestMixin {
         }
         if (Ranked.state == Ranked.State.RUNNING) {
             runTicks++;
+            if (Boolean.getBoolean("ranked.weathertest")) {
+                if (runTicks == 30) { mc.world.getData().setRaining(true); mc.world.getData().setRainTime(100000); mc.world.getData().setThundering(true); }
+                if (runTicks == 60) System.out.println("[selftest] weather: raining " + mc.world.isRaining() + ", thundering " + mc.world.isThundering() + ", data raining " + mc.world.getData().isRaining());
+            }
             if (Boolean.getBoolean("ranked.chattest")) {
                 if (NAME.endsWith("B") && runTicks == 50) mc.player.sendChat("typed in game");
                 if (runTicks == 90) System.out.println("[selftest] chat in game " + Ranked.matchChat);
