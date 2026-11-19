@@ -538,6 +538,9 @@ public final class Ranked {
     public static void tick(Minecraft client) {
         mc = client;
         init();
+        // no Peaceful in a match (it would wipe every hostile mob, endermen included): runs before the game copies the
+        // option into the world this tick, so the world never sees Peaceful
+        if (inMatch() && mc.options != null && mc.options.difficulty == 0) mc.options.difficulty = 1;
         Runnable r;
         while ((r = Net.inbox.poll()) != null) {
             try {

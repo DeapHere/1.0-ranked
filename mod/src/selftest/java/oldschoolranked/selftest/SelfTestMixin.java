@@ -122,6 +122,7 @@ public abstract class SelfTestMixin {
             for (Object b : ((oldschoolranked.selftest.ScreenAccess) mc.screen).ranked$buttons()) sb.append(((net.minecraft.client.gui.widget.ButtonWidget) b).id).append(' ');
             System.out.println("[selftest] title buttons: " + sb);
         }
+        if (Boolean.getBoolean("ranked.difftest") && t == 5) mc.options.difficulty = 0; // start on Peaceful
         if (Boolean.getBoolean("ranked.lbtest") && t == 120) mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen, Integer.getInteger("ranked.lbview", 1)));
         if (Boolean.getBoolean("ranked.chattest") && Ranked.state == Ranked.State.COUNTDOWN) {
             cdTicks++;
@@ -131,6 +132,12 @@ public abstract class SelfTestMixin {
         }
         if (Ranked.state == Ranked.State.RUNNING) {
             runTicks++;
+            if (Boolean.getBoolean("ranked.difftest")) {
+                if (runTicks == 30) System.out.println("[selftest] difficulty at start: option " + mc.options.difficulty + ", world " + mc.world.difficulty);
+                if (runTicks == 40) { mc.options.difficulty = 2; mc.options.set(net.minecraft.client.options.GameOptions.Option.DIFFICULTY, 1); System.out.println("[selftest] normal -> " + mc.options.difficulty); }
+                if (runTicks == 50) { mc.options.set(net.minecraft.client.options.GameOptions.Option.DIFFICULTY, 1); System.out.println("[selftest] hard -> " + mc.options.difficulty); }
+                if (runTicks == 60) System.out.println("[selftest] world difficulty now " + mc.world.difficulty);
+            }
             if (Boolean.getBoolean("ranked.weathertest")) {
                 if (runTicks == 30) { mc.world.getData().setRaining(true); mc.world.getData().setRainTime(100000); mc.world.getData().setThundering(true); }
                 if (runTicks == 60) System.out.println("[selftest] weather: raining " + mc.world.isRaining() + ", thundering " + mc.world.isThundering() + ", data raining " + mc.world.getData().isRaining());

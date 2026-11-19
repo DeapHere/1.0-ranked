@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
  * game thread; results come back through {@link #inbox} and are handled in the client tick.
  */
 public final class Net {
-    public static final int PROTOCOL = 1;
+    public static final int PROTOCOL = 2; // 2: 1.0.6 (no Peaceful). Bump to lock out older mods.
 
     /** Something that happened off the game thread: a server event, or the reply (or error) of a request. */
     public static final class Message {

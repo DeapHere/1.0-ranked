@@ -12,6 +12,7 @@
     "ChickenEntityMixin",
     "ClientPlayerEntityMixin",
     "GameGuiMixin",
+    "GameOptionsMixin",
     "GameMenuScreenMixin",
     "IntCacheAccessor",
     "MinecraftMixin",

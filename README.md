@@ -1,10 +1,10 @@
-# Oldschool Ranked 1.0.5
+# Oldschool Ranked 1.0.6
 
 1v1 ranked races for Minecraft 1.0. Two players queue, get the same seed, start at the same moment, and the first to kill the dragon and jump into the exit portal wins and takes elo. You can see your opponent's splits live as they happen.
 
 ## Installing the mod
 
-1. Drop `oldschoolranked-1.0.5.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
+1. Drop `oldschoolranked-1.0.6.jar` into your 1.0 instance's `mods` folder (Fabric Loader 0.18.1 or newer, the same setup as OldschoolPrac).
 2. On the title screen, click the **blaze rod button** to the right of Singleplayer.
 3. That's it: the mod connects to the ranked server on its own.
 
@@ -44,6 +44,7 @@ Elo starts at 1000. Each win or loss moves it by up to 32 (48 for your first 5 g
 These apply only in match worlds, the same for both players:
 
 - **Pearls and blaze rods** use the normal odds (0 or 1 each), but from a sequence seeded by the match. Your 1st, 2nd, 3rd... enderman drops exactly what your opponent's 1st, 2nd, 3rd... drops, and the same goes for blazes. Luck can't decide a match.
+- **No Peaceful.** Easy, Normal and Hard are your choice, but Peaceful is skipped: if you're on it when a match starts, or click onto it, you're put on Easy.
 - **No rain or thunder.** Weather in 1.0 is random, not from the seed, so one player could get a storm (darker, more mobs) while the other gets clear skies.
 - **Eyes of ender** always fly to the closest of the 3 strongholds. In vanilla 1.0 they go to the closest one that has already been generated, so passing near a far stronghold could send your eyes there.
 - **Chickens** always drop at least 1 feather (1 or 2 instead of vanilla's 0 to 2).
@@ -69,6 +70,7 @@ Every match seed comes from a hand-checked pool, and every seed in it has:
 
 ## Changes
 
+- 1.0.6: Peaceful can't be used in matches (it switches to Easy). Older mod versions can no longer connect. Needs the 1.0.6 server.
 - 1.0.5: No rain or thunder in match worlds. Works with the 1.0.4 server.
 - 1.0.4: Private room leaderboard: each player's fastest finished private room run, as a third tab on the Leaderboard screen. Needs the 1.0.4 server.
 - 1.0.3: Match chat on the load-in screen and in game (T). The load-in screen shows both players, with a 10 second countdown. Fastest times leaderboard. Eyes of ender always go to the closest stronghold. Needs the 1.0.3 server.

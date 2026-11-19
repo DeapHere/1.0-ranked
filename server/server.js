@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-const PROTOCOL = 1;
+const PROTOCOL = 2; // the mod's protocol must match: bump both to lock out older mod versions
 const START_ELO = 1000;
 const K_FACTOR = parseInt(process.env.K_FACTOR || '32', 10);
 const PLACEMENT_K = 48; // first 5 ranked games move faster
@@ -329,7 +329,7 @@ function ownMatch(key, id) {
 
 const routes = {
   'POST /api/hello': (b) => {
-    if (b.protocol !== PROTOCOL) throw { status: 426, error: 'update the Oldschool Ranked mod' };
+    if (b.protocol !== PROTOCOL) throw { status: 426, error: 'Your Oldschool Ranked mod is out of date. Download the latest from github.com/DeapHere/1.0-ranked/releases' };
     const name = String(b.name || '');
     if (!/^[A-Za-z0-9_]{1,16}$/.test(name)) throw { status: 400, error: 'bad name' };
     const mods = Array.isArray(b.mods) ? b.mods.map(String) : [];
