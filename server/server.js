@@ -180,7 +180,9 @@ function endMatch(m, winnerKey, reason) {
     if (reason === 'finish' && elapsed > 0 && (!w.best || elapsed < w.best)) { w.best = elapsed; w.bestAt = Date.now(); }
   }
   // private room (solo) runs get their own best time, kept apart from ranked
-  if (m.solo && winnerKey && reason === 'finish' && elapsed > 0) {
+  // (not with a blocked mod loaded, e.g. the practice mod's /gamemode)
+  const cleanRun = !(liveOf(winnerKey || m.players[0]).blocked || []).length;
+  if (m.solo && winnerKey && reason === 'finish' && elapsed > 0 && cleanRun) {
     const p = db.players[winnerKey];
     if (!p.soloBest || elapsed < p.soloBest) { p.soloBest = elapsed; p.soloBestAt = Date.now(); }
   }

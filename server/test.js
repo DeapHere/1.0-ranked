@@ -91,6 +91,18 @@ async function until(c, type) {
   assert.ok(pres.won && pres.eloChange === 0 && pres.reason === 'finish');
   const fp = await (await fetch(base + '/api/fastest-private')).json();
   assert.ok(fp.players.length === 1 && fp.players[0].name === 'Alice' && fp.players[0].time > 0, 'private room leaderboard');
+  // a player with a blocked mod (e.g. the practice mod's /gamemode) can play private rooms, but doesn't make the board
+  const C = { token: bad.token, since: 0 };
+  await post('/api/room/private', { token: C.token });
+  const cm = await until(C, 'match');
+  await post('/api/ready', { token: C.token, match: cm.match });
+  const cs = await until(C, 'start');
+  await sleep(cs.startAt - cs.serverTime + 100);
+  await post('/api/split', { token: C.token, match: cm.match, split: 'end' });
+  assert.strictEqual((await post('/api/finish', { token: C.token, match: cm.match, igt: 4 })).status, 200);
+  await until(C, 'result');
+  const fp2 = await (await fetch(base + '/api/fastest-private')).json();
+  assert.ok(fp2.players.length === 1 && fp2.players[0].name === 'Alice', 'blocked mods stay off the private board');
   // draw vote: ranked match, A offers, B accepts: a draw with no elo for either
   await post('/api/queue', { token: A.token });
   await post('/api/queue', { token: B.token });
