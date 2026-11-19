@@ -13,7 +13,7 @@ public final class FinderSettings {
     public static int desertMinPercent = 8, desertRadius = 160;
     public static double fortressMaxChunks = 8;
     public static int waterMaxPercent = 15, waterRadius = 24;
-    public static int lavaRadius = 128;
+    public static int lavaRadius = 100;
     public static int minLogs = 8, treeRadius = 64;
     public static int minFood = 4, foodRadius = 64, minSheep = 2, sheepRadius = 200;
     /** Worlds checked at once when Queue Wall is installed. 0 = cores minus 2. */
