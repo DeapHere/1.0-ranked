@@ -22,7 +22,7 @@ const CHAT_MAX = 100, CHAT_GAP_MS = 600;
 const AFK_MS = 60000; // no poll for this long while in a match = forfeit
 const MAX_MATCH_MS = 3 * 60 * 60 * 1000;
 const POLL_WAIT_MS = 20000;
-const BLOCKED_MODS = (process.env.BLOCKED_MODS || 'endpractice').split(',').map(s => s.trim()).filter(Boolean);
+const BLOCKED_MODS = (process.env.BLOCKED_MODS || 'endpractice,oldschoolprac').split(',').map(s => s.trim()).filter(Boolean);
 const SPLITS = ['nether', 'fortress', 'blaze', 'eye', 'stronghold', 'end', 'finish'];
 
 // ---------- storage ----------
