@@ -353,6 +353,7 @@ public final class Ranked {
             Standard.noDesertCaves = true;
             Standard.worldReset();
             mc.startGame(FOLDER, "Ranked match", newWorldSettings(seed));
+            MatchSetup.apply(mc.world, seed);
             mc.openScreen(null);
             lastDim = 0;
             chat("§7World reset. The clock is still running.");
@@ -590,6 +591,7 @@ public final class Ranked {
             resetBiomeArrayPool();
             Standard.noDesertCaves = true; // from the very first chunk
             mc.startGame(FOLDER, "Ranked match", newWorldSettings(seed));
+            MatchSetup.apply(mc.world, seed);
         } catch (RuntimeException e) {
             Standard.noDesertCaves = false;
             log("couldn't create the match world: " + e);

@@ -7,6 +7,7 @@
     "BiomeSourceMixin",
     "BlazeEntityMixin",
     "EndermanEntityMixin",
+    "EndPortalRoomMixin",
     "EnderDragonEntityMixin",
     "EntityAccessor",
     "ChickenEntityMixin",
@@ -19,6 +20,7 @@
     "MobEntityMixin",
     "OverworldChunkGeneratorMixin",
     "SkeletonEntityMixin",
+    "StrongholdStructureMixin",
     "StructureFeatureMixin",
     "TitleScreenMixin",
     "WorldMixin"

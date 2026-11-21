@@ -36,13 +36,13 @@ async function until(c, type) {
 
 (async () => {
   await sleep(500);
-  const a = (await post('/api/hello', { protocol: 2, name: 'Alice', mods: [] })).body;
-  const b = (await post('/api/hello', { protocol: 2, name: 'Bob', mods: [] })).body;
+  const a = (await post('/api/hello', { protocol: 3, name: 'Alice', mods: [] })).body;
+  const b = (await post('/api/hello', { protocol: 3, name: 'Bob', mods: [] })).body;
   assert.strictEqual(a.elo, 1000);
-  assert.strictEqual((await post('/api/hello', { protocol: 2, name: 'alice' })).status, 403, 'name theft blocked');
-  const old = await post('/api/hello', { protocol: 1, name: 'Oldie', mods: [] });
+  assert.strictEqual((await post('/api/hello', { protocol: 3, name: 'alice' })).status, 403, 'name theft blocked');
+  const old = await post('/api/hello', { protocol: 2, name: 'Oldie', mods: [] });
   assert.ok(old.status === 426 && /out of date/.test(old.body.error), 'old mod versions are locked out');
-  const bad = (await post('/api/hello', { protocol: 2, name: 'Cheater', mods: ['endpractice'] })).body;
+  const bad = (await post('/api/hello', { protocol: 3, name: 'Cheater', mods: ['endpractice'] })).body;
   assert.strictEqual((await post('/api/queue', { token: bad.token })).status, 403, 'blocked mod cannot queue');
   const A = { token: a.token, since: 0 }, B = { token: b.token, since: 0 };
   await post('/api/queue', { token: A.token });

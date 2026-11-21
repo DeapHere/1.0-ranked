@@ -2,11 +2,11 @@
 
 1v1 ranked races for Minecraft 1.0. Two players are matched, get the same seed and start at the same moment. The first to kill the dragon and jump into the exit portal wins and gains elo. Both players' splits show live during the race.
 
-Current version: **1.0.6**
+Current version: **1.0.7**
 
 ## Installing
 
-1. Put `oldschoolranked-1.0.6.jar` (from [Releases](https://github.com/DeapHere/1.0-ranked/releases)) in your 1.0 instance's `mods` folder. Needs Fabric Loader 0.18.1 or newer.
+1. Put `oldschoolranked-1.0.7.jar` (from [Releases](https://github.com/DeapHere/1.0-ranked/releases)) in your 1.0 instance's `mods` folder. Needs Fabric Loader 0.18.1 or newer.
 2. Launch the game and click the **blaze rod button** next to Singleplayer on the title screen.
 
 The mod connects to the ranked server by itself. Your Minecraft username is your ranked name. On first connect, the server gives your PC a private sign-in token, so nobody else can play under your name. It's saved in `.oldschoolranked` in your user folder and shared by every instance on that PC. Don't share it.
@@ -60,6 +60,11 @@ These apply only in match worlds, and are the same for both players:
 - **No rain or thunder.** Vanilla 1.0 weather is random, not from the seed.
 - **No caves under the desert.** Chunks with any desert have no caves, ravines or mineshafts, so a desert tower can dig straight down safely.
 - **Minimum drops:** chickens drop at least 1 feather, skeletons at least 1 arrow, pigs at least 1 porkchop and spiders at least 1 string (1 or 2 instead of 0 to 2).
+- **A lava pool on the surface** within 100 blocks of spawn, always in plains or desert.
+- **A pack of 4 chickens** within 24 blocks of spawn.
+- **Gravel in the iron cave:** the cave near spawn always has gravel on its floor next to the iron.
+- **No strongholds under mountains.** Strongholds are never placed in or next to Extreme Hills, so you never have to dig down from y 100.
+- **Ocean portal rooms are open to the sea.** If a portal room ends up under the ocean, its ceiling and the sea floor above it are water, so you can swim straight down to it.
 - **Endermen after a night death reset:** 3 endermen spawn over the next few seconds, if you'd gone at least 150 blocks from your last spawn. Dying on the spot again brings none. They spawn on dark, open ground 24 to 87 blocks away, and vanilla spawning carries on as normal.
 
 The mod also fixes the vanilla 1.0 bug where the same seed can put the spawn or stronghold in a different place depending on what was generated earlier in the session. Without it, two players on the same seed could get different worlds.
@@ -72,13 +77,13 @@ Every match seed comes from a checked pool, and no one gets a seed they've alrea
 - A desert reachable from spawn in a straight line over plains, within 160 blocks
 - A fortress within 8 chunks of where a portal built near spawn comes out
 - No more than 15% water within 24 blocks of spawn
-- A surface lava pool (at least 6 lava blocks showing) within 100 blocks
 - Trees within 64 blocks
 - A cave open to the sky within 64 blocks, with at least 6 visible iron ore
 - At least 4 food animals (pigs, cows, chickens) within 64 blocks, and 2 sheep within 200
 
 ## Changes
 
+- **1.0.7:** Every match world gets a surface lava pool in plains or desert within 100 blocks, a pack of chickens near spawn and gravel in the iron cave. No strongholds under mountains. Portal rooms under the ocean are open to the sea. Older versions can no longer connect.
 - **1.0.6:** Peaceful can't be used in matches. Older versions can no longer connect.
 - **1.0.5:** No rain or thunder in match worlds.
 - **1.0.4:** Private room leaderboard.

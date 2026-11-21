@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-const PROTOCOL = 2; // the mod's protocol must match: bump both to lock out older mod versions
+const PROTOCOL = 3; // the mod's protocol must match: bump both to lock out older mod versions
 const START_ELO = 1000;
 const K_FACTOR = parseInt(process.env.K_FACTOR || '32', 10);
 const PLACEMENT_K = 48; // first 5 ranked games move faster

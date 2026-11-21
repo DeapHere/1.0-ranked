@@ -21,6 +21,7 @@ public abstract class SelfTestMixin {
     private static boolean drawAccepted;
     private static int drawSeen, seedSeen;
     private static boolean queued, logged, forfeited;
+    private static int[] oceanRoom;
 
     private static int countItems(Minecraft mc, int id) {
         int n = 0;
@@ -132,6 +133,55 @@ public abstract class SelfTestMixin {
         }
         if (Ranked.state == Ranked.State.RUNNING) {
             runTicks++;
+            if (Boolean.getBoolean("ranked.setuptest")) {
+                int[] l = oldschoolranked.MatchSetup.lastLava, c = oldschoolranked.MatchSetup.lastChickens;
+                if (runTicks == 20) {
+                    int chickens = 0;
+                    for (Object e : mc.world.entities) if (e instanceof net.minecraft.entity.mob.animal.ChickenEntity && c != null && Math.abs(((net.minecraft.entity.Entity) e).x - c[0]) < 8 && Math.abs(((net.minecraft.entity.Entity) e).z - c[1]) < 8) chickens++;
+                    System.out.println("[selftest] setup: spawn " + (int) mc.player.x + " " + (int) mc.player.z + ", lava " + (l == null ? "none" : l[0] + " " + l[1]) + ", chickens near spot " + chickens);
+                }
+                if (runTicks == 30 && l != null) {
+                    mc.player.setPositionAndAngles(l[0] + 0.5, mc.world.getHeight(l[0], l[1]) + 14, l[1] - 10 + 0.5, 0, 50);
+                }
+            }
+            if (Boolean.getBoolean("ranked.setuptest")) {
+                int[] gv = oldschoolranked.MatchSetup.lastGravelAt;
+                if (runTicks == 60 && gv != null) {
+                    // stand in the cave next to the first gravel block and look at it
+                    int best = -1, bx = 0, bz = 0;
+                    for (int dx = -4; dx <= 4; dx++) for (int dz = -4; dz <= 4; dz++) {
+                        if ((dx != 0 || dz != 0) && mc.world.getBlock(gv[0] + dx, gv[1] + 1, gv[2] + dz) == 0 && mc.world.getBlock(gv[0] + dx, gv[1] + 2, gv[2] + dz) == 0) {
+                            int d = dx * dx + dz * dz;
+                            if (d >= 4 && (best < 0 || d < best)) { best = d; bx = gv[0] + dx; bz = gv[2] + dz; }
+                        }
+                    }
+                    float yaw = (float) (Math.toDegrees(Math.atan2(gv[2] - bz, gv[0] - bx)) - 90);
+                    mc.player.setPositionAndAngles(bx + 0.5, gv[1] + 1 + 1.62, bz + 0.5, yaw, 45);
+                    System.out.println("[selftest] at gravel " + java.util.Arrays.toString(gv) + " from " + bx + " " + bz);
+                }
+                if (runTicks == 25) System.out.println("[selftest] gravel " + oldschoolranked.MatchSetup.lastGravel + " cave " + java.util.Arrays.toString(oldschoolranked.MatchSetup.lastCave));
+            }
+            if (System.getProperty("ranked.oceanAt") != null) {
+                String[] at = System.getProperty("ranked.oceanAt").split(",");
+                int ox = Integer.parseInt(at[0]), oz = Integer.parseInt(at[1]);
+                if (runTicks == 30) {
+                    net.minecraft.util.math.BlockPos e = mc.world.findNearestStructure("Stronghold", ox, 64, oz);
+                    System.out.println("[selftest] eye near " + ox + " " + oz + ": " + (e == null ? "null" : e.x + " " + e.z));
+                    for (int cx = (ox >> 4) - 8; cx <= (ox >> 4) + 8; cx++) for (int cz = (oz >> 4) - 8; cz <= (oz >> 4) + 8; cz++) mc.world.getChunkAt(cx, cz);
+                    int fx = 0, fy = 0, fz = 0, n = 0;
+                    for (int x = ox - 120; x <= ox + 120; x++) for (int z = oz - 120; z <= oz + 120; z++) for (int y = 1; y < 64; y++) {
+                        if (mc.world.getBlock(x, y, z) == 120) { fx += x; fy += y; fz += z; n++; }
+                    }
+                    if (n > 0) {
+                        fx /= n; fy /= n; fz /= n;
+                        StringBuilder col = new StringBuilder();
+                        for (int y = fy - 2; y < 70; y++) col.append(mc.world.getBlock(fx, y, fz)).append(' ');
+                        System.out.println("[selftest] portal room at " + fx + " " + fy + " " + fz + " (" + n + " frames), biome " + mc.world.getBiomeSource().getBiome(fx, fz).name + ", column up: " + col);
+                        oceanRoom = new int[] {fx, fy, fz};
+                    } else System.out.println("[selftest] no portal room found near " + ox + " " + oz);
+                }
+                if (runTicks == 40 && oceanRoom != null) mc.player.setPositionAndAngles(oceanRoom[0] + 0.5, 75, oceanRoom[2] - 6 + 0.5, 0, 70);
+            }
             if (Boolean.getBoolean("ranked.difftest")) {
                 if (runTicks == 30) System.out.println("[selftest] difficulty at start: option " + mc.options.difficulty + ", world " + mc.world.difficulty);
                 if (runTicks == 40) { mc.options.difficulty = 2; mc.options.set(net.minecraft.client.options.GameOptions.Option.DIFFICULTY, 1); System.out.println("[selftest] normal -> " + mc.options.difficulty); }

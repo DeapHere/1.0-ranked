@@ -50,6 +50,11 @@ public abstract class SeedFinderMixin {
         if (OUT == null) return;
         Minecraft mc = (Minecraft) (Object) this;
         if (++fT < 40) return;
+        if (fT == 40 && System.getProperty("ranked.strongholdScan") != null) {
+            try { oldschoolranked.seeds.StrongholdScan.run(System.getProperty("ranked.strongholdScan")); } catch (Exception e) { e.printStackTrace(); }
+            System.exit(0);
+            return;
+        }
         if (fT == 40) {
             FinderSettings.load();
             // build worlds the way match worlds are built (no caves in desert chunks)

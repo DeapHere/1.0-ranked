@@ -57,7 +57,9 @@ loom {
 			runDir 'run/a'
 			vmArg "-Dranked.selftest=TesterA"
 			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
+			if (project.hasProperty('oceanAt')) vmArg "-Dranked.oceanAt=${project.property('oceanAt')}"
 			vmArg "-Dranked.lbview=${project.findProperty('lbview') ?: '1'}"
+			vmArg "-Dranked.setuptest=${project.findProperty('setuptest') ?: 'false'}"
 			vmArg "-Dranked.difftest=${project.findProperty('difftest') ?: 'false'}"
 			vmArg "-Dranked.weathertest=${project.findProperty('weathertest') ?: 'false'}"
 			vmArg "-Dranked.eyetest=${project.findProperty('eyetest') ?: 'false'}"
@@ -78,6 +80,7 @@ loom {
 			source sourceSets.finder
 			runDir 'run/finder'
 			vmArg "-Dranked.finder=${project.findProperty('out') ?: file('run/finder/found.txt').absolutePath}"
+			if (project.hasProperty('scan')) vmArg "-Dranked.strongholdScan=${project.property('scan')}"
 		}
 		// the finder on several threads: needs Queue Wall in devmods/
 		seedFinderParallel {
