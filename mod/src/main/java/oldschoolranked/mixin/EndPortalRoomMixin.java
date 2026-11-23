@@ -13,11 +13,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Match worlds: a portal room under the ocean is always open to the sea floor, so it can be seen from the water. The
- * room's ceiling and the ground above it, up to the sea, are turned into water.
+ * Match worlds: a portal room under the ocean, where the sea floor over it is below y 50, has the ground over its
+ * roof cleared away, so the top of the room sticks out of the sea floor. The room itself isn't touched.
  */
 @Mixin(StrongholdPieces.EndPortalRoom.class)
 public abstract class EndPortalRoomMixin extends StructurePiece {
+    /** Only dig the roof out when the sea floor over it is lower than this. */
+    private static final int SEA_FLOOR_MAX = 50;
+
     protected EndPortalRoomMixin(int depth) {
         super(depth);
     }
@@ -28,21 +31,22 @@ public abstract class EndPortalRoomMixin extends StructurePiece {
         int cx = bounds.getCenterX(), cz = bounds.getCenterZ();
         Biome b = w.getBiomeSource().getBiome(cx, cz);
         if (b != Biome.OCEAN && b != Biome.FROZEN_OCEAN) return;
-        // the whole ceiling (not the walls), so the portal is open to the sea whichever way the room faces
-        for (int x = bounds.minX + 1; x <= bounds.maxX - 1; x++) {
-            for (int z = bounds.minZ + 1; z <= bounds.maxZ - 1; z++) {
+        // the room stays whole: only the ground over its roof goes, so the top layer of stone bricks shows on the sea
+        // floor. Only where the sea floor over the room is below y 50.
+        for (int x = bounds.minX; x <= bounds.maxX; x++) {
+            for (int z = bounds.minZ; z <= bounds.maxZ; z++) {
                 if (!clip.contains(x, bounds.maxY, z)) continue;
-                int top = -1;
-                for (int y = bounds.maxY; y < 128; y++) {
+                int water = -1;
+                for (int y = bounds.maxY + 1; y < 128; y++) {
                     int id = w.getBlock(x, y, z);
                     if (id == 8 || id == 9) {
-                        top = y;
+                        water = y;
                         break;
                     }
                     if (id == 0) break; // open air before any water: not under the sea here
                 }
-                if (top < 0) continue;
-                for (int y = bounds.maxY; y < top; y++) {
+                if (water < 0 || water - 1 >= SEA_FLOOR_MAX) continue;
+                for (int y = bounds.maxY + 1; y < water; y++) {
                     if (clip.contains(x, y, z)) w.setBlock(x, y, z, 9);
                 }
             }

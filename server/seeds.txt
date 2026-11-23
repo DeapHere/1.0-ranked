@@ -1,580 +1,237 @@
-6746381110498288323  # Plains, spawn 240 -76, desert 18%, plains 29%, desert path 98 blocks, water 8%, sheep 32, food 12 (0 chickens), trees 1209, lava 88 blocks, cave 4 blocks (55 iron), fortress 7.8 chunks
-7489034352120666048  # Plains, spawn 236 236, desert 12%, plains 53%, desert path 80 blocks, water 2%, sheep 4, food 4 (0 chickens), trees 450, lava 92 blocks, cave 52 blocks (70 iron), fortress 7.2 chunks
--3648739864470588835  # Plains, spawn 4 -144, desert 41%, plains 13%, desert path 68 blocks, water 15%, sheep 7, food 6 (6 chickens), trees 601, lava 82 blocks, cave 50 blocks (12 iron), fortress 6.4 chunks
-6810630180826996897  # Plains, spawn -20 248, desert 31%, plains 22%, desert path 56 blocks, water 8%, sheep 12, food 17 (0 chickens), trees 275, lava 36 blocks, cave 55 blocks (38 iron), fortress 6.4 chunks
--2936372833790807036  # Plains, spawn 116 228, desert 22%, plains 35%, desert path 11 blocks, water 0%, sheep 52, food 8 (0 chickens), trees 329, lava 92 blocks, cave 49 blocks (12 iron), fortress 7.8 chunks
--5706528915727710655  # Plains, spawn -49 277, desert 13%, plains 57%, desert path 72 blocks, water 4%, sheep 44, food 8 (0 chickens), trees 75, lava 28 blocks, cave 15 blocks (103 iron), fortress 7.1 chunks
--6493451768171884135  # Plains, spawn 156 -84, desert 21%, plains 24%, desert path 64 blocks, water 2%, sheep 76, food 16 (8 chickens), trees 328, lava 98 blocks, cave 36 blocks (14 iron), fortress 6.4 chunks
-2335635710058921075  # Plains, spawn 212 165, desert 31%, plains 51%, desert path 8 blocks, water 0%, sheep 83, food 4 (0 chickens), trees 379, lava 62 blocks, cave 20 blocks (14 iron), fortress 7.6 chunks
--605837667568248188  # Plains, spawn 196 -84, desert 18%, plains 38%, desert path 32 blocks, water 0%, sheep 26, food 8 (0 chickens), trees 285, lava 69 blocks, cave 41 blocks (82 iron), fortress 5.0 chunks
-2980087424919345058  # Plains, spawn 44 252, desert 13%, plains 33%, desert path 135 blocks, water 0%, sheep 16, food 17 (9 chickens), trees 455, lava 83 blocks, cave 29 blocks (79 iron), fortress 7.2 chunks
--3153447853254588023  # Plains, spawn 111 -11, desert 24%, plains 27%, desert path 28 blocks, water 4%, sheep 4, food 20 (12 chickens), trees 346, lava 14 blocks, cave 16 blocks (20 iron), fortress 6.4 chunks
-1635496244324531961  # Plains, spawn 240 84, desert 12%, plains 52%, desert path 120 blocks, water 1%, sheep 73, food 4 (0 chickens), trees 60, lava 91 blocks, cave 34 blocks (116 iron), fortress 7.8 chunks
-8180890884565596636  # Plains, spawn 223 238, desert 17%, plains 32%, desert path 28 blocks, water 13%, sheep 7, food 8 (0 chickens), trees 203, lava 48 blocks, cave 10 blocks (50 iron), fortress 7.2 chunks
-8243285420378952530  # Plains, spawn 0 0, desert 23%, plains 58%, desert path 11 blocks, water 1%, sheep 8, food 8 (0 chickens), trees 295, lava 65 blocks, cave 42 blocks (106 iron), fortress 7.1 chunks
--7936963518796613511  # Plains, spawn -35 -13, desert 23%, plains 43%, desert path 51 blocks, water 1%, sheep 8, food 20 (8 chickens), trees 165, lava 89 blocks, cave 38 blocks (10 iron), fortress 7.1 chunks
-3845970772362578829  # Plains, spawn 136 84, desert 26%, plains 29%, desert path 101 blocks, water 2%, sheep 50, food 4 (0 chickens), trees 341, lava 42 blocks, cave 64 blocks (8 iron), fortress 7.2 chunks
-6856436711749445915  # Plains, spawn -139 106, desert 19%, plains 49%, desert path 57 blocks, water 0%, sheep 12, food 16 (16 chickens), trees 72, lava 14 blocks, cave 12 blocks (68 iron), fortress 7.8 chunks
-5800342367906600761  # Plains, spawn 188 -84, desert 9%, plains 43%, desert path 89 blocks, water 0%, sheep 36, food 8 (8 chickens), trees 392, lava 40 blocks, cave 31 blocks (94 iron), fortress 7.8 chunks
-2155179520976079924  # Plains, spawn -168 168, desert 21%, plains 34%, desert path 62 blocks, water 0%, sheep 51, food 8 (4 chickens), trees 244, lava 64 blocks, cave 60 blocks (13 iron), fortress 7.2 chunks
-2735793195544777484  # Plains, spawn 232 210, desert 13%, plains 47%, desert path 62 blocks, water 0%, sheep 80, food 4 (0 chickens), trees 70, lava 43 blocks, cave 30 blocks (60 iron), fortress 5.0 chunks
-2003499190294785041  # Plains, spawn 12 -38, desert 39%, plains 28%, desert path 35 blocks, water 2%, sheep 46, food 4 (0 chickens), trees 20, lava 41 blocks, cave 21 blocks (16 iron), fortress 7.2 chunks
--6266585113000774243  # Plains, spawn 0 0, desert 13%, plains 61%, desert path 11 blocks, water 3%, sheep 4, food 23 (3 chickens), trees 8, lava 17 blocks, cave 61 blocks (19 iron), fortress 7.8 chunks
-5390141249953251506  # Plains, spawn 0 0, desert 36%, plains 59%, desert path 51 blocks, water 0%, sheep 64, food 4 (0 chickens), trees 196, lava 90 blocks, cave 52 blocks (41 iron), fortress 5.7 chunks
-2690786305989130114  # Plains, spawn -180 240, desert 17%, plains 31%, desert path 16 blocks, water 0%, sheep 3, food 9 (5 chickens), trees 371, lava 89 blocks, cave 52 blocks (112 iron), fortress 6.7 chunks
-6794230068353105784  # Plains, spawn 252 220, desert 31%, plains 31%, desert path 73 blocks, water 1%, sheep 2, food 18 (12 chickens), trees 221, lava 63 blocks, cave 5 blocks (149 iron), fortress 6.7 chunks
-8185194927934022388  # Plains, spawn -252 236, desert 15%, plains 41%, desert path 60 blocks, water 2%, sheep 4, food 11 (4 chickens), trees 1195, lava 24 blocks, cave 12 blocks (38 iron), fortress 5.0 chunks
--5028582435106882724  # Plains, spawn 60 168, desert 22%, plains 35%, desert path 82 blocks, water 0%, sheep 8, food 24 (24 chickens), trees 629, lava 42 blocks, cave 42 blocks (139 iron), fortress 7.2 chunks
-3368519685389355112  # Plains, spawn 12 256, desert 27%, plains 41%, desert path 79 blocks, water 2%, sheep 11, food 12 (4 chickens), trees 160, lava 38 blocks, cave 16 blocks (29 iron), fortress 7.2 chunks
-6914755310000525862  # Plains, spawn 244 236, desert 29%, plains 48%, desert path 11 blocks, water 0%, sheep 54, food 4 (4 chickens), trees 28, lava 84 blocks, cave 24 blocks (101 iron), fortress 7.8 chunks
-777732342189521017  # Plains, spawn -248 248, desert 18%, plains 19%, desert path 79 blocks, water 10%, sheep 56, food 14 (13 chickens), trees 83, lava 50 blocks, cave 55 blocks (6 iron), fortress 5.0 chunks
-5490400271626444943  # Plains, spawn 32 252, desert 18%, plains 26%, desert path 56 blocks, water 0%, sheep 47, food 4 (4 chickens), trees 141, lava 55 blocks, cave 19 blocks (27 iron), fortress 7.2 chunks
--4051115823585200141  # Plains, spawn 252 -24, desert 17%, plains 45%, desert path 114 blocks, water 1%, sheep 16, food 16 (0 chickens), trees 111, lava 100 blocks, cave 21 blocks (6 iron), fortress 7.2 chunks
--3304336447375287196  # Plains, spawn 236 152, desert 11%, plains 25%, desert path 64 blocks, water 4%, sheep 4, food 27 (0 chickens), trees 121, lava 96 blocks, cave 33 blocks (80 iron), fortress 7.8 chunks
-2087555703575567346  # Plains, spawn 232 180, desert 29%, plains 43%, desert path 131 blocks, water 5%, sheep 28, food 5 (0 chickens), trees 421, lava 100 blocks, cave 48 blocks (139 iron), fortress 7.8 chunks
-5416424632428956935  # Plains, spawn 183 240, desert 18%, plains 27%, desert path 50 blocks, water 1%, sheep 8, food 8 (0 chickens), trees 161, lava 31 blocks, cave 16 blocks (59 iron), fortress 7.2 chunks
-6541585663603607604  # Plains, spawn -120 216, desert 8%, plains 61%, desert path 120 blocks, water 0%, sheep 36, food 17 (0 chickens), trees 63, lava 71 blocks, cave 54 blocks (60 iron), fortress 6.7 chunks
--6729404619761115448  # Plains, spawn 117 213, desert 15%, plains 38%, desert path 111 blocks, water 14%, sheep 4, food 20 (8 chickens), trees 389, lava 80 blocks, cave 42 blocks (11 iron), fortress 5.8 chunks
-7173225692633013474  # Plains, spawn 0 0, desert 40%, plains 59%, desert path 17 blocks, water 0%, sheep 56, food 4 (0 chickens), trees 172, lava 92 blocks, cave 46 blocks (13 iron), fortress 7.8 chunks
--3750689131200450122  # Plains, spawn 152 132, desert 19%, plains 39%, desert path 79 blocks, water 4%, sheep 48, food 4 (0 chickens), trees 360, lava 31 blocks, cave 27 blocks (35 iron), fortress 6.4 chunks
-6799262298530611653  # Plains, spawn 206 227, desert 17%, plains 17%, desert path 56 blocks, water 4%, sheep 4, food 8 (0 chickens), trees 409, lava 56 blocks, cave 34 blocks (9 iron), fortress 6.7 chunks
-1680263026004641407  # Plains, spawn 216 212, desert 19%, plains 40%, desert path 11 blocks, water 2%, sheep 8, food 4 (0 chickens), trees 307, lava 79 blocks, cave 62 blocks (78 iron), fortress 7.2 chunks
--8252639522727930287  # Plains, spawn 160 136, desert 17%, plains 54%, desert path 75 blocks, water 0%, sheep 2, food 18 (14 chickens), trees 270, lava 83 blocks, cave 33 blocks (18 iron), fortress 6.7 chunks
--1811862673254583315  # Plains, spawn 92 208, desert 29%, plains 26%, desert path 24 blocks, water 0%, sheep 28, food 11 (0 chickens), trees 283, lava 34 blocks, cave 28 blocks (17 iron), fortress 5.7 chunks
--8672913349659496497  # Plains, spawn 88 256, desert 11%, plains 35%, desert path 80 blocks, water 2%, sheep 12, food 24 (24 chickens), trees 88, lava 76 blocks, cave 29 blocks (18 iron), fortress 4.5 chunks
--7056871589363659518  # Plains, spawn -124 248, desert 32%, plains 54%, desert path 8 blocks, water 0%, sheep 64, food 13 (0 chickens), trees 679, lava 32 blocks, cave 48 blocks (108 iron), fortress 5.7 chunks
-1540682161239980278  # Plains, spawn -56 256, desert 16%, plains 24%, desert path 67 blocks, water 2%, sheep 24, food 20 (16 chickens), trees 429, lava 8 blocks, cave 27 blocks (37 iron), fortress 6.4 chunks
--3626257662082540710  # Plains, spawn 0 0, desert 29%, plains 43%, desert path 11 blocks, water 0%, sheep 4, food 8 (0 chickens), trees 341, lava 85 blocks, cave 60 blocks (16 iron), fortress 7.2 chunks
-8502626195254365622  # Plains, spawn -248 96, desert 13%, plains 35%, desert path 90 blocks, water 0%, sheep 4, food 17 (1 chickens), trees 524, lava 28 blocks, cave 60 blocks (92 iron), fortress 5.8 chunks
-6877830017931011794  # Plains, spawn 188 252, desert 23%, plains 36%, desert path 106 blocks, water 0%, sheep 11, food 4 (0 chickens), trees 999, lava 71 blocks, cave 54 blocks (105 iron), fortress 5.0 chunks
--533053773414910420  # Plains, spawn -240 160, desert 12%, plains 45%, desert path 112 blocks, water 15%, sheep 11, food 16 (8 chickens), trees 1224, lava 50 blocks, cave 12 blocks (134 iron), fortress 7.8 chunks
--5432986924474895264  # Plains, spawn 244 232, desert 28%, plains 32%, desert path 72 blocks, water 0%, sheep 8, food 8 (4 chickens), trees 283, lava 75 blocks, cave 32 blocks (16 iron), fortress 7.2 chunks
--136629440375407793  # Plains, spawn 112 248, desert 12%, plains 16%, desert path 124 blocks, water 2%, sheep 52, food 23 (3 chickens), trees 821, lava 32 blocks, cave 13 blocks (16 iron), fortress 7.8 chunks
-3306049125567693468  # Plains, spawn -76 252, desert 13%, plains 68%, desert path 158 blocks, water 1%, sheep 32, food 8 (0 chickens), trees 668, lava 77 blocks, cave 20 blocks (49 iron), fortress 7.8 chunks
--1417825110814736128  # Plains, spawn -20 236, desert 9%, plains 28%, desert path 137 blocks, water 4%, sheep 8, food 12 (0 chickens), trees 631, lava 67 blocks, cave 29 blocks (73 iron), fortress 7.8 chunks
-7920130779938693609  # Plains, spawn 156 212, desert 21%, plains 46%, desert path 62 blocks, water 5%, sheep 13, food 22 (6 chickens), trees 115, lava 98 blocks, cave 12 blocks (14 iron), fortress 7.2 chunks
--3497404115027963756  # Plains, spawn 192 52, desert 23%, plains 41%, desert path 50 blocks, water 3%, sheep 4, food 24 (0 chickens), trees 466, lava 10 blocks, cave 48 blocks (9 iron), fortress 7.8 chunks
--67354431062338595  # Plains, spawn 248 92, desert 34%, plains 23%, desert path 22 blocks, water 3%, sheep 12, food 22 (0 chickens), trees 639, lava 86 blocks, cave 64 blocks (124 iron), fortress 6.7 chunks
--3946280180606359464  # Plains, spawn 16 252, desert 10%, plains 48%, desert path 158 blocks, water 9%, sheep 10, food 24 (2 chickens), trees 209, lava 72 blocks, cave 37 blocks (7 iron), fortress 6.4 chunks
--3384470186086728791  # Plains, spawn -251 172, desert 22%, plains 33%, desert path 35 blocks, water 10%, sheep 27, food 16 (0 chickens), trees 279, lava 84 blocks, cave 4 blocks (80 iron), fortress 6.7 chunks
-5152259592598827078  # Plains, spawn -108 252, desert 9%, plains 41%, desert path 144 blocks, water 0%, sheep 64, food 16 (4 chickens), trees 704, lava 65 blocks, cave 28 blocks (57 iron), fortress 6.4 chunks
--1536900483766431538  # Plains, spawn 166 256, desert 16%, plains 16%, desert path 79 blocks, water 0%, sheep 8, food 20 (20 chickens), trees 143, lava 61 blocks, cave 22 blocks (98 iron), fortress 7.3 chunks
-6788398015575369398  # Plains, spawn -160 319, desert 9%, plains 15%, desert path 147 blocks, water 4%, sheep 19, food 24 (0 chickens), trees 147, lava 80 blocks, cave 42 blocks (43 iron), fortress 5.7 chunks
--3947738260583958253  # Plains, spawn 0 0, desert 10%, plains 70%, desert path 17 blocks, water 2%, sheep 4, food 11 (0 chickens), trees 62, lava 32 blocks, cave 44 blocks (30 iron), fortress 6.4 chunks
-1792089195971741262  # Plains, spawn 0 0, desert 16%, plains 79%, desert path 93 blocks, water 3%, sheep 4, food 8 (0 chickens), trees 306, lava 55 blocks, cave 12 blocks (109 iron), fortress 7.1 chunks
--5223196132159476520  # Plains, spawn -12 248, desert 26%, plains 30%, desert path 88 blocks, water 0%, sheep 40, food 8 (0 chickens), trees 649, lava 35 blocks, cave 13 blocks (13 iron), fortress 7.8 chunks
--1592101328273290607  # Plains, spawn 182 -27, desert 18%, plains 19%, desert path 40 blocks, water 2%, sheep 8, food 26 (7 chickens), trees 313, lava 77 blocks, cave 24 blocks (94 iron), fortress 7.1 chunks
--2377059640337910271  # Plains, spawn -248 208, desert 14%, plains 14%, desert path 90 blocks, water 0%, sheep 4, food 19 (15 chickens), trees 1233, lava 14 blocks, cave 44 blocks (31 iron), fortress 7.1 chunks
--6797723780460295957  # Plains, spawn 232 156, desert 13%, plains 50%, desert path 65 blocks, water 14%, sheep 53, food 6 (2 chickens), trees 402, lava 100 blocks, cave 20 blocks (18 iron), fortress 7.8 chunks
--9113103075017082522  # Plains, spawn 64 244, desert 15%, plains 12%, desert path 101 blocks, water 3%, sheep 4, food 12 (12 chickens), trees 534, lava 64 blocks, cave 43 blocks (130 iron), fortress 7.2 chunks
--4570971605086764086  # Plains, spawn -116 252, desert 9%, plains 43%, desert path 139 blocks, water 0%, sheep 44, food 4 (0 chickens), trees 1151, lava 100 blocks, cave 16 blocks (66 iron), fortress 6.4 chunks
--1705492342569479252  # Plains, spawn -24 256, desert 37%, plains 8%, desert path 22 blocks, water 4%, sheep 18, food 8 (8 chickens), trees 340, lava 65 blocks, cave 45 blocks (42 iron), fortress 5.4 chunks
--3909392921490300869  # Plains, spawn 72 244, desert 32%, plains 34%, desert path 8 blocks, water 0%, sheep 86, food 4 (0 chickens), trees 318, lava 98 blocks, cave 32 blocks (28 iron), fortress 7.2 chunks
--4851841955226405217  # Plains, spawn 0 0, desert 31%, plains 32%, desert path 8 blocks, water 0%, sheep 12, food 11 (7 chickens), trees 26, lava 63 blocks, cave 30 blocks (112 iron), fortress 7.2 chunks
--8052716954582864456  # Plains, spawn 22 -11, desert 26%, plains 43%, desert path 91 blocks, water 1%, sheep 8, food 16 (0 chickens), trees 126, lava 97 blocks, cave 46 blocks (14 iron), fortress 7.1 chunks
--9182637072828863053  # Plains, spawn -204 183, desert 8%, plains 43%, desert path 124 blocks, water 1%, sheep 53, food 4 (0 chickens), trees 356, lava 51 blocks, cave 42 blocks (7 iron), fortress 5.0 chunks
--5048483324071664362  # Plains, spawn 0 0, desert 23%, plains 46%, desert path 102 blocks, water 0%, sheep 68, food 8 (4 chickens), trees 94, lava 49 blocks, cave 54 blocks (89 iron), fortress 7.1 chunks
--1382916289944409424  # Plains, spawn 196 256, desert 17%, plains 36%, desert path 85 blocks, water 4%, sheep 20, food 4 (0 chickens), trees 575, lava 21 blocks, cave 26 blocks (6 iron), fortress 7.2 chunks
--6314904358777358885  # Plains, spawn -52 207, desert 18%, plains 62%, desert path 130 blocks, water 13%, sheep 33, food 4 (0 chickens), trees 430, lava 79 blocks, cave 56 blocks (140 iron), fortress 7.8 chunks
--7680117099841514690  # Plains, spawn 0 0, desert 12%, plains 42%, desert path 96 blocks, water 12%, sheep 12, food 16 (16 chickens), trees 28, lava 55 blocks, cave 28 blocks (6 iron), fortress 7.8 chunks
-6517713084595784345  # Plains, spawn 108 212, desert 24%, plains 28%, desert path 16 blocks, water 0%, sheep 16, food 4 (0 chickens), trees 376, lava 48 blocks, cave 22 blocks (131 iron), fortress 6.4 chunks
-1004826820437322626  # Plains, spawn -207 -152, desert 17%, plains 20%, desert path 85 blocks, water 0%, sheep 40, food 4 (0 chickens), trees 459, lava 54 blocks, cave 14 blocks (104 iron), fortress 7.8 chunks
--2809040819973298143  # Plains, spawn 164 96, desert 16%, plains 41%, desert path 68 blocks, water 0%, sheep 32, food 16 (12 chickens), trees 326, lava 99 blocks, cave 48 blocks (20 iron), fortress 6.7 chunks
--5295039533708725358  # Plains, spawn -148 104, desert 14%, plains 63%, desert path 91 blocks, water 3%, sheep 8, food 8 (4 chickens), trees 788, lava 62 blocks, cave 29 blocks (69 iron), fortress 7.8 chunks
--4422424488037545475  # Plains, spawn -192 88, desert 9%, plains 31%, desert path 114 blocks, water 2%, sheep 12, food 20 (0 chickens), trees 397, lava 54 blocks, cave 40 blocks (10 iron), fortress 7.1 chunks
--1464886290937875644  # Plains, spawn -192 248, desert 24%, plains 26%, desert path 35 blocks, water 14%, sheep 4, food 8 (4 chickens), trees 562, lava 65 blocks, cave 21 blocks (41 iron), fortress 7.6 chunks
-7191011542726693485  # Plains, spawn 92 256, desert 9%, plains 39%, desert path 111 blocks, water 0%, sheep 28, food 14 (2 chickens), trees 1382, lava 77 blocks, cave 39 blocks (11 iron), fortress 7.6 chunks
--3934388016013709843  # Plains, spawn 192 -72, desert 18%, plains 42%, desert path 11 blocks, water 8%, sheep 4, food 19 (19 chickens), trees 70, lava 68 blocks, cave 60 blocks (126 iron), fortress 7.2 chunks
-3840506793385341033  # Plains, spawn 0 0, desert 11%, plains 81%, desert path 91 blocks, water 2%, sheep 64, food 12 (4 chickens), trees 382, lava 67 blocks, cave 11 blocks (89 iron), fortress 7.1 chunks
--4362071426367572981  # Plains, spawn 0 0, desert 11%, plains 40%, desert path 8 blocks, water 8%, sheep 4, food 16 (12 chickens), trees 217, lava 40 blocks, cave 30 blocks (7 iron), fortress 6.4 chunks
--6098293592579580456  # Plains, spawn 0 0, desert 27%, plains 61%, desert path 22 blocks, water 12%, sheep 4, food 16 (0 chickens), trees 421, lava 66 blocks, cave 63 blocks (7 iron), fortress 7.1 chunks
--445017287247943034  # Plains, spawn 112 220, desert 28%, plains 31%, desert path 65 blocks, water 3%, sheep 36, food 4 (0 chickens), trees 182, lava 63 blocks, cave 29 blocks (11 iron), fortress 7.8 chunks
-7832331999891167163  # Plains, spawn 240 -72, desert 23%, plains 50%, desert path 64 blocks, water 1%, sheep 20, food 12 (12 chickens), trees 391, lava 53 blocks, cave 27 blocks (34 iron), fortress 6.4 chunks
-7331921559859921255  # Plains, spawn 6 198, desert 28%, plains 40%, desert path 25 blocks, water 4%, sheep 8, food 4 (0 chickens), trees 123, lava 94 blocks, cave 54 blocks (11 iron), fortress 7.2 chunks
-7732086630820468912  # Plains, spawn -152 256, desert 15%, plains 27%, desert path 11 blocks, water 1%, sheep 4, food 8 (4 chickens), trees 657, lava 16 blocks, cave 20 blocks (25 iron), fortress 7.6 chunks
-1135641129813094603  # Plains, spawn 244 40, desert 27%, plains 15%, desert path 51 blocks, water 10%, sheep 4, food 8 (0 chickens), trees 59, lava 58 blocks, cave 17 blocks (126 iron), fortress 7.2 chunks
--6424884061131020804  # Plains, spawn 0 -96, desert 15%, plains 44%, desert path 136 blocks, water 2%, sheep 35, food 12 (0 chickens), trees 377, lava 61 blocks, cave 16 blocks (14 iron), fortress 7.1 chunks
--7814710056018105239  # Plains, spawn 196 232, desert 13%, plains 37%, desert path 40 blocks, water 3%, sheep 36, food 12 (12 chickens), trees 962, lava 25 blocks, cave 22 blocks (25 iron), fortress 7.6 chunks
--1545758581697006432  # Plains, spawn -156 220, desert 31%, plains 32%, desert path 8 blocks, water 2%, sheep 28, food 7 (0 chickens), trees 288, lava 82 blocks, cave 64 blocks (18 iron), fortress 6.4 chunks
-8310526355719504176  # Plains, spawn -312 275, desert 18%, plains 51%, desert path 56 blocks, water 0%, sheep 12, food 14 (2 chickens), trees 85, lava 30 blocks, cave 22 blocks (140 iron), fortress 7.3 chunks
--6283641232822446409  # Plains, spawn 211 182, desert 20%, plains 47%, desert path 67 blocks, water 10%, sheep 4, food 15 (0 chickens), trees 52, lava 84 blocks, cave 14 blocks (128 iron), fortress 5.7 chunks
--6363723195294462137  # Plains, spawn 136 256, desert 16%, plains 35%, desert path 82 blocks, water 0%, sheep 4, food 9 (4 chickens), trees 336, lava 65 blocks, cave 16 blocks (67 iron), fortress 5.8 chunks
--5271219185973005772  # Plains, spawn 236 148, desert 15%, plains 24%, desert path 75 blocks, water 3%, sheep 28, food 7 (0 chickens), trees 348, lava 44 blocks, cave 51 blocks (22 iron), fortress 5.7 chunks
--6171488422482003880  # Plains, spawn 164 20, desert 14%, plains 47%, desert path 91 blocks, water 0%, sheep 70, food 20 (4 chickens), trees 596, lava 100 blocks, cave 22 blocks (20 iron), fortress 7.6 chunks
--1297745469442355641  # Plains, spawn -100 244, desert 15%, plains 21%, desert path 11 blocks, water 0%, sheep 24, food 12 (0 chickens), trees 928, lava 82 blocks, cave 49 blocks (11 iron), fortress 7.6 chunks
-2597425401315762807  # Plains, spawn -132 168, desert 27%, plains 29%, desert path 53 blocks, water 1%, sheep 8, food 16 (0 chickens), trees 503, lava 38 blocks, cave 4 blocks (6 iron), fortress 7.6 chunks
--1531737654418134459  # Plains, spawn 0 0, desert 9%, plains 65%, desert path 102 blocks, water 0%, sheep 32, food 19 (0 chickens), trees 434, lava 72 blocks, cave 63 blocks (15 iron), fortress 7.1 chunks
--2607925399100503525  # Plains, spawn 0 0, desert 27%, plains 31%, desert path 113 blocks, water 0%, sheep 4, food 32 (0 chickens), trees 6, lava 49 blocks, cave 29 blocks (35 iron), fortress 7.1 chunks
--645872390849062589  # Plains, spawn 104 256, desert 27%, plains 7%, desert path 33 blocks, water 13%, sheep 4, food 20 (0 chickens), trees 478, lava 68 blocks, cave 52 blocks (141 iron), fortress 6.4 chunks
--3396129303910033526  # Plains, spawn 128 256, desert 25%, plains 40%, desert path 8 blocks, water 1%, sheep 14, food 4 (4 chickens), trees 337, lava 58 blocks, cave 54 blocks (27 iron), fortress 7.6 chunks
--6116939421344955381  # Plains, spawn 244 228, desert 16%, plains 27%, desert path 35 blocks, water 2%, sheep 52, food 12 (0 chickens), trees 391, lava 98 blocks, cave 25 blocks (20 iron), fortress 6.4 chunks
-4566728009813132656  # Plains, spawn 22 180, desert 11%, plains 55%, desert path 101 blocks, water 10%, sheep 8, food 4 (4 chickens), trees 22, lava 94 blocks, cave 44 blocks (135 iron), fortress 7.8 chunks
-4169562766086470475  # Plains, spawn -60 -36, desert 11%, plains 53%, desert path 89 blocks, water 0%, sheep 80, food 4 (0 chickens), trees 75, lava 66 blocks, cave 21 blocks (58 iron), fortress 7.1 chunks
--1908225616283210811  # Plains, spawn 0 0, desert 21%, plains 60%, desert path 80 blocks, water 7%, sheep 8, food 4 (0 chickens), trees 48, lava 84 blocks, cave 44 blocks (92 iron), fortress 6.4 chunks
--335952130858252526  # Plains, spawn 36 252, desert 11%, plains 55%, desert path 136 blocks, water 4%, sheep 9, food 24 (4 chickens), trees 453, lava 79 blocks, cave 58 blocks (10 iron), fortress 7.2 chunks
-8782563395382644468  # Plains, spawn -108 212, desert 28%, plains 48%, desert path 65 blocks, water 0%, sheep 4, food 30 (4 chickens), trees 51, lava 45 blocks, cave 52 blocks (90 iron), fortress 6.7 chunks
--2293011969501952594  # Plains, spawn 144 76, desert 9%, plains 30%, desert path 97 blocks, water 15%, sheep 4, food 28 (0 chickens), trees 631, lava 86 blocks, cave 63 blocks (17 iron), fortress 5.0 chunks
-1392968981422634587  # Plains, spawn -38 174, desert 26%, plains 46%, desert path 28 blocks, water 0%, sheep 12, food 16 (0 chickens), trees 182, lava 92 blocks, cave 46 blocks (143 iron), fortress 7.8 chunks
--572207894634352413  # Plains, spawn 220 128, desert 18%, plains 36%, desert path 83 blocks, water 14%, sheep 8, food 4 (0 chickens), trees 523, lava 98 blocks, cave 64 blocks (16 iron), fortress 7.8 chunks
-5511788584937075179  # Plains, spawn 32 72, desert 14%, plains 43%, desert path 56 blocks, water 0%, sheep 4, food 21 (21 chickens), trees 387, lava 72 blocks, cave 12 blocks (101 iron), fortress 7.8 chunks
-2747355242513673099  # Plains, spawn 224 252, desert 13%, plains 19%, desert path 85 blocks, water 13%, sheep 44, food 10 (4 chickens), trees 461, lava 61 blocks, cave 36 blocks (82 iron), fortress 4.2 chunks
--314256313737611407  # Plains, spawn 5 68, desert 30%, plains 53%, desert path 28 blocks, water 6%, sheep 8, food 12 (0 chickens), trees 265, lava 33 blocks, cave 44 blocks (100 iron), fortress 7.2 chunks
-7933126171801965094  # Plains, spawn 244 200, desert 9%, plains 34%, desert path 86 blocks, water 1%, sheep 8, food 20 (4 chickens), trees 390, lava 60 blocks, cave 36 blocks (9 iron), fortress 4.2 chunks
--6634636853591826965  # Plains, spawn -52 252, desert 12%, plains 25%, desert path 157 blocks, water 3%, sheep 8, food 12 (4 chickens), trees 616, lava 94 blocks, cave 54 blocks (36 iron), fortress 7.1 chunks
--4487333867427135276  # Plains, spawn -68 248, desert 19%, plains 35%, desert path 130 blocks, water 0%, sheep 12, food 16 (0 chickens), trees 25, lava 27 blocks, cave 12 blocks (82 iron), fortress 7.2 chunks
--4058693389960018401  # Plains, spawn -56 256, desert 24%, plains 37%, desert path 22 blocks, water 15%, sheep 4, food 41 (34 chickens), trees 176, lava 68 blocks, cave 56 blocks (12 iron), fortress 7.6 chunks
--769853280921337400  # Plains, spawn 195 -20, desert 24%, plains 48%, desert path 17 blocks, water 9%, sheep 8, food 12 (0 chickens), trees 11, lava 64 blocks, cave 20 blocks (85 iron), fortress 7.8 chunks
-2644082073906491671  # Plains, spawn 24 252, desert 11%, plains 60%, desert path 75 blocks, water 2%, sheep 90, food 4 (0 chickens), trees 64, lava 91 blocks, cave 12 blocks (88 iron), fortress 5.8 chunks
-2156165431594844264  # Plains, spawn -236 156, desert 14%, plains 46%, desert path 45 blocks, water 1%, sheep 23, food 4 (0 chickens), trees 253, lava 77 blocks, cave 11 blocks (101 iron), fortress 7.6 chunks
-5443511474373475287  # Plains, spawn -96 120, desert 27%, plains 24%, desert path 48 blocks, water 1%, sheep 4, food 15 (0 chickens), trees 775, lava 53 blocks, cave 56 blocks (29 iron), fortress 7.1 chunks
--2729285825195312773  # Plains, spawn -4 240, desert 17%, plains 16%, desert path 46 blocks, water 0%, sheep 84, food 8 (0 chickens), trees 365, lava 53 blocks, cave 5 blocks (57 iron), fortress 7.8 chunks
--8824880937448916464  # Plains, spawn 252 240, desert 17%, plains 12%, desert path 75 blocks, water 0%, sheep 24, food 33 (5 chickens), trees 244, lava 48 blocks, cave 62 blocks (111 iron), fortress 6.4 chunks
-195284110542758176  # Plains, spawn 0 0, desert 8%, plains 47%, desert path 16 blocks, water 0%, sheep 4, food 16 (16 chickens), trees 22, lava 84 blocks, cave 33 blocks (103 iron), fortress 7.8 chunks
--5437037635821786248  # Plains, spawn 129 214, desert 21%, plains 26%, desert path 79 blocks, water 0%, sheep 4, food 6 (0 chickens), trees 34, lava 37 blocks, cave 24 blocks (20 iron), fortress 7.6 chunks
--9185394210987197860  # Plains, spawn 212 200, desert 9%, plains 45%, desert path 113 blocks, water 4%, sheep 12, food 12 (4 chickens), trees 149, lava 48 blocks, cave 48 blocks (9 iron), fortress 5.0 chunks
--9094999253233403474  # Plains, spawn 64 172, desert 28%, plains 37%, desert path 75 blocks, water 0%, sheep 8, food 32 (0 chickens), trees 244, lava 76 blocks, cave 23 blocks (99 iron), fortress 7.1 chunks
-7523204047619660140  # Plains, spawn -228 240, desert 8%, plains 36%, desert path 139 blocks, water 0%, sheep 17, food 14 (8 chickens), trees 442, lava 80 blocks, cave 53 blocks (91 iron), fortress 5.8 chunks
--5449791763688113114  # Plains, spawn -80 240, desert 21%, plains 32%, desert path 56 blocks, water 14%, sheep 4, food 37 (27 chickens), trees 239, lava 92 blocks, cave 40 blocks (10 iron), fortress 7.6 chunks
-7886603050841578215  # Plains, spawn -252 212, desert 27%, plains 20%, desert path 51 blocks, water 0%, sheep 4, food 7 (0 chickens), trees 105, lava 90 blocks, cave 43 blocks (154 iron), fortress 7.6 chunks
--1781967232420400592  # Plains, spawn -69 202, desert 18%, plains 45%, desert path 11 blocks, water 1%, sheep 4, food 24 (0 chickens), trees 34, lava 72 blocks, cave 44 blocks (6 iron), fortress 7.2 chunks
-1675213829735961858  # Plains, spawn 0 0, desert 9%, plains 43%, desert path 113 blocks, water 4%, sheep 8, food 8 (0 chickens), trees 210, lava 80 blocks, cave 48 blocks (84 iron), fortress 7.8 chunks
--934857572557523725  # Plains, spawn -84 256, desert 15%, plains 24%, desert path 53 blocks, water 0%, sheep 8, food 23 (23 chickens), trees 394, lava 51 blocks, cave 20 blocks (102 iron), fortress 5.0 chunks
-7320830158171383740  # Plains, spawn 180 172, desert 11%, plains 53%, desert path 91 blocks, water 10%, sheep 8, food 12 (8 chickens), trees 287, lava 72 blocks, cave 39 blocks (8 iron), fortress 6.7 chunks
--3489247133594178272  # Plains, spawn 252 108, desert 9%, plains 31%, desert path 135 blocks, water 0%, sheep 14, food 12 (0 chickens), trees 263, lava 96 blocks, cave 50 blocks (14 iron), fortress 7.2 chunks
-804929603937393350  # Plains, spawn 84 239, desert 22%, plains 38%, desert path 50 blocks, water 6%, sheep 4, food 11 (11 chickens), trees 105, lava 58 blocks, cave 38 blocks (6 iron), fortress 7.8 chunks
-751698916490620974  # Plains, spawn -228 -21, desert 14%, plains 44%, desert path 96 blocks, water 0%, sheep 20, food 12 (4 chickens), trees 92, lava 20 blocks, cave 23 blocks (76 iron), fortress 6.7 chunks
--8152825606881848376  # Plains, spawn 232 240, desert 24%, plains 28%, desert path 82 blocks, water 0%, sheep 42, food 8 (4 chickens), trees 318, lava 68 blocks, cave 24 blocks (44 iron), fortress 6.7 chunks
--4019005737158829173  # Plains, spawn 336 167, desert 11%, plains 49%, desert path 96 blocks, water 0%, sheep 4, food 28 (20 chickens), trees 563, lava 85 blocks, cave 52 blocks (46 iron), fortress 7.8 chunks
-4440011637160406265  # Plains, spawn 32 256, desert 14%, plains 16%, desert path 72 blocks, water 11%, sheep 8, food 12 (0 chickens), trees 745, lava 56 blocks, cave 28 blocks (137 iron), fortress 5.0 chunks
-5209073688155028718  # Plains, spawn -104 -40, desert 9%, plains 34%, desert path 112 blocks, water 5%, sheep 12, food 24 (0 chickens), trees 195, lava 28 blocks, cave 56 blocks (10 iron), fortress 7.1 chunks
-5072617389191353331  # Plains, spawn 0 0, desert 15%, plains 27%, desert path 96 blocks, water 1%, sheep 38, food 8 (4 chickens), trees 17, lava 46 blocks, cave 8 blocks (32 iron), fortress 7.1 chunks
--1969718217229005238  # Plains, spawn 0 0, desert 37%, plains 57%, desert path 73 blocks, water 2%, sheep 8, food 32 (0 chickens), trees 6, lava 77 blocks, cave 18 blocks (7 iron), fortress 7.2 chunks
--6838818037792215611  # Plains, spawn 0 0, desert 20%, plains 68%, desert path 17 blocks, water 0%, sheep 4, food 24 (24 chickens), trees 293, lava 18 blocks, cave 40 blocks (114 iron), fortress 5.7 chunks
-8231684863168322724  # Plains, spawn -207 256, desert 37%, plains 34%, desert path 22 blocks, water 5%, sheep 8, food 32 (32 chickens), trees 208, lava 32 blocks, cave 64 blocks (120 iron), fortress 4.2 chunks
--1777451885092729458  # Plains, spawn 112 -124, desert 9%, plains 37%, desert path 157 blocks, water 1%, sheep 52, food 12 (0 chickens), trees 535, lava 65 blocks, cave 54 blocks (126 iron), fortress 7.1 chunks
--765277181563040162  # Plains, spawn 0 0, desert 23%, plains 63%, desert path 8 blocks, water 0%, sheep 8, food 16 (16 chickens), trees 472, lava 66 blocks, cave 38 blocks (43 iron), fortress 7.8 chunks
--7265459112180424463  # Plains, spawn 224 -172, desert 11%, plains 30%, desert path 56 blocks, water 9%, sheep 36, food 14 (8 chickens), trees 258, lava 56 blocks, cave 40 blocks (48 iron), fortress 7.6 chunks
-1922022365853139617  # Plains, spawn 216 -64, desert 24%, plains 41%, desert path 8 blocks, water 2%, sheep 12, food 12 (8 chickens), trees 201, lava 58 blocks, cave 63 blocks (24 iron), fortress 6.7 chunks
-6283331067750850019  # Plains, spawn 0 0, desert 11%, plains 56%, desert path 89 blocks, water 0%, sheep 4, food 32 (32 chickens), trees 5, lava 79 blocks, cave 46 blocks (91 iron), fortress 7.1 chunks
-7261697414648078313  # Plains, spawn 232 256, desert 22%, plains 31%, desert path 40 blocks, water 0%, sheep 12, food 12 (1 chickens), trees 1072, lava 58 blocks, cave 14 blocks (100 iron), fortress 5.0 chunks
--5417603766324802103  # Plains, spawn -48 188, desert 16%, plains 53%, desert path 104 blocks, water 2%, sheep 4, food 28 (0 chickens), trees 200, lava 45 blocks, cave 38 blocks (14 iron), fortress 7.1 chunks
--8375508510008974162  # Plains, spawn -228 232, desert 11%, plains 38%, desert path 157 blocks, water 0%, sheep 16, food 14 (0 chickens), trees 586, lava 66 blocks, cave 62 blocks (129 iron), fortress 7.2 chunks
-732102494246677969  # Plains, spawn -32 252, desert 17%, plains 34%, desert path 141 blocks, water 0%, sheep 4, food 29 (4 chickens), trees 1143, lava 55 blocks, cave 6 blocks (24 iron), fortress 6.7 chunks
--7360126631162478066  # Plains, spawn -244 228, desert 9%, plains 36%, desert path 120 blocks, water 1%, sheep 11, food 12 (12 chickens), trees 392, lava 95 blocks, cave 26 blocks (110 iron), fortress 7.8 chunks
-7028050565645579395  # Plains, spawn 0 0, desert 12%, plains 80%, desert path 124 blocks, water 0%, sheep 20, food 20 (0 chickens), trees 381, lava 84 blocks, cave 35 blocks (11 iron), fortress 5.7 chunks
--8187568642759291255  # Plains, spawn 120 -156, desert 13%, plains 44%, desert path 67 blocks, water 0%, sheep 4, food 12 (0 chickens), trees 276, lava 67 blocks, cave 53 blocks (87 iron), fortress 6.7 chunks
-6504006898057282111  # Plains, spawn 0 0, desert 11%, plains 65%, desert path 16 blocks, water 1%, sheep 4, food 24 (4 chickens), trees 84, lava 14 blocks, cave 30 blocks (50 iron), fortress 7.8 chunks
-2587384239528506024  # Plains, spawn 186 -23, desert 18%, plains 25%, desert path 56 blocks, water 2%, sheep 47, food 12 (0 chickens), trees 360, lava 77 blocks, cave 50 blocks (140 iron), fortress 5.7 chunks
-5809359684820973168  # Plains, spawn 164 216, desert 22%, plains 23%, desert path 53 blocks, water 0%, sheep 2, food 32 (24 chickens), trees 529, lava 68 blocks, cave 22 blocks (34 iron), fortress 7.1 chunks
-7050500697922888310  # Plains, spawn 204 194, desert 26%, plains 33%, desert path 45 blocks, water 6%, sheep 13, food 8 (8 chickens), trees 68, lava 89 blocks, cave 18 blocks (18 iron), fortress 6.7 chunks
--6685534635166010765  # Plains, spawn -252 200, desert 20%, plains 33%, desert path 58 blocks, water 14%, sheep 4, food 4 (4 chickens), trees 287, lava 87 blocks, cave 33 blocks (87 iron), fortress 7.8 chunks
-7193988860195381206  # Plains, spawn -88 36, desert 35%, plains 33%, desert path 25 blocks, water 1%, sheep 32, food 4 (0 chickens), trees 399, lava 48 blocks, cave 17 blocks (23 iron), fortress 7.8 chunks
-5018119005026555700  # Plains, spawn 0 0, desert 29%, plains 68%, desert path 17 blocks, water 0%, sheep 4, food 9 (5 chickens), trees 115, lava 79 blocks, cave 64 blocks (89 iron), fortress 5.7 chunks
--4169621393364806799  # Plains, spawn 0 0, desert 9%, plains 48%, desert path 96 blocks, water 6%, sheep 4, food 15 (0 chickens), trees 19, lava 62 blocks, cave 51 blocks (24 iron), fortress 7.8 chunks
-5080796521581826261  # Plains, spawn -212 256, desert 10%, plains 25%, desert path 86 blocks, water 0%, sheep 18, food 20 (1 chickens), trees 154, lava 66 blocks, cave 58 blocks (16 iron), fortress 6.3 chunks
-6402950066495290289  # Plains, spawn -44 -212, desert 12%, plains 34%, desert path 101 blocks, water 15%, sheep 80, food 19 (0 chickens), trees 850, lava 98 blocks, cave 32 blocks (22 iron), fortress 7.8 chunks
--4413972025867475063  # Plains, spawn 0 0, desert 16%, plains 77%, desert path 90 blocks, water 0%, sheep 12, food 13 (0 chickens), trees 236, lava 59 blocks, cave 49 blocks (35 iron), fortress 6.4 chunks
-1997259884852249443  # Plains, spawn 20 249, desert 16%, plains 33%, desert path 90 blocks, water 2%, sheep 4, food 29 (0 chickens), trees 238, lava 83 blocks, cave 53 blocks (115 iron), fortress 5.0 chunks
-934318722916370271  # Plains, spawn 0 0, desert 9%, plains 25%, desert path 8 blocks, water 6%, sheep 4, food 10 (0 chickens), trees 9, lava 62 blocks, cave 63 blocks (20 iron), fortress 6.4 chunks
-7847005315875932102  # Plains, spawn 108 256, desert 21%, plains 31%, desert path 35 blocks, water 0%, sheep 4, food 31 (27 chickens), trees 101, lava 31 blocks, cave 30 blocks (49 iron), fortress 5.7 chunks
--3978056822207908430  # Plains, spawn -92 144, desert 17%, plains 41%, desert path 101 blocks, water 7%, sheep 12, food 20 (11 chickens), trees 257, lava 58 blocks, cave 53 blocks (48 iron), fortress 6.4 chunks
-9049583396497057835  # Plains, spawn 0 0, desert 16%, plains 57%, desert path 17 blocks, water 5%, sheep 91, food 4 (0 chickens), trees 31, lava 86 blocks, cave 41 blocks (116 iron), fortress 7.8 chunks
--7679361672163835751  # Plains, spawn -92 76, desert 18%, plains 18%, desert path 113 blocks, water 0%, sheep 12, food 4 (0 chickens), trees 368, lava 81 blocks, cave 41 blocks (15 iron), fortress 7.8 chunks
-4158176852890122781  # Plains, spawn 0 0, desert 12%, plains 73%, desert path 16 blocks, water 0%, sheep 4, food 22 (4 chickens), trees 159, lava 94 blocks, cave 58 blocks (25 iron), fortress 7.8 chunks
-1066322734379778323  # Plains, spawn -153 -29, desert 28%, plains 25%, desert path 51 blocks, water 1%, sheep 12, food 26 (0 chickens), trees 262, lava 100 blocks, cave 37 blocks (8 iron), fortress 7.8 chunks
--561608337075343970  # Plains, spawn -56 112, desert 36%, plains 23%, desert path 93 blocks, water 0%, sheep 24, food 14 (14 chickens), trees 438, lava 15 blocks, cave 21 blocks (6 iron), fortress 7.8 chunks
--2051942966899134395  # Plains, spawn -228 56, desert 9%, plains 30%, desert path 143 blocks, water 0%, sheep 44, food 8 (4 chickens), trees 441, lava 92 blocks, cave 24 blocks (15 iron), fortress 5.8 chunks
-8227263584343453537  # Plains, spawn 248 256, desert 8%, plains 50%, desert path 122 blocks, water 2%, sheep 9, food 4 (0 chickens), trees 277, lava 55 blocks, cave 53 blocks (11 iron), fortress 7.2 chunks
-6795658695252814390  # Plains, spawn -216 256, desert 16%, plains 26%, desert path 83 blocks, water 8%, sheep 43, food 4 (0 chickens), trees 137, lava 99 blocks, cave 28 blocks (40 iron), fortress 5.0 chunks
-2251646061749639966  # Plains, spawn 232 228, desert 24%, plains 32%, desert path 64 blocks, water 0%, sheep 68, food 8 (0 chickens), trees 103, lava 86 blocks, cave 48 blocks (126 iron), fortress 6.7 chunks
--6272298312929509140  # Plains, spawn 140 220, desert 26%, plains 27%, desert path 22 blocks, water 2%, sheep 20, food 21 (0 chickens), trees 525, lava 82 blocks, cave 63 blocks (83 iron), fortress 6.7 chunks
-3382292429332787664  # Plains, spawn 0 0, desert 16%, plains 46%, desert path 96 blocks, water 15%, sheep 9, food 23 (0 chickens), trees 13, lava 86 blocks, cave 14 blocks (11 iron), fortress 7.8 chunks
--7572139295141536141  # Plains, spawn 216 -56, desert 19%, plains 30%, desert path 90 blocks, water 0%, sheep 40, food 4 (0 chickens), trees 372, lava 78 blocks, cave 48 blocks (21 iron), fortress 5.7 chunks
--740808902720634529  # Plains, spawn 176 240, desert 26%, plains 45%, desert path 24 blocks, water 2%, sheep 44, food 4 (4 chickens), trees 381, lava 96 blocks, cave 59 blocks (33 iron), fortress 5.0 chunks
-4575619324426661590  # Plains, spawn 208 192, desert 22%, plains 35%, desert path 28 blocks, water 3%, sheep 8, food 12 (4 chickens), trees 311, lava 98 blocks, cave 50 blocks (70 iron), fortress 6.7 chunks
--7989396202965185702  # Plains, spawn -36 68, desert 29%, plains 31%, desert path 40 blocks, water 3%, sheep 24, food 19 (19 chickens), trees 485, lava 68 blocks, cave 38 blocks (23 iron), fortress 7.8 chunks
--8801068157861539  # Plains, spawn 183 259, desert 15%, plains 46%, desert path 62 blocks, water 6%, sheep 8, food 8 (4 chickens), trees 103, lava 71 blocks, cave 54 blocks (16 iron), fortress 5.0 chunks
-6264141973009652084  # Plains, spawn 244 -176, desert 9%, plains 47%, desert path 130 blocks, water 4%, sheep 4, food 27 (0 chickens), trees 272, lava 48 blocks, cave 42 blocks (164 iron), fortress 7.2 chunks
-2914032882251443344  # Plains, spawn 208 -100, desert 30%, plains 31%, desert path 45 blocks, water 2%, sheep 35, food 4 (4 chickens), trees 232, lava 68 blocks, cave 42 blocks (69 iron), fortress 7.2 chunks
--1264584479907369363  # Plains, spawn -241 101, desert 9%, plains 37%, desert path 86 blocks, water 4%, sheep 84, food 4 (0 chickens), trees 491, lava 50 blocks, cave 36 blocks (113 iron), fortress 5.8 chunks
-4540757515714852261  # Plains, spawn -100 232, desert 32%, plains 25%, desert path 131 blocks, water 0%, sheep 4, food 7 (3 chickens), trees 97, lava 47 blocks, cave 22 blocks (13 iron), fortress 7.8 chunks
-2286897133573130682  # Plains, spawn 211 355, desert 17%, plains 42%, desert path 17 blocks, water 0%, sheep 30, food 30 (8 chickens), trees 176, lava 61 blocks, cave 28 blocks (87 iron), fortress 6.7 chunks
-2446155219231814348  # Plains, spawn 256 -92, desert 9%, plains 49%, desert path 153 blocks, water 11%, sheep 4, food 17 (0 chickens), trees 97, lava 53 blocks, cave 18 blocks (18 iron), fortress 7.8 chunks
--2097271608401717404  # Plains, spawn 80 156, desert 30%, plains 32%, desert path 33 blocks, water 12%, sheep 24, food 4 (0 chickens), trees 322, lava 23 blocks, cave 21 blocks (152 iron), fortress 7.1 chunks
-7682174774180510692  # Plains, spawn 139 175, desert 24%, plains 26%, desert path 25 blocks, water 2%, sheep 3, food 16 (9 chickens), trees 113, lava 94 blocks, cave 26 blocks (62 iron), fortress 7.6 chunks
--1614827155064059292  # Plains, spawn -132 240, desert 22%, plains 32%, desert path 67 blocks, water 0%, sheep 8, food 12 (0 chickens), trees 126, lava 75 blocks, cave 39 blocks (28 iron), fortress 7.6 chunks
--6149615857107561958  # Plains, spawn 0 0, desert 8%, plains 61%, desert path 124 blocks, water 2%, sheep 24, food 22 (4 chickens), trees 7, lava 81 blocks, cave 53 blocks (28 iron), fortress 7.8 chunks
--6545637839868470779  # Plains, spawn 84 204, desert 13%, plains 52%, desert path 45 blocks, water 1%, sheep 13, food 7 (0 chickens), trees 316, lava 63 blocks, cave 64 blocks (13 iron), fortress 6.7 chunks
--428399138879173895  # Plains, spawn -168 252, desert 10%, plains 34%, desert path 93 blocks, water 0%, sheep 15, food 19 (8 chickens), trees 811, lava 16 blocks, cave 41 blocks (89 iron), fortress 5.7 chunks
--6526232760495945866  # Plains, spawn 252 200, desert 21%, plains 35%, desert path 45 blocks, water 0%, sheep 4, food 24 (4 chickens), trees 283, lava 45 blocks, cave 55 blocks (19 iron), fortress 7.1 chunks
--5144171439047119338  # Plains, spawn 0 0, desert 11%, plains 72%, desert path 96 blocks, water 3%, sheep 7, food 20 (20 chickens), trees 71, lava 70 blocks, cave 32 blocks (8 iron), fortress 7.8 chunks
--4276842163188487432  # Plains, spawn 0 0, desert 16%, plains 77%, desert path 124 blocks, water 1%, sheep 84, food 4 (4 chickens), trees 356, lava 61 blocks, cave 44 blocks (9 iron), fortress 7.8 chunks
--3651076554169014163  # Plains, spawn -214 -27, desert 26%, plains 26%, desert path 65 blocks, water 2%, sheep 20, food 22 (0 chickens), trees 413, lava 18 blocks, cave 48 blocks (12 iron), fortress 7.2 chunks
--3321517635865959192  # Plains, spawn -8 184, desert 8%, plains 43%, desert path 141 blocks, water 0%, sheep 4, food 20 (0 chickens), trees 476, lava 47 blocks, cave 46 blocks (100 iron), fortress 6.7 chunks
-6366784724502139709  # Plains, spawn -88 236, desert 28%, plains 23%, desert path 53 blocks, water 0%, sheep 44, food 16 (8 chickens), trees 384, lava 62 blocks, cave 36 blocks (90 iron), fortress 5.8 chunks
-8830449038934706811  # Plains, spawn 12 248, desert 13%, plains 24%, desert path 43 blocks, water 0%, sheep 4, food 12 (4 chickens), trees 503, lava 64 blocks, cave 59 blocks (107 iron), fortress 5.8 chunks
-4288452257464825560  # Plains, spawn -51 204, desert 29%, plains 39%, desert path 11 blocks, water 0%, sheep 10, food 24 (4 chickens), trees 28, lava 21 blocks, cave 43 blocks (86 iron), fortress 7.8 chunks
--8577803158004864994  # Plains, spawn -20 232, desert 30%, plains 33%, desert path 11 blocks, water 8%, sheep 8, food 12 (0 chickens), trees 185, lava 84 blocks, cave 37 blocks (31 iron), fortress 7.8 chunks
--4880150597312290302  # Plains, spawn -12 212, desert 21%, plains 44%, desert path 64 blocks, water 0%, sheep 4, food 24 (12 chickens), trees 477, lava 32 blocks, cave 57 blocks (30 iron), fortress 7.8 chunks
--1800011562779802798  # Plains, spawn -48 160, desert 9%, plains 49%, desert path 100 blocks, water 0%, sheep 12, food 9 (9 chickens), trees 833, lava 97 blocks, cave 12 blocks (33 iron), fortress 7.8 chunks
-233704426217626332  # Plains, spawn -236 208, desert 35%, plains 15%, desert path 16 blocks, water 0%, sheep 32, food 4 (4 chickens), trees 699, lava 84 blocks, cave 47 blocks (141 iron), fortress 6.7 chunks
-679008699728886343  # Plains, spawn -4 232, desert 17%, plains 39%, desert path 79 blocks, water 0%, sheep 32, food 28 (4 chickens), trees 441, lava 90 blocks, cave 24 blocks (157 iron), fortress 5.0 chunks
-876475433522226471  # Plains, spawn 44 256, desert 9%, plains 57%, desert path 126 blocks, water 2%, sheep 32, food 12 (12 chickens), trees 220, lava 10 blocks, cave 47 blocks (96 iron), fortress 7.8 chunks
-8025121114064914425  # Plains, spawn -99 127, desert 20%, plains 37%, desert path 79 blocks, water 12%, sheep 4, food 13 (13 chickens), trees 98, lava 20 blocks, cave 14 blocks (115 iron), fortress 7.8 chunks
--1377901817208411003  # Plains, spawn 144 172, desert 10%, plains 29%, desert path 96 blocks, water 4%, sheep 4, food 4 (0 chickens), trees 93, lava 80 blocks, cave 26 blocks (164 iron), fortress 5.8 chunks
-4723364925521435442  # Plains, spawn 174 14, desert 21%, plains 38%, desert path 45 blocks, water 2%, sheep 16, food 27 (0 chickens), trees 172, lava 84 blocks, cave 45 blocks (103 iron), fortress 6.7 chunks
--2169724366197335393  # Plains, spawn 136 244, desert 13%, plains 53%, desert path 106 blocks, water 0%, sheep 12, food 28 (20 chickens), trees 440, lava 73 blocks, cave 31 blocks (26 iron), fortress 7.8 chunks
-2481384159592060203  # Plains, spawn -256 24, desert 26%, plains 12%, desert path 17 blocks, water 11%, sheep 4, food 12 (0 chickens), trees 368, lava 93 blocks, cave 26 blocks (54 iron), fortress 7.2 chunks
--1737184826270079483  # Plains, spawn 356 241, desert 41%, plains 23%, desert path 67 blocks, water 9%, sheep 4, food 13 (5 chickens), trees 130, lava 48 blocks, cave 4 blocks (89 iron), fortress 4.5 chunks
--1038216190280443029  # Plains, spawn 252 228, desert 8%, plains 72%, desert path 72 blocks, water 0%, sheep 4, food 20 (4 chickens), trees 113, lava 75 blocks, cave 63 blocks (119 iron), fortress 7.2 chunks
--3842511184304083844  # Plains, spawn 0 0, desert 14%, plains 60%, desert path 81 blocks, water 2%, sheep 16, food 28 (0 chickens), trees 175, lava 28 blocks, cave 32 blocks (12 iron), fortress 6.4 chunks
--2101480451789411337  # Plains, spawn -1 132, desert 8%, plains 57%, desert path 91 blocks, water 3%, sheep 12, food 20 (4 chickens), trees 447, lava 64 blocks, cave 58 blocks (11 iron), fortress 7.1 chunks
--5354048700333738801  # Plains, spawn 172 84, desert 26%, plains 30%, desert path 106 blocks, water 0%, sheep 64, food 4 (4 chickens), trees 1080, lava 16 blocks, cave 60 blocks (100 iron), fortress 5.0 chunks
-9132596894589846875  # Plains, spawn 108 256, desert 11%, plains 33%, desert path 102 blocks, water 1%, sheep 8, food 40 (4 chickens), trees 68, lava 67 blocks, cave 17 blocks (120 iron), fortress 7.1 chunks
-6586497012763075223  # Plains, spawn 232 180, desert 13%, plains 34%, desert path 147 blocks, water 0%, sheep 4, food 20 (12 chickens), trees 539, lava 67 blocks, cave 13 blocks (114 iron), fortress 5.8 chunks
-3274315325218225146  # Plains, spawn 32 244, desert 9%, plains 44%, desert path 113 blocks, water 4%, sheep 8, food 10 (0 chickens), trees 304, lava 26 blocks, cave 44 blocks (9 iron), fortress 7.2 chunks
--5460902012749575614  # Plains, spawn 140 256, desert 24%, plains 36%, desert path 71 blocks, water 5%, sheep 4, food 33 (17 chickens), trees 337, lava 88 blocks, cave 58 blocks (57 iron), fortress 7.2 chunks
-4328294570908222637  # Plains, spawn 148 252, desert 12%, plains 39%, desert path 93 blocks, water 2%, sheep 24, food 32 (8 chickens), trees 416, lava 90 blocks, cave 41 blocks (10 iron), fortress 7.2 chunks
-1609668528915438934  # Plains, spawn -126 105, desert 15%, plains 52%, desert path 91 blocks, water 4%, sheep 8, food 17 (5 chickens), trees 247, lava 45 blocks, cave 48 blocks (11 iron), fortress 7.8 chunks
-8133071630237691440  # Plains, spawn 244 236, desert 21%, plains 16%, desert path 73 blocks, water 9%, sheep 60, food 8 (0 chickens), trees 144, lava 62 blocks, cave 48 blocks (66 iron), fortress 6.4 chunks
--7266120518563933490  # Plains, spawn 242 -147, desert 19%, plains 48%, desert path 62 blocks, water 6%, sheep 4, food 28 (8 chickens), trees 47, lava 59 blocks, cave 20 blocks (115 iron), fortress 5.7 chunks
-2448864891552808732  # Plains, spawn -4 236, desert 10%, plains 37%, desert path 72 blocks, water 0%, sheep 4, food 4 (0 chickens), trees 225, lava 69 blocks, cave 36 blocks (156 iron), fortress 5.0 chunks
-8020637775587273658  # Plains, spawn 184 -148, desert 30%, plains 21%, desert path 16 blocks, water 2%, sheep 4, food 12 (0 chickens), trees 198, lava 92 blocks, cave 46 blocks (102 iron), fortress 7.8 chunks
-2909357977183347838  # Plains, spawn -156 -64, desert 21%, plains 51%, desert path 120 blocks, water 0%, sheep 4, food 16 (0 chickens), trees 225, lava 32 blocks, cave 21 blocks (58 iron), fortress 6.7 chunks
--5890899865295818049  # Plains, spawn 228 256, desert 19%, plains 31%, desert path 67 blocks, water 0%, sheep 4, food 20 (16 chickens), trees 354, lava 92 blocks, cave 17 blocks (129 iron), fortress 6.7 chunks
-8502421054004346475  # Plains, spawn -288 -220, desert 13%, plains 63%, desert path 65 blocks, water 0%, sheep 4, food 23 (19 chickens), trees 318, lava 44 blocks, cave 31 blocks (67 iron), fortress 4.5 chunks
--7912455244185624233  # Plains, spawn 110 289, desert 15%, plains 43%, desert path 147 blocks, water 3%, sheep 19, food 31 (19 chickens), trees 407, lava 44 blocks, cave 59 blocks (54 iron), fortress 5.7 chunks
-3818940673838305561  # Plains, spawn 244 236, desert 13%, plains 36%, desert path 68 blocks, water 10%, sheep 8, food 16 (0 chickens), trees 256, lava 28 blocks, cave 62 blocks (88 iron), fortress 5.0 chunks
--483446405942320789  # Plains, spawn 256 -196, desert 23%, plains 48%, desert path 58 blocks, water 1%, sheep 32, food 7 (0 chickens), trees 244, lava 90 blocks, cave 50 blocks (137 iron), fortress 4.5 chunks
-8421589640523335120  # Plains, spawn 82 294, desert 14%, plains 60%, desert path 96 blocks, water 1%, sheep 12, food 37 (10 chickens), trees 226, lava 63 blocks, cave 24 blocks (87 iron), fortress 4.5 chunks
--4395549850229734624  # Plains, spawn -244 248, desert 17%, plains 26%, desert path 16 blocks, water 1%, sheep 16, food 12 (12 chickens), trees 1217, lava 64 blocks, cave 50 blocks (21 iron), fortress 4.2 chunks
-9127325492947179044  # Plains, spawn 208 256, desert 16%, plains 25%, desert path 128 blocks, water 0%, sheep 4, food 16 (16 chickens), trees 518, lava 10 blocks, cave 61 blocks (101 iron), fortress 7.6 chunks
-5008930168974117378  # Plains, spawn -88 224, desert 19%, plains 49%, desert path 91 blocks, water 12%, sheep 68, food 8 (4 chickens), trees 63, lava 41 blocks, cave 40 blocks (98 iron), fortress 5.8 chunks
-3347062948168031958  # Plains, spawn -80 252, desert 15%, plains 33%, desert path 137 blocks, water 2%, sheep 20, food 4 (0 chickens), trees 423, lava 43 blocks, cave 22 blocks (144 iron), fortress 7.8 chunks
-8460351393682093441  # Plains, spawn 108 188, desert 32%, plains 8%, desert path 62 blocks, water 8%, sheep 4, food 16 (8 chickens), trees 628, lava 77 blocks, cave 16 blocks (12 iron), fortress 7.2 chunks
--4881574591864106617  # Plains, spawn 244 -100, desert 13%, plains 41%, desert path 33 blocks, water 0%, sheep 28, food 6 (0 chickens), trees 326, lava 61 blocks, cave 53 blocks (43 iron), fortress 7.8 chunks
--4380882309782487070  # Plains, spawn 178 -127, desert 19%, plains 35%, desert path 90 blocks, water 6%, sheep 6, food 21 (4 chickens), trees 47, lava 40 blocks, cave 52 blocks (15 iron), fortress 7.2 chunks
-7346301001488182640  # Plains, spawn 232 156, desert 9%, plains 47%, desert path 133 blocks, water 2%, sheep 20, food 18 (0 chickens), trees 151, lava 51 blocks, cave 47 blocks (49 iron), fortress 4.2 chunks
-2443863029829775717  # Plains, spawn 172 160, desert 17%, plains 27%, desert path 90 blocks, water 1%, sheep 72, food 9 (0 chickens), trees 340, lava 73 blocks, cave 38 blocks (6 iron), fortress 7.8 chunks
-1622473073474684805  # Plains, spawn 124 224, desert 13%, plains 33%, desert path 80 blocks, water 1%, sheep 4, food 16 (0 chickens), trees 222, lava 66 blocks, cave 59 blocks (44 iron), fortress 6.4 chunks
--9047819376933273299  # Plains, spawn 88 256, desert 10%, plains 23%, desert path 97 blocks, water 11%, sheep 24, food 8 (0 chickens), trees 720, lava 72 blocks, cave 52 blocks (47 iron), fortress 7.6 chunks
-1965258686641319019  # Plains, spawn 252 168, desert 17%, plains 48%, desert path 98 blocks, water 4%, sheep 27, food 4 (0 chickens), trees 814, lava 92 blocks, cave 20 blocks (14 iron), fortress 7.8 chunks
-7448192888972430517  # Plains, spawn 236 -172, desert 14%, plains 50%, desert path 89 blocks, water 1%, sheep 28, food 36 (28 chickens), trees 728, lava 100 blocks, cave 6 blocks (13 iron), fortress 7.2 chunks
-6339838233986689545  # Plains, spawn -36 252, desert 24%, plains 24%, desert path 126 blocks, water 8%, sheep 25, food 4 (4 chickens), trees 970, lava 22 blocks, cave 55 blocks (55 iron), fortress 7.8 chunks
--2110422822992056499  # Plains, spawn 88 256, desert 26%, plains 29%, desert path 68 blocks, water 0%, sheep 16, food 24 (12 chickens), trees 454, lava 74 blocks, cave 36 blocks (20 iron), fortress 6.7 chunks
-3622305597266905349  # Plains, spawn 0 0, desert 21%, plains 62%, desert path 51 blocks, water 2%, sheep 4, food 28 (0 chickens), trees 7, lava 50 blocks, cave 24 blocks (29 iron), fortress 5.7 chunks
--3905561493340326689  # Plains, spawn 252 140, desert 9%, plains 37%, desert path 56 blocks, water 1%, sheep 8, food 22 (22 chickens), trees 110, lava 76 blocks, cave 60 blocks (119 iron), fortress 7.6 chunks
-5126094598237923550  # Plains, spawn -116 236, desert 32%, plains 13%, desert path 46 blocks, water 0%, sheep 24, food 20 (4 chickens), trees 459, lava 55 blocks, cave 49 blocks (113 iron), fortress 6.4 chunks
-1028519770837282481  # Plains, spawn -24 100, desert 20%, plains 47%, desert path 73 blocks, water 14%, sheep 12, food 40 (0 chickens), trees 169, lava 72 blocks, cave 22 blocks (59 iron), fortress 7.1 chunks
--557879671270739614  # Plains, spawn -60 164, desert 25%, plains 26%, desert path 11 blocks, water 1%, sheep 7, food 15 (4 chickens), trees 237, lava 45 blocks, cave 22 blocks (10 iron), fortress 7.8 chunks
-6961602879092078507  # Plains, spawn 0 0, desert 23%, plains 28%, desert path 17 blocks, water 9%, sheep 56, food 7 (0 chickens), trees 5, lava 98 blocks, cave 28 blocks (11 iron), fortress 7.8 chunks
-5083165438286402822  # Plains, spawn -8 232, desert 14%, plains 70%, desert path 135 blocks, water 1%, sheep 24, food 20 (20 chickens), trees 479, lava 65 blocks, cave 57 blocks (34 iron), fortress 7.2 chunks
--2391023096002646685  # Plains, spawn -67 12, desert 20%, plains 51%, desert path 83 blocks, water 5%, sheep 65, food 4 (4 chickens), trees 23, lava 42 blocks, cave 28 blocks (94 iron), fortress 7.8 chunks
--8985222786242668686  # Plains, spawn 108 256, desert 15%, plains 25%, desert path 118 blocks, water 0%, sheep 8, food 16 (0 chickens), trees 171, lava 87 blocks, cave 23 blocks (41 iron), fortress 5.7 chunks
-1341043976580051667  # Plains, spawn 128 168, desert 22%, plains 44%, desert path 118 blocks, water 12%, sheep 12, food 12 (12 chickens), trees 52, lava 40 blocks, cave 39 blocks (37 iron), fortress 5.8 chunks
--7738437366826971948  # Plains, spawn -239 227, desert 33%, plains 14%, desert path 45 blocks, water 3%, sheep 10, food 6 (6 chickens), trees 461, lava 82 blocks, cave 8 blocks (71 iron), fortress 5.0 chunks
--2115190559773085918  # Plains, spawn 128 160, desert 13%, plains 31%, desert path 107 blocks, water 14%, sheep 12, food 4 (0 chickens), trees 193, lava 65 blocks, cave 45 blocks (78 iron), fortress 7.2 chunks
-1799372951662987173  # Plains, spawn -165 250, desert 23%, plains 39%, desert path 28 blocks, water 0%, sheep 52, food 8 (0 chickens), trees 598, lava 92 blocks, cave 27 blocks (63 iron), fortress 6.7 chunks
-8139788565312568257  # Plains, spawn 388 79, desert 27%, plains 45%, desert path 22 blocks, water 0%, sheep 18, food 4 (4 chickens), trees 10, lava 89 blocks, cave 64 blocks (52 iron), fortress 7.2 chunks
-694904161127599003  # Plains, spawn 76 252, desert 28%, plains 43%, desert path 40 blocks, water 1%, sheep 4, food 13 (0 chickens), trees 283, lava 70 blocks, cave 62 blocks (114 iron), fortress 6.7 chunks
--2474270004912432016  # Plains, spawn 0 0, desert 9%, plains 57%, desert path 80 blocks, water 0%, sheep 11, food 24 (24 chickens), trees 26, lava 88 blocks, cave 18 blocks (62 iron), fortress 7.2 chunks
-302746698928946680  # Plains, spawn 144 -104, desert 19%, plains 39%, desert path 25 blocks, water 4%, sheep 28, food 10 (2 chickens), trees 395, lava 42 blocks, cave 64 blocks (11 iron), fortress 5.7 chunks
--190650767134573184  # Plains, spawn -68 224, desert 14%, plains 20%, desert path 75 blocks, water 1%, sheep 48, food 16 (16 chickens), trees 568, lava 90 blocks, cave 58 blocks (13 iron), fortress 7.8 chunks
-451159259523485306  # Plains, spawn 92 252, desert 44%, plains 25%, desert path 33 blocks, water 1%, sheep 8, food 15 (0 chickens), trees 310, lava 76 blocks, cave 50 blocks (109 iron), fortress 6.7 chunks
--3554554979695197727  # Plains, spawn 124 -160, desert 9%, plains 52%, desert path 147 blocks, water 0%, sheep 70, food 8 (0 chickens), trees 72, lava 40 blocks, cave 52 blocks (30 iron), fortress 7.2 chunks
--3016790534315949686  # Plains, spawn 224 196, desert 15%, plains 44%, desert path 73 blocks, water 11%, sheep 47, food 10 (0 chickens), trees 711, lava 60 blocks, cave 14 blocks (86 iron), fortress 7.2 chunks
--2573144198792986625  # Plains, spawn -172 244, desert 16%, plains 31%, desert path 45 blocks, water 7%, sheep 4, food 6 (6 chickens), trees 232, lava 49 blocks, cave 62 blocks (12 iron), fortress 7.8 chunks
-7313313976007910199  # Plains, spawn 192 212, desert 21%, plains 26%, desert path 91 blocks, water 12%, sheep 8, food 16 (0 chickens), trees 76, lava 80 blocks, cave 52 blocks (8 iron), fortress 6.7 chunks
--4960445124629136429  # Plains, spawn -84 220, desert 27%, plains 38%, desert path 90 blocks, water 2%, sheep 35, food 8 (0 chickens), trees 180, lava 84 blocks, cave 44 blocks (63 iron), fortress 7.1 chunks
--2665410787088652472  # Plains, spawn 227 251, desert 29%, plains 27%, desert path 48 blocks, water 4%, sheep 8, food 20 (4 chickens), trees 68, lava 85 blocks, cave 12 blocks (80 iron), fortress 7.6 chunks
--6579778989515514064  # Plains, spawn -228 100, desert 24%, plains 19%, desert path 53 blocks, water 0%, sheep 14, food 22 (20 chickens), trees 643, lava 30 blocks, cave 32 blocks (104 iron), fortress 6.7 chunks
--1061030938827144715  # Plains, spawn -24 180, desert 15%, plains 35%, desert path 104 blocks, water 5%, sheep 16, food 9 (0 chickens), trees 305, lava 77 blocks, cave 34 blocks (11 iron), fortress 7.2 chunks
-2116261117321831602  # Plains, spawn 144 216, desert 24%, plains 32%, desert path 100 blocks, water 0%, sheep 8, food 18 (18 chickens), trees 896, lava 88 blocks, cave 14 blocks (15 iron), fortress 6.4 chunks
-2640402008230719047  # Plains, spawn -178 197, desert 41%, plains 26%, desert path 8 blocks, water 5%, sheep 4, food 20 (0 chickens), trees 36, lava 50 blocks, cave 16 blocks (30 iron), fortress 6.4 chunks
-8885463745539809558  # Plains, spawn -212 -204, desert 29%, plains 38%, desert path 33 blocks, water 0%, sheep 4, food 26 (19 chickens), trees 229, lava 96 blocks, cave 45 blocks (26 iron), fortress 6.7 chunks
-6965520738863182001  # Plains, spawn 0 0, desert 8%, plains 60%, desert path 147 blocks, water 0%, sheep 20, food 20 (0 chickens), trees 219, lava 56 blocks, cave 31 blocks (78 iron), fortress 7.8 chunks
-3464566134364431586  # Plains, spawn -68 -44, desert 16%, plains 43%, desert path 113 blocks, water 0%, sheep 4, food 17 (13 chickens), trees 380, lava 5 blocks, cave 60 blocks (149 iron), fortress 6.4 chunks
-7056156680256918226  # Plains, spawn 0 120, desert 14%, plains 74%, desert path 153 blocks, water 1%, sheep 64, food 16 (16 chickens), trees 146, lava 50 blocks, cave 41 blocks (122 iron), fortress 7.8 chunks
--3947919189379324575  # Plains, spawn -256 -52, desert 14%, plains 37%, desert path 131 blocks, water 9%, sheep 16, food 12 (0 chickens), trees 140, lava 82 blocks, cave 46 blocks (96 iron), fortress 6.7 chunks
--1883135395007349072  # Plains, spawn 0 248, desert 11%, plains 46%, desert path 48 blocks, water 1%, sheep 10, food 28 (8 chickens), trees 295, lava 15 blocks, cave 58 blocks (135 iron), fortress 7.2 chunks
--2366129772186969446  # Plains, spawn 196 256, desert 12%, plains 54%, desert path 152 blocks, water 0%, sheep 4, food 24 (4 chickens), trees 55, lava 100 blocks, cave 53 blocks (18 iron), fortress 6.4 chunks
-2131505535951910363  # Plains, spawn 228 124, desert 18%, plains 26%, desert path 32 blocks, water 14%, sheep 80, food 12 (4 chickens), trees 314, lava 42 blocks, cave 29 blocks (30 iron), fortress 6.4 chunks
--1765489421139506199  # Plains, spawn -132 236, desert 23%, plains 41%, desert path 106 blocks, water 0%, sheep 12, food 15 (12 chickens), trees 677, lava 92 blocks, cave 32 blocks (108 iron), fortress 7.6 chunks
--8639794658535681704  # Plains, spawn 158 141, desert 33%, plains 25%, desert path 22 blocks, water 0%, sheep 19, food 13 (0 chickens), trees 403, lava 58 blocks, cave 48 blocks (15 iron), fortress 7.2 chunks
-6397876934033662754  # Plains, spawn -256 244, desert 20%, plains 46%, desert path 81 blocks, water 2%, sheep 4, food 16 (4 chickens), trees 235, lava 14 blocks, cave 48 blocks (112 iron), fortress 5.0 chunks
-1373478407158883443  # Plains, spawn 0 0, desert 28%, plains 35%, desert path 16 blocks, water 0%, sheep 16, food 28 (24 chickens), trees 137, lava 21 blocks, cave 59 blocks (94 iron), fortress 7.1 chunks
-1697427425286919975  # Plains, spawn 180 256, desert 23%, plains 18%, desert path 8 blocks, water 3%, sheep 4, food 12 (0 chickens), trees 543, lava 97 blocks, cave 29 blocks (76 iron), fortress 6.4 chunks
--431080752112863245  # Plains, spawn -21 180, desert 12%, plains 56%, desert path 101 blocks, water 1%, sheep 4, food 12 (12 chickens), trees 75, lava 44 blocks, cave 53 blocks (70 iron), fortress 6.4 chunks
-6233066571791646144  # Plains, spawn 256 252, desert 11%, plains 51%, desert path 8 blocks, water 0%, sheep 4, food 12 (4 chickens), trees 1647, lava 100 blocks, cave 48 blocks (90 iron), fortress 6.3 chunks
--3167504558163581812  # Plains, spawn -44 184, desert 16%, plains 44%, desert path 141 blocks, water 7%, sheep 36, food 30 (4 chickens), trees 902, lava 79 blocks, cave 50 blocks (78 iron), fortress 6.7 chunks
-6738746319504973052  # Plains, spawn -57 209, desert 29%, plains 47%, desert path 45 blocks, water 4%, sheep 56, food 4 (0 chickens), trees 66, lava 63 blocks, cave 58 blocks (12 iron), fortress 7.2 chunks
-7829705579492723604  # Plains, spawn 188 -12, desert 14%, plains 43%, desert path 71 blocks, water 1%, sheep 12, food 16 (8 chickens), trees 563, lava 99 blocks, cave 42 blocks (7 iron), fortress 7.6 chunks
--218211319416790578  # Plains, spawn -84 -56, desert 21%, plains 27%, desert path 83 blocks, water 3%, sheep 4, food 21 (4 chickens), trees 260, lava 17 blocks, cave 12 blocks (46 iron), fortress 7.8 chunks
-2973030402168749853  # Plains, spawn 21 28, desert 11%, plains 59%, desert path 113 blocks, water 0%, sheep 13, food 20 (0 chickens), trees 5, lava 69 blocks, cave 46 blocks (59 iron), fortress 6.4 chunks
-412521381317178988  # Plains, spawn -25 180, desert 14%, plains 46%, desert path 118 blocks, water 6%, sheep 12, food 10 (0 chickens), trees 70, lava 41 blocks, cave 47 blocks (136 iron), fortress 6.7 chunks
--442376288503006760  # Plains, spawn 156 256, desert 8%, plains 46%, desert path 102 blocks, water 10%, sheep 64, food 4 (4 chickens), trees 372, lava 26 blocks, cave 20 blocks (10 iron), fortress 5.8 chunks
-8572775732078211327  # Plains, spawn 0 0, desert 8%, plains 72%, desert path 147 blocks, water 0%, sheep 4, food 27 (0 chickens), trees 5, lava 62 blocks, cave 59 blocks (25 iron), fortress 7.8 chunks
--5462349043579862153  # Plains, spawn 12 252, desert 12%, plains 41%, desert path 75 blocks, water 15%, sheep 24, food 16 (4 chickens), trees 477, lava 66 blocks, cave 44 blocks (90 iron), fortress 7.2 chunks
--903941263415205191  # Plains, spawn 76 236, desert 9%, plains 58%, desert path 136 blocks, water 0%, sheep 24, food 7 (0 chickens), trees 293, lava 29 blocks, cave 64 blocks (58 iron), fortress 7.8 chunks
--6074974492046989764  # Plains, spawn 16 172, desert 16%, plains 13%, desert path 68 blocks, water 0%, sheep 12, food 24 (20 chickens), trees 464, lava 100 blocks, cave 36 blocks (28 iron), fortress 6.4 chunks
--8025043655590590833  # Plains, spawn 0 0, desert 29%, plains 60%, desert path 97 blocks, water 3%, sheep 4, food 21 (20 chickens), trees 13, lava 83 blocks, cave 56 blocks (10 iron), fortress 7.1 chunks
-3186118104032391158  # Plains, spawn 248 220, desert 12%, plains 61%, desert path 64 blocks, water 0%, sheep 24, food 24 (16 chickens), trees 45, lava 50 blocks, cave 10 blocks (23 iron), fortress 5.7 chunks
--5679648001733563601  # Plains, spawn 0 0, desert 19%, plains 34%, desert path 90 blocks, water 0%, sheep 66, food 4 (4 chickens), trees 8, lava 19 blocks, cave 18 blocks (59 iron), fortress 6.4 chunks
--3629446998444992804  # Plains, spawn -76 286, desert 11%, plains 40%, desert path 17 blocks, water 12%, sheep 9, food 17 (0 chickens), trees 84, lava 47 blocks, cave 8 blocks (60 iron), fortress 7.2 chunks
--2081011959216181295  # Plains, spawn -41 -114, desert 20%, plains 54%, desert path 80 blocks, water 4%, sheep 8, food 19 (9 chickens), trees 122, lava 89 blocks, cave 38 blocks (34 iron), fortress 7.1 chunks
-3682344377243255861  # Plains, spawn 120 216, desert 14%, plains 35%, desert path 90 blocks, water 2%, sheep 39, food 8 (0 chickens), trees 356, lava 69 blocks, cave 48 blocks (26 iron), fortress 5.0 chunks
--1245819837001629690  # Plains, spawn 220 212, desert 8%, plains 46%, desert path 131 blocks, water 1%, sheep 4, food 8 (8 chickens), trees 274, lava 38 blocks, cave 13 blocks (10 iron), fortress 7.2 chunks
-5670001286099238870  # Plains, spawn -128 200, desert 21%, plains 38%, desert path 89 blocks, water 4%, sheep 7, food 27 (19 chickens), trees 438, lava 48 blocks, cave 48 blocks (8 iron), fortress 6.7 chunks
--3457122621216117869  # Plains, spawn -114 248, desert 30%, plains 36%, desert path 45 blocks, water 7%, sheep 4, food 5 (0 chickens), trees 17, lava 71 blocks, cave 62 blocks (16 iron), fortress 7.8 chunks
--9086077050207695516  # Plains, spawn -44 -164, desert 23%, plains 15%, desert path 64 blocks, water 5%, sheep 12, food 12 (12 chickens), trees 419, lava 56 blocks, cave 60 blocks (72 iron), fortress 6.4 chunks
--3254771067075624093  # Plains, spawn 99 98, desert 17%, plains 60%, desert path 51 blocks, water 5%, sheep 4, food 21 (0 chickens), trees 120, lava 89 blocks, cave 26 blocks (24 iron), fortress 6.4 chunks
-3130886402340838603  # Plains, spawn 212 -4, desert 8%, plains 49%, desert path 89 blocks, water 2%, sheep 12, food 4 (0 chickens), trees 223, lava 100 blocks, cave 48 blocks (19 iron), fortress 5.0 chunks
-8464605808370683294  # Plains, spawn 0 0, desert 9%, plains 70%, desert path 78 blocks, water 0%, sheep 8, food 14 (0 chickens), trees 330, lava 50 blocks, cave 62 blocks (34 iron), fortress 5.7 chunks
--4063518369644383852  # Plains, spawn 216 -100, desert 37%, plains 25%, desert path 40 blocks, water 0%, sheep 8, food 12 (8 chickens), trees 426, lava 69 blocks, cave 8 blocks (81 iron), fortress 7.8 chunks
--727913366202006778  # Plains, spawn 188 248, desert 11%, plains 55%, desert path 68 blocks, water 2%, sheep 8, food 14 (14 chickens), trees 64, lava 63 blocks, cave 52 blocks (178 iron), fortress 5.0 chunks
--7888102714167937977  # Plains, spawn 7 115, desert 39%, plains 19%, desert path 91 blocks, water 3%, sheep 19, food 16 (0 chickens), trees 508, lava 100 blocks, cave 30 blocks (113 iron), fortress 7.2 chunks
--1580066671591208161  # Plains, spawn 220 124, desert 14%, plains 34%, desert path 96 blocks, water 0%, sheep 19, food 4 (4 chickens), trees 250, lava 90 blocks, cave 38 blocks (49 iron), fortress 7.6 chunks
--2492896177761379713  # Plains, spawn 185 275, desert 32%, plains 39%, desert path 57 blocks, water 10%, sheep 3, food 4 (0 chickens), trees 13, lava 80 blocks, cave 8 blocks (15 iron), fortress 6.3 chunks
--6021864603361526077  # Plains, spawn -19 -21, desert 9%, plains 83%, desert path 142 blocks, water 1%, sheep 8, food 24 (0 chickens), trees 6, lava 27 blocks, cave 38 blocks (113 iron), fortress 7.1 chunks
-488927093655836852  # Plains, spawn 0 0, desert 8%, plains 55%, desert path 106 blocks, water 0%, sheep 4, food 32 (3 chickens), trees 5, lava 84 blocks, cave 62 blocks (139 iron), fortress 7.2 chunks
-3923939849968181934  # Plains, spawn -61 279, desert 16%, plains 61%, desert path 102 blocks, water 0%, sheep 12, food 24 (0 chickens), trees 130, lava 89 blocks, cave 58 blocks (50 iron), fortress 5.4 chunks
--4442360097461295250  # Plains, spawn -9 295, desert 12%, plains 28%, desert path 102 blocks, water 2%, sheep 8, food 27 (23 chickens), trees 191, lava 32 blocks, cave 61 blocks (101 iron), fortress 5.8 chunks
-6586518501029346724  # Plains, spawn 0 0, desert 10%, plains 70%, desert path 85 blocks, water 0%, sheep 8, food 37 (33 chickens), trees 104, lava 65 blocks, cave 44 blocks (8 iron), fortress 7.8 chunks
--4485732968378948399  # Plains, spawn 0 0, desert 38%, plains 35%, desert path 8 blocks, water 2%, sheep 4, food 29 (9 chickens), trees 186, lava 8 blocks, cave 30 blocks (49 iron), fortress 7.8 chunks
--1451531361698743414  # Plains, spawn 17 226, desert 17%, plains 19%, desert path 67 blocks, water 0%, sheep 4, food 13 (0 chickens), trees 177, lava 39 blocks, cave 14 blocks (53 iron), fortress 7.2 chunks
-8761611088810791111  # Plains, spawn 224 -56, desert 13%, plains 45%, desert path 48 blocks, water 2%, sheep 8, food 8 (0 chickens), trees 352, lava 73 blocks, cave 28 blocks (6 iron), fortress 7.8 chunks
-6430828286447922273  # Plains, spawn 217 207, desert 20%, plains 38%, desert path 28 blocks, water 2%, sheep 60, food 8 (0 chickens), trees 306, lava 86 blocks, cave 60 blocks (6 iron), fortress 7.2 chunks
--4617002372362266110  # Plains, spawn 295 -159, desert 12%, plains 29%, desert path 89 blocks, water 0%, sheep 20, food 16 (8 chickens), trees 434, lava 95 blocks, cave 22 blocks (7 iron), fortress 7.6 chunks
-5330576486799440896  # Plains, spawn -8 254, desert 12%, plains 42%, desert path 22 blocks, water 13%, sheep 50, food 8 (0 chickens), trees 109, lava 40 blocks, cave 42 blocks (10 iron), fortress 7.1 chunks
-8667722996472168747  # Plains, spawn 0 0, desert 12%, plains 75%, desert path 17 blocks, water 4%, sheep 68, food 4 (0 chickens), trees 36, lava 65 blocks, cave 50 blocks (14 iron), fortress 7.8 chunks
-5186513277835971018  # Plains, spawn 108 208, desert 29%, plains 36%, desert path 25 blocks, water 0%, sheep 76, food 8 (4 chickens), trees 766, lava 97 blocks, cave 60 blocks (140 iron), fortress 7.2 chunks
--7186939565249617084  # Plains, spawn 0 0, desert 26%, plains 68%, desert path 51 blocks, water 0%, sheep 8, food 16 (4 chickens), trees 22, lava 97 blocks, cave 40 blocks (14 iron), fortress 7.1 chunks
-6475337419276026883  # Plains, spawn 236 224, desert 8%, plains 46%, desert path 135 blocks, water 0%, sheep 4, food 14 (4 chickens), trees 513, lava 42 blocks, cave 26 blocks (6 iron), fortress 5.0 chunks
-140641152024492988  # Plains, spawn 5 -23, desert 23%, plains 42%, desert path 113 blocks, water 2%, sheep 4, food 11 (11 chickens), trees 321, lava 83 blocks, cave 32 blocks (38 iron), fortress 7.1 chunks
--8295683539579819011  # Plains, spawn 256 -148, desert 29%, plains 39%, desert path 33 blocks, water 0%, sheep 8, food 8 (8 chickens), trees 260, lava 45 blocks, cave 4 blocks (61 iron), fortress 7.8 chunks
-4164234202111171081  # Plains, spawn 252 168, desert 12%, plains 36%, desert path 98 blocks, water 0%, sheep 4, food 20 (12 chickens), trees 376, lava 28 blocks, cave 31 blocks (40 iron), fortress 6.7 chunks
--2677088700576349616  # Plains, spawn -96 252, desert 13%, plains 59%, desert path 135 blocks, water 0%, sheep 16, food 9 (4 chickens), trees 927, lava 62 blocks, cave 8 blocks (115 iron), fortress 7.2 chunks
-911170614670239179  # Plains, spawn 289 128, desert 43%, plains 39%, desert path 80 blocks, water 5%, sheep 21, food 4 (0 chickens), trees 44, lava 18 blocks, cave 42 blocks (116 iron), fortress 5.0 chunks
-5045974058794489036  # Plains, spawn 212 180, desert 12%, plains 43%, desert path 101 blocks, water 0%, sheep 4, food 32 (8 chickens), trees 808, lava 65 blocks, cave 30 blocks (98 iron), fortress 7.8 chunks
-7449297547170457968  # Plains, spawn -204 216, desert 23%, plains 23%, desert path 40 blocks, water 0%, sheep 20, food 6 (0 chickens), trees 324, lava 88 blocks, cave 36 blocks (120 iron), fortress 7.2 chunks
--3731530868334145052  # Plains, spawn 116 124, desert 22%, plains 15%, desert path 51 blocks, water 4%, sheep 4, food 19 (4 chickens), trees 344, lava 46 blocks, cave 43 blocks (62 iron), fortress 7.1 chunks
--51587395546142272  # Plains, spawn 172 148, desert 15%, plains 36%, desert path 60 blocks, water 0%, sheep 8, food 15 (15 chickens), trees 883, lava 26 blocks, cave 28 blocks (21 iron), fortress 6.7 chunks
--8469366214977727176  # Plains, spawn 44 100, desert 40%, plains 26%, desert path 68 blocks, water 0%, sheep 37, food 4 (0 chickens), trees 109, lava 96 blocks, cave 6 blocks (128 iron), fortress 7.8 chunks
-4985272654657576052  # Plains, spawn 220 124, desert 18%, plains 26%, desert path 135 blocks, water 1%, sheep 4, food 24 (4 chickens), trees 134, lava 100 blocks, cave 58 blocks (7 iron), fortress 7.6 chunks
--928198416599483381  # Plains, spawn 116 212, desert 26%, plains 30%, desert path 40 blocks, water 14%, sheep 10, food 20 (4 chickens), trees 57, lava 82 blocks, cave 41 blocks (88 iron), fortress 6.7 chunks
--5437620788429758728  # Plains, spawn -136 -20, desert 22%, plains 40%, desert path 79 blocks, water 3%, sheep 16, food 32 (16 chickens), trees 430, lava 72 blocks, cave 64 blocks (172 iron), fortress 7.8 chunks
-3874293129394136811  # Plains, spawn 32 244, desert 19%, plains 27%, desert path 72 blocks, water 4%, sheep 4, food 18 (4 chickens), trees 471, lava 37 blocks, cave 47 blocks (76 iron), fortress 7.2 chunks
-5610919549518001701  # Plains, spawn 128 279, desert 35%, plains 21%, desert path 8 blocks, water 12%, sheep 4, food 4 (0 chickens), trees 716, lava 48 blocks, cave 58 blocks (10 iron), fortress 5.4 chunks
-2723699972263757944  # Plains, spawn -92 232, desert 14%, plains 35%, desert path 139 blocks, water 0%, sheep 37, food 8 (0 chickens), trees 525, lava 98 blocks, cave 50 blocks (46 iron), fortress 7.2 chunks
--8430752472818845977  # Plains, spawn 84 -55, desert 33%, plains 19%, desert path 68 blocks, water 6%, sheep 50, food 21 (0 chickens), trees 350, lava 26 blocks, cave 38 blocks (9 iron), fortress 6.4 chunks
--6276545998447396182  # Plains, spawn 240 154, desert 39%, plains 22%, desert path 35 blocks, water 11%, sheep 4, food 13 (1 chickens), trees 20, lava 70 blocks, cave 17 blocks (127 iron), fortress 7.8 chunks
-7572807510164994610  # Plains, spawn -112 252, desert 9%, plains 31%, desert path 89 blocks, water 1%, sheep 24, food 8 (8 chickens), trees 198, lava 77 blocks, cave 22 blocks (110 iron), fortress 7.8 chunks
--7050974352016665389  # Plains, spawn 180 216, desert 33%, plains 33%, desert path 11 blocks, water 0%, sheep 56, food 8 (4 chickens), trees 305, lava 98 blocks, cave 31 blocks (109 iron), fortress 7.2 chunks
--3001919440418660847  # Plains, spawn -160 232, desert 8%, plains 24%, desert path 144 blocks, water 2%, sheep 4, food 24 (0 chickens), trees 161, lava 99 blocks, cave 62 blocks (11 iron), fortress 5.8 chunks
-3714628271545022967  # Plains, spawn 16 252, desert 21%, plains 51%, desert path 17 blocks, water 11%, sheep 18, food 16 (0 chickens), trees 221, lava 44 blocks, cave 41 blocks (7 iron), fortress 7.8 chunks
-4690606560556555963  # Plains, spawn -80 256, desert 13%, plains 52%, desert path 89 blocks, water 2%, sheep 7, food 20 (0 chickens), trees 602, lava 55 blocks, cave 49 blocks (135 iron), fortress 7.8 chunks
--1909296934325857554  # Plains, spawn -48 252, desert 11%, plains 38%, desert path 160 blocks, water 0%, sheep 4, food 21 (0 chickens), trees 466, lava 55 blocks, cave 25 blocks (74 iron), fortress 5.7 chunks
--8110506846391375286  # Plains, spawn 27 225, desert 10%, plains 48%, desert path 85 blocks, water 14%, sheep 16, food 10 (7 chickens), trees 52, lava 63 blocks, cave 64 blocks (112 iron), fortress 7.2 chunks
-6856749825043646247  # Plains, spawn 136 256, desert 20%, plains 38%, desert path 53 blocks, water 0%, sheep 20, food 4 (4 chickens), trees 292, lava 52 blocks, cave 24 blocks (8 iron), fortress 5.8 chunks
--604279169045630118  # Plains, spawn -100 108, desert 10%, plains 46%, desert path 157 blocks, water 0%, sheep 28, food 28 (20 chickens), trees 301, lava 48 blocks, cave 53 blocks (33 iron), fortress 7.8 chunks
--1943558722659940796  # Plains, spawn -184 256, desert 10%, plains 37%, desert path 83 blocks, water 0%, sheep 32, food 24 (12 chickens), trees 140, lava 82 blocks, cave 23 blocks (110 iron), fortress 7.6 chunks
-45110701202547518  # Plains, spawn -140 256, desert 8%, plains 39%, desert path 148 blocks, water 0%, sheep 56, food 8 (0 chickens), trees 1663, lava 29 blocks, cave 31 blocks (9 iron), fortress 7.1 chunks
--6482355128144168  # Plains, spawn 104 224, desert 21%, plains 46%, desert path 108 blocks, water 6%, sheep 8, food 31 (31 chickens), trees 84, lava 48 blocks, cave 46 blocks (21 iron), fortress 5.7 chunks
-5085464685273443206  # Plains, spawn 140 168, desert 22%, plains 32%, desert path 11 blocks, water 7%, sheep 16, food 12 (0 chickens), trees 195, lava 78 blocks, cave 38 blocks (175 iron), fortress 7.8 chunks
-7615997723928023367  # Plains, spawn 0 0, desert 12%, plains 63%, desert path 88 blocks, water 0%, sheep 12, food 4 (0 chickens), trees 328, lava 53 blocks, cave 8 blocks (72 iron), fortress 7.2 chunks
-8615955640268695223  # Plains, spawn 0 0, desert 8%, plains 52%, desert path 124 blocks, water 3%, sheep 12, food 40 (4 chickens), trees 13, lava 37 blocks, cave 56 blocks (47 iron), fortress 7.1 chunks
--5170887317117949858  # Plains, spawn 68 252, desert 14%, plains 58%, desert path 86 blocks, water 0%, sheep 8, food 14 (14 chickens), trees 287, lava 64 blocks, cave 42 blocks (117 iron), fortress 7.2 chunks
--6451880707074153572  # Plains, spawn -24 216, desert 21%, plains 46%, desert path 72 blocks, water 0%, sheep 20, food 40 (12 chickens), trees 280, lava 36 blocks, cave 47 blocks (26 iron), fortress 5.7 chunks
--7354709315624287882  # Plains, spawn 100 252, desert 8%, plains 68%, desert path 118 blocks, water 15%, sheep 8, food 16 (16 chickens), trees 395, lava 60 blocks, cave 58 blocks (30 iron), fortress 6.4 chunks
--4305543863268312527  # Plains, spawn 224 132, desert 15%, plains 48%, desert path 79 blocks, water 2%, sheep 80, food 12 (0 chickens), trees 93, lava 52 blocks, cave 8 blocks (122 iron), fortress 7.2 chunks
-1941165255132466402  # Plains, spawn -68 -140, desert 19%, plains 53%, desert path 118 blocks, water 1%, sheep 56, food 12 (12 chickens), trees 270, lava 43 blocks, cave 57 blocks (16 iron), fortress 6.4 chunks
--4526732485961387937  # Plains, spawn 92 256, desert 21%, plains 31%, desert path 11 blocks, water 1%, sheep 44, food 4 (4 chickens), trees 569, lava 96 blocks, cave 44 blocks (152 iron), fortress 7.2 chunks
-5494288462491545712  # Plains, spawn 0 0, desert 14%, plains 51%, desert path 113 blocks, water 1%, sheep 8, food 16 (4 chickens), trees 25, lava 87 blocks, cave 32 blocks (17 iron), fortress 7.8 chunks
-8071515758281777596  # Plains, spawn -56 236, desert 14%, plains 21%, desert path 48 blocks, water 12%, sheep 4, food 4 (0 chickens), trees 397, lava 31 blocks, cave 28 blocks (22 iron), fortress 7.1 chunks
-4724987028969395463  # Plains, spawn 98 177, desert 65%, plains 28%, desert path 11 blocks, water 0%, sheep 16, food 8 (4 chickens), trees 94, lava 95 blocks, cave 60 blocks (68 iron), fortress 5.8 chunks
-8850949026226591909  # Plains, spawn 188 116, desert 27%, plains 37%, desert path 68 blocks, water 0%, sheep 4, food 8 (8 chickens), trees 412, lava 85 blocks, cave 16 blocks (7 iron), fortress 7.8 chunks
--2519055385600952611  # Plains, spawn 0 0, desert 17%, plains 34%, desert path 102 blocks, water 0%, sheep 4, food 16 (16 chickens), trees 29, lava 62 blocks, cave 17 blocks (12 iron), fortress 5.7 chunks
-7820207866396432686  # Plains, spawn -16 -52, desert 25%, plains 35%, desert path 75 blocks, water 2%, sheep 64, food 4 (4 chickens), trees 430, lava 68 blocks, cave 64 blocks (17 iron), fortress 7.8 chunks
--4513481428902166611  # Plains, spawn 172 366, desert 34%, plains 45%, desert path 22 blocks, water 0%, sheep 4, food 8 (8 chickens), trees 94, lava 57 blocks, cave 44 blocks (78 iron), fortress 7.6 chunks
--3457041874529397278  # Plains, spawn 0 0, desert 8%, plains 35%, desert path 104 blocks, water 1%, sheep 8, food 14 (0 chickens), trees 109, lava 46 blocks, cave 42 blocks (9 iron), fortress 7.2 chunks
-8083408025371326243  # Plains, spawn 248 -24, desert 39%, plains 32%, desert path 40 blocks, water 0%, sheep 4, food 12 (0 chickens), trees 297, lava 79 blocks, cave 25 blocks (89 iron), fortress 5.8 chunks
-9079022344006423465  # Plains, spawn 232 248, desert 15%, plains 32%, desert path 40 blocks, water 0%, sheep 37, food 12 (12 chickens), trees 485, lava 76 blocks, cave 54 blocks (149 iron), fortress 6.4 chunks
-7451433074140001763  # Plains, spawn -18 126, desert 14%, plains 49%, desert path 104 blocks, water 0%, sheep 8, food 20 (12 chickens), trees 10, lava 65 blocks, cave 34 blocks (17 iron), fortress 6.4 chunks
-2825397255514095229  # Plains, spawn -44 256, desert 10%, plains 20%, desert path 83 blocks, water 3%, sheep 4, food 12 (12 chickens), trees 79, lava 21 blocks, cave 22 blocks (126 iron), fortress 5.4 chunks
-1578093870792202737  # Plains, spawn -76 176, desert 24%, plains 38%, desert path 81 blocks, water 1%, sheep 12, food 12 (4 chickens), trees 143, lava 47 blocks, cave 39 blocks (10 iron), fortress 5.7 chunks
--5510174181429535514  # Plains, spawn -80 256, desert 13%, plains 52%, desert path 67 blocks, water 0%, sheep 36, food 16 (0 chickens), trees 737, lava 52 blocks, cave 53 blocks (103 iron), fortress 7.8 chunks
-4486601959302652976  # Plains, spawn 156 248, desert 15%, plains 23%, desert path 115 blocks, water 2%, sheep 2, food 28 (0 chickens), trees 87, lava 100 blocks, cave 40 blocks (69 iron), fortress 6.7 chunks
--6411606138429040121  # Plains, spawn 164 114, desert 14%, plains 27%, desert path 72 blocks, water 0%, sheep 60, food 12 (0 chickens), trees 23, lava 79 blocks, cave 43 blocks (33 iron), fortress 5.7 chunks
--8142610699466400478  # Plains, spawn 0 200, desert 16%, plains 33%, desert path 88 blocks, water 1%, sheep 8, food 24 (24 chickens), trees 309, lava 21 blocks, cave 15 blocks (11 iron), fortress 5.0 chunks
-1273387548956868695  # Plains, spawn 144 252, desert 9%, plains 26%, desert path 151 blocks, water 0%, sheep 4, food 12 (4 chickens), trees 627, lava 48 blocks, cave 22 blocks (16 iron), fortress 5.0 chunks
-514594972630603655  # Plains, spawn 0 0, desert 24%, plains 62%, desert path 90 blocks, water 0%, sheep 12, food 16 (0 chickens), trees 194, lava 20 blocks, cave 58 blocks (60 iron), fortress 7.1 chunks
--7920443073048366036  # Plains, spawn -152 88, desert 41%, plains 32%, desert path 65 blocks, water 1%, sheep 36, food 4 (0 chickens), trees 240, lava 92 blocks, cave 55 blocks (98 iron), fortress 7.8 chunks
--8276036154942377833  # Plains, spawn -48 256, desert 10%, plains 31%, desert path 115 blocks, water 0%, sheep 5, food 13 (9 chickens), trees 300, lava 65 blocks, cave 44 blocks (56 iron), fortress 7.8 chunks
-9141436545061905314  # Plains, spawn 247 168, desert 14%, plains 38%, desert path 85 blocks, water 0%, sheep 12, food 12 (0 chickens), trees 482, lava 72 blocks, cave 62 blocks (122 iron), fortress 7.6 chunks
--1543490388636393826  # Plains, spawn -148 144, desert 34%, plains 21%, desert path 102 blocks, water 15%, sheep 6, food 8 (0 chickens), trees 81, lava 56 blocks, cave 62 blocks (24 iron), fortress 7.6 chunks
-6035873089321040133  # Plains, spawn 0 0, desert 21%, plains 56%, desert path 102 blocks, water 0%, sheep 32, food 8 (0 chickens), trees 6, lava 36 blocks, cave 55 blocks (9 iron), fortress 7.1 chunks
-8045318857509599672  # Plains, spawn 248 172, desert 8%, plains 57%, desert path 80 blocks, water 0%, sheep 87, food 4 (4 chickens), trees 805, lava 42 blocks, cave 16 blocks (93 iron), fortress 7.6 chunks
-9061137737451732071  # Plains, spawn 0 0, desert 16%, plains 77%, desert path 8 blocks, water 0%, sheep 16, food 23 (23 chickens), trees 20, lava 25 blocks, cave 54 blocks (184 iron), fortress 5.7 chunks
-2259375702927381742  # Plains, spawn 25 261, desert 26%, plains 32%, desert path 33 blocks, water 5%, sheep 72, food 7 (4 chickens), trees 5, lava 92 blocks, cave 8 blocks (111 iron), fortress 5.8 chunks
-2092236738990671774  # Plains, spawn -96 216, desert 38%, plains 30%, desert path 57 blocks, water 0%, sheep 12, food 16 (12 chickens), trees 281, lava 70 blocks, cave 43 blocks (62 iron), fortress 6.4 chunks
-5917599564312775132  # Plains, spawn 0 0, desert 42%, plains 42%, desert path 56 blocks, water 0%, sheep 10, food 43 (8 chickens), trees 278, lava 93 blocks, cave 28 blocks (12 iron), fortress 5.7 chunks
--1607974770864291555  # Plains, spawn 144 252, desert 34%, plains 26%, desert path 28 blocks, water 5%, sheep 4, food 7 (0 chickens), trees 79, lava 43 blocks, cave 62 blocks (12 iron), fortress 7.2 chunks
--7080554644079868416  # Plains, spawn -132 236, desert 9%, plains 35%, desert path 124 blocks, water 2%, sheep 83, food 4 (0 chickens), trees 144, lava 69 blocks, cave 60 blocks (127 iron), fortress 6.4 chunks
-7240410838608282201  # Plains, spawn -65 244, desert 37%, plains 43%, desert path 28 blocks, water 2%, sheep 8, food 4 (4 chickens), trees 80, lava 44 blocks, cave 34 blocks (23 iron), fortress 7.1 chunks
-6973270864474309219  # Plains, spawn 244 -40, desert 10%, plains 55%, desert path 28 blocks, water 6%, sheep 8, food 6 (0 chickens), trees 265, lava 67 blocks, cave 22 blocks (96 iron), fortress 7.1 chunks
-8118329074779278815  # Plains, spawn 204 256, desert 11%, plains 13%, desert path 90 blocks, water 6%, sheep 36, food 16 (0 chickens), trees 1202, lava 83 blocks, cave 19 blocks (6 iron), fortress 6.7 chunks
--5512365287207278971  # Plains, spawn -244 88, desert 20%, plains 41%, desert path 147 blocks, water 0%, sheep 32, food 4 (4 chickens), trees 829, lava 64 blocks, cave 58 blocks (28 iron), fortress 7.8 chunks
-6100945015865001376  # Plains, spawn -256 116, desert 22%, plains 27%, desert path 91 blocks, water 0%, sheep 4, food 22 (6 chickens), trees 401, lava 54 blocks, cave 60 blocks (27 iron), fortress 7.8 chunks
-7756834591100973516  # Plains, spawn 112 248, desert 9%, plains 48%, desert path 135 blocks, water 10%, sheep 38, food 24 (19 chickens), trees 309, lava 73 blocks, cave 57 blocks (7 iron), fortress 6.7 chunks
-2513771611127252710  # Plains, spawn 0 0, desert 8%, plains 85%, desert path 96 blocks, water 3%, sheep 83, food 7 (3 chickens), trees 9, lava 50 blocks, cave 36 blocks (13 iron), fortress 7.8 chunks
-5530123672816960528  # Plains, spawn -232 256, desert 24%, plains 29%, desert path 58 blocks, water 0%, sheep 12, food 19 (19 chickens), trees 81, lava 15 blocks, cave 44 blocks (63 iron), fortress 6.7 chunks
-1708050530193972853  # Plains, spawn 57 -46, desert 25%, plains 51%, desert path 85 blocks, water 2%, sheep 4, food 20 (0 chickens), trees 438, lava 91 blocks, cave 62 blocks (26 iron), fortress 7.1 chunks
--7412706013951007653  # Plains, spawn 136 148, desert 27%, plains 30%, desert path 22 blocks, water 3%, sheep 4, food 12 (4 chickens), trees 889, lava 40 blocks, cave 48 blocks (14 iron), fortress 6.7 chunks
--1748297680837067132  # Plains, spawn 0 0, desert 8%, plains 41%, desert path 158 blocks, water 4%, sheep 4, food 19 (0 chickens), trees 447, lava 60 blocks, cave 26 blocks (6 iron), fortress 6.4 chunks
--4218186044068429381  # Plains, spawn 184 248, desert 20%, plains 26%, desert path 32 blocks, water 2%, sheep 57, food 4 (0 chickens), trees 408, lava 61 blocks, cave 64 blocks (57 iron), fortress 7.1 chunks
--4577089198386777418  # Plains, spawn -24 180, desert 9%, plains 51%, desert path 142 blocks, water 1%, sheep 108, food 12 (4 chickens), trees 1179, lava 63 blocks, cave 43 blocks (107 iron), fortress 5.8 chunks
-6487374871169172828  # Plains, spawn 186 255, desert 9%, plains 29%, desert path 113 blocks, water 0%, sheep 8, food 32 (0 chickens), trees 1537, lava 74 blocks, cave 43 blocks (88 iron), fortress 6.4 chunks
-6912948519592360872  # Plains, spawn 188 -140, desert 17%, plains 47%, desert path 40 blocks, water 3%, sheep 49, food 19 (0 chickens), trees 181, lava 26 blocks, cave 62 blocks (37 iron), fortress 7.8 chunks
--6129052376229010491  # Plains, spawn -76 48, desert 30%, plains 19%, desert path 45 blocks, water 2%, sheep 16, food 20 (16 chickens), trees 325, lava 68 blocks, cave 58 blocks (102 iron), fortress 7.8 chunks
-2551167656510437983  # Plains, spawn 212 -176, desert 17%, plains 42%, desert path 28 blocks, water 0%, sheep 8, food 26 (12 chickens), trees 242, lava 89 blocks, cave 16 blocks (72 iron), fortress 7.8 chunks
--9193517741242759927  # Plains, spawn 0 0, desert 19%, plains 73%, desert path 11 blocks, water 5%, sheep 14, food 12 (8 chickens), trees 134, lava 4 blocks, cave 2 blocks (8 iron), fortress 7.1 chunks
--4717398264634843359  # Plains, spawn 216 236, desert 18%, plains 24%, desert path 91 blocks, water 0%, sheep 8, food 41 (33 chickens), trees 281, lava 14 blocks, cave 14 blocks (100 iron), fortress 5.7 chunks
-1987587569833567904  # Plains, spawn 220 72, desert 20%, plains 30%, desert path 51 blocks, water 0%, sheep 18, food 4 (4 chickens), trees 722, lava 52 blocks, cave 20 blocks (14 iron), fortress 7.8 chunks
--9152390908196916630  # Plains, spawn 0 0, desert 9%, plains 70%, desert path 16 blocks, water 0%, sheep 8, food 24 (20 chickens), trees 49, lava 96 blocks, cave 51 blocks (82 iron), fortress 7.8 chunks
--2141339930359114  # Plains, spawn -53 241, desert 10%, plains 39%, desert path 35 blocks, water 0%, sheep 7, food 24 (4 chickens), trees 166, lava 22 blocks, cave 60 blocks (80 iron), fortress 6.4 chunks
-8216989172714151047  # Plains, spawn 184 42, desert 12%, plains 49%, desert path 73 blocks, water 1%, sheep 19, food 32 (8 chickens), trees 25, lava 43 blocks, cave 25 blocks (119 iron), fortress 5.0 chunks
--9066656837925915149  # Plains, spawn -196 244, desert 17%, plains 42%, desert path 101 blocks, water 0%, sheep 25, food 4 (4 chickens), trees 486, lava 94 blocks, cave 34 blocks (159 iron), fortress 7.8 chunks
--11793949300951345  # Plains, spawn 112 108, desert 21%, plains 22%, desert path 62 blocks, water 0%, sheep 63, food 7 (0 chickens), trees 557, lava 95 blocks, cave 45 blocks (19 iron), fortress 7.8 chunks
--5490770960673818814  # Plains, spawn 0 0, desert 25%, plains 37%, desert path 8 blocks, water 0%, sheep 20, food 4 (4 chickens), trees 10, lava 68 blocks, cave 49 blocks (92 iron), fortress 7.1 chunks
--5570229000737016953  # Plains, spawn 160 236, desert 13%, plains 34%, desert path 86 blocks, water 7%, sheep 4, food 16 (0 chickens), trees 615, lava 62 blocks, cave 62 blocks (7 iron), fortress 7.8 chunks
--909950365930400853  # Plains, spawn 0 0, desert 12%, plains 59%, desert path 118 blocks, water 0%, sheep 64, food 4 (0 chickens), trees 23, lava 76 blocks, cave 50 blocks (60 iron), fortress 7.1 chunks
--7710375531773433681  # Plains, spawn 248 208, desert 15%, plains 35%, desert path 79 blocks, water 4%, sheep 4, food 20 (0 chickens), trees 454, lava 47 blocks, cave 51 blocks (51 iron), fortress 7.8 chunks
-2157261192764701378  # Plains, spawn 102 276, desert 8%, plains 57%, desert path 108 blocks, water 1%, sheep 48, food 4 (0 chickens), trees 94, lava 32 blocks, cave 29 blocks (43 iron), fortress 6.7 chunks
--5608816863513710147  # Plains, spawn 156 248, desert 8%, plains 36%, desert path 125 blocks, water 0%, sheep 12, food 34 (0 chickens), trees 567, lava 82 blocks, cave 38 blocks (11 iron), fortress 6.7 chunks
-8490130412277942163  # Plains, spawn 32 252, desert 14%, plains 29%, desert path 75 blocks, water 4%, sheep 4, food 8 (0 chickens), trees 567, lava 56 blocks, cave 60 blocks (57 iron), fortress 7.2 chunks
--3521730232836552032  # Plains, spawn 196 127, desert 19%, plains 66%, desert path 113 blocks, water 0%, sheep 28, food 16 (0 chickens), trees 84, lava 52 blocks, cave 27 blocks (15 iron), fortress 5.7 chunks
-1671450271808375488  # Plains, spawn -12 288, desert 9%, plains 79%, desert path 113 blocks, water 15%, sheep 4, food 12 (0 chickens), trees 21, lava 56 blocks, cave 37 blocks (10 iron), fortress 6.4 chunks
-3591967374936526731  # Plains, spawn 2 6, desert 33%, plains 61%, desert path 11 blocks, water 0%, sheep 83, food 8 (0 chickens), trees 227, lava 66 blocks, cave 52 blocks (73 iron), fortress 7.1 chunks
--4912247059866445724  # Plains, spawn 79 31, desert 12%, plains 77%, desert path 118 blocks, water 0%, sheep 4, food 20 (0 chickens), trees 386, lava 80 blocks, cave 8 blocks (10 iron), fortress 7.1 chunks
-1677299612365863950  # Plains, spawn 0 0, desert 14%, plains 80%, desert path 78 blocks, water 4%, sheep 2, food 24 (0 chickens), trees 385, lava 84 blocks, cave 26 blocks (9 iron), fortress 7.8 chunks
-8333421811455401226  # Plains, spawn 200 176, desert 21%, plains 28%, desert path 50 blocks, water 0%, sheep 50, food 8 (0 chickens), trees 561, lava 27 blocks, cave 29 blocks (23 iron), fortress 7.6 chunks
-4978477125884930551  # Plains, spawn 23 262, desert 24%, plains 51%, desert path 40 blocks, water 1%, sheep 4, food 6 (0 chickens), trees 59, lava 50 blocks, cave 52 blocks (26 iron), fortress 7.8 chunks
--2665342447447917427  # Plains, spawn 145 201, desert 16%, plains 31%, desert path 68 blocks, water 0%, sheep 37, food 4 (0 chickens), trees 290, lava 80 blocks, cave 27 blocks (110 iron), fortress 6.7 chunks
--3435765237428951365  # Plains, spawn 132 252, desert 34%, plains 31%, desert path 35 blocks, water 2%, sheep 28, food 4 (0 chickens), trees 302, lava 57 blocks, cave 40 blocks (66 iron), fortress 6.7 chunks
-2132009740139822705  # Plains, spawn -96 112, desert 9%, plains 37%, desert path 132 blocks, water 1%, sheep 7, food 26 (9 chickens), trees 117, lava 70 blocks, cave 15 blocks (76 iron), fortress 7.8 chunks
-4483694447086945040  # Plains, spawn 248 216, desert 8%, plains 28%, desert path 113 blocks, water 0%, sheep 30, food 12 (0 chickens), trees 277, lava 17 blocks, cave 30 blocks (33 iron), fortress 7.6 chunks
-4857147658489465199  # Plains, spawn 123 223, desert 11%, plains 51%, desert path 93 blocks, water 0%, sheep 5, food 20 (0 chickens), trees 24, lava 11 blocks, cave 18 blocks (111 iron), fortress 5.7 chunks
--8879054470445517724  # Plains, spawn -68 152, desert 10%, plains 47%, desert path 85 blocks, water 0%, sheep 56, food 12 (4 chickens), trees 363, lava 98 blocks, cave 21 blocks (8 iron), fortress 7.1 chunks
-5857341778976158468  # Plains, spawn 40 236, desert 8%, plains 31%, desert path 86 blocks, water 0%, sheep 39, food 36 (32 chickens), trees 442, lava 98 blocks, cave 31 blocks (40 iron), fortress 7.2 chunks
--6525963020267246253  # Plains, spawn -208 216, desert 34%, plains 41%, desert path 33 blocks, water 0%, sheep 32, food 16 (0 chickens), trees 161, lava 67 blocks, cave 5 blocks (7 iron), fortress 5.0 chunks
-6422720402660637848  # Plains, spawn 0 0, desert 19%, plains 67%, desert path 67 blocks, water 2%, sheep 64, food 4 (4 chickens), trees 38, lava 65 blocks, cave 58 blocks (35 iron), fortress 7.8 chunks
-8125678074093418380  # Plains, spawn 143 292, desert 16%, plains 49%, desert path 85 blocks, water 14%, sheep 46, food 4 (0 chickens), trees 419, lava 48 blocks, cave 28 blocks (8 iron), fortress 7.2 chunks
--6067441545776942828  # Plains, spawn 0 0, desert 34%, plains 50%, desert path 96 blocks, water 3%, sheep 74, food 8 (4 chickens), trees 42, lava 59 blocks, cave 57 blocks (38 iron), fortress 7.8 chunks
--1593548832942505353  # Plains, spawn 111 228, desert 14%, plains 26%, desert path 90 blocks, water 1%, sheep 12, food 20 (16 chickens), trees 280, lava 48 blocks, cave 28 blocks (42 iron), fortress 6.7 chunks
--7328896555041653563  # Plains, spawn -24 168, desert 28%, plains 29%, desert path 107 blocks, water 0%, sheep 4, food 8 (4 chickens), trees 625, lava 76 blocks, cave 46 blocks (129 iron), fortress 7.2 chunks
--4997919343722468648  # Plains, spawn 76 84, desert 17%, plains 24%, desert path 106 blocks, water 7%, sheep 4, food 19 (0 chickens), trees 115, lava 83 blocks, cave 52 blocks (62 iron), fortress 7.8 chunks
--8000242995131965969  # Plains, spawn 220 252, desert 22%, plains 11%, desert path 56 blocks, water 6%, sheep 3, food 24 (8 chickens), trees 430, lava 98 blocks, cave 24 blocks (78 iron), fortress 5.0 chunks
-2075141517021387401  # Plains, spawn 228 -64, desert 48%, plains 26%, desert path 17 blocks, water 0%, sheep 8, food 16 (4 chickens), trees 292, lava 50 blocks, cave 64 blocks (68 iron), fortress 7.8 chunks
--5925520453045189299  # Plains, spawn 236 248, desert 24%, plains 29%, desert path 33 blocks, water 0%, sheep 8, food 13 (0 chickens), trees 576, lava 38 blocks, cave 56 blocks (33 iron), fortress 7.6 chunks
--463341701268007366  # Plains, spawn 252 112, desert 29%, plains 34%, desert path 35 blocks, water 0%, sheep 39, food 4 (0 chickens), trees 172, lava 37 blocks, cave 20 blocks (12 iron), fortress 6.7 chunks
-1779988244644668405  # Plains, spawn -156 236, desert 12%, plains 31%, desert path 113 blocks, water 0%, sheep 28, food 28 (25 chickens), trees 195, lava 96 blocks, cave 60 blocks (108 iron), fortress 7.8 chunks
-4860228388428254151  # Plains, spawn 0 0, desert 8%, plains 47%, desert path 72 blocks, water 2%, sheep 24, food 12 (12 chickens), trees 5, lava 52 blocks, cave 46 blocks (47 iron), fortress 6.4 chunks
-781726243139350933  # Plains, spawn 56 96, desert 22%, plains 40%, desert path 11 blocks, water 8%, sheep 8, food 14 (14 chickens), trees 61, lava 76 blocks, cave 55 blocks (94 iron), fortress 7.2 chunks
-2030765930945008723  # Plains, spawn 0 0, desert 13%, plains 69%, desert path 124 blocks, water 0%, sheep 4, food 24 (20 chickens), trees 73, lava 88 blocks, cave 17 blocks (15 iron), fortress 7.8 chunks
-8640160799508999295  # Plains, spawn -140 -20, desert 24%, plains 40%, desert path 48 blocks, water 0%, sheep 34, food 12 (0 chickens), trees 348, lava 64 blocks, cave 43 blocks (114 iron), fortress 7.8 chunks
-4695790991995955572  # Plains, spawn 201 16, desert 16%, plains 36%, desert path 56 blocks, water 3%, sheep 12, food 25 (0 chickens), trees 114, lava 63 blocks, cave 58 blocks (66 iron), fortress 6.7 chunks
--4606411198912226267  # Plains, spawn -216 152, desert 20%, plains 26%, desert path 81 blocks, water 0%, sheep 4, food 8 (0 chickens), trees 110, lava 60 blocks, cave 64 blocks (51 iron), fortress 6.7 chunks
--7339973376295620110  # Plains, spawn -12 204, desert 43%, plains 20%, desert path 11 blocks, water 10%, sheep 48, food 4 (0 chickens), trees 534, lava 78 blocks, cave 50 blocks (13 iron), fortress 7.2 chunks
-6916298170265346520  # Plains, spawn -56 240, desert 13%, plains 28%, desert path 86 blocks, water 0%, sheep 8, food 26 (0 chickens), trees 532, lava 84 blocks, cave 31 blocks (75 iron), fortress 6.7 chunks
-4115594383987390412  # Plains, spawn 212 236, desert 12%, plains 44%, desert path 134 blocks, water 4%, sheep 12, food 21 (4 chickens), trees 636, lava 68 blocks, cave 29 blocks (9 iron), fortress 7.8 chunks
--8237353887477456113  # Plains, spawn -240 252, desert 9%, plains 36%, desert path 107 blocks, water 0%, sheep 12, food 20 (0 chickens), trees 217, lava 21 blocks, cave 25 blocks (39 iron), fortress 5.0 chunks
-1652171401786190150  # Plains, spawn 8 99, desert 12%, plains 45%, desert path 101 blocks, water 4%, sheep 8, food 18 (14 chickens), trees 115, lava 28 blocks, cave 42 blocks (37 iron), fortress 7.8 chunks
-7712152376079845015  # Plains, spawn -78 21, desert 20%, plains 16%, desert path 65 blocks, water 11%, sheep 4, food 27 (23 chickens), trees 11, lava 100 blocks, cave 46 blocks (101 iron), fortress 7.2 chunks
-1960606154622968107  # Plains, spawn -16 6, desert 15%, plains 54%, desert path 113 blocks, water 1%, sheep 87, food 4 (4 chickens), trees 331, lava 74 blocks, cave 8 blocks (43 iron), fortress 7.2 chunks
--5500865352649405106  # Plains, spawn 0 0, desert 9%, plains 24%, desert path 83 blocks, water 0%, sheep 20, food 26 (26 chickens), trees 349, lava 45 blocks, cave 45 blocks (7 iron), fortress 7.2 chunks
-7653229727248701286  # Plains, spawn 252 -36, desert 36%, plains 39%, desert path 46 blocks, water 2%, sheep 4, food 16 (16 chickens), trees 44, lava 63 blocks, cave 55 blocks (68 iron), fortress 5.8 chunks
--2054746224615369222  # Plains, spawn 116 108, desert 19%, plains 49%, desert path 73 blocks, water 0%, sheep 76, food 8 (0 chickens), trees 234, lava 56 blocks, cave 46 blocks (30 iron), fortress 5.7 chunks
-4989988598927685603  # Plains, spawn 24 160, desert 9%, plains 52%, desert path 113 blocks, water 0%, sheep 36, food 16 (4 chickens), trees 494, lava 45 blocks, cave 21 blocks (6 iron), fortress 7.2 chunks
-634617824721066949  # Plains, spawn 122 230, desert 9%, plains 31%, desert path 135 blocks, water 0%, sheep 24, food 20 (16 chickens), trees 472, lava 90 blocks, cave 41 blocks (139 iron), fortress 7.8 chunks
-6097207670524179003  # Plains, spawn 0 0, desert 11%, plains 72%, desert path 101 blocks, water 0%, sheep 26, food 20 (16 chickens), trees 59, lava 48 blocks, cave 64 blocks (103 iron), fortress 7.2 chunks
--6781382875416662878  # Plains, spawn -12 -104, desert 10%, plains 48%, desert path 17 blocks, water 15%, sheep 12, food 22 (2 chickens), trees 275, lava 42 blocks, cave 26 blocks (19 iron), fortress 7.1 chunks
-1490089776609695444  # Plains, spawn -192 -12, desert 13%, plains 24%, desert path 102 blocks, water 0%, sheep 36, food 4 (0 chickens), trees 370, lava 76 blocks, cave 55 blocks (100 iron), fortress 7.8 chunks
--4100315547389613386  # Plains, spawn 180 180, desert 21%, plains 27%, desert path 124 blocks, water 0%, sheep 36, food 4 (0 chickens), trees 592, lava 64 blocks, cave 52 blocks (25 iron), fortress 7.6 chunks
-5407435258780981239  # Plains, spawn -232 236, desert 16%, plains 31%, desert path 68 blocks, water 0%, sheep 56, food 4 (0 chickens), trees 105, lava 16 blocks, cave 32 blocks (54 iron), fortress 6.7 chunks
--2804461155964592127  # Plains, spawn 140 120, desert 12%, plains 54%, desert path 139 blocks, water 12%, sheep 4, food 24 (0 chickens), trees 65, lava 38 blocks, cave 23 blocks (22 iron), fortress 6.4 chunks
--1524167739464835301  # Plains, spawn 208 256, desert 9%, plains 52%, desert path 75 blocks, water 0%, sheep 49, food 5 (0 chickens), trees 297, lava 45 blocks, cave 29 blocks (116 iron), fortress 4.2 chunks
--5284724967203953464  # Plains, spawn 0 0, desert 8%, plains 46%, desert path 8 blocks, water 0%, sheep 4, food 16 (0 chickens), trees 95, lava 37 blocks, cave 60 blocks (28 iron), fortress 7.8 chunks
--6468664796824672822  # Plains, spawn 0 0, desert 8%, plains 71%, desert path 91 blocks, water 0%, sheep 87, food 4 (0 chickens), trees 5, lava 96 blocks, cave 59 blocks (21 iron), fortress 7.1 chunks
--2382947280571154469  # Plains, spawn 196 204, desert 8%, plains 26%, desert path 115 blocks, water 12%, sheep 64, food 8 (0 chickens), trees 1828, lava 94 blocks, cave 28 blocks (31 iron), fortress 7.8 chunks
-2237738832952655767  # Plains, spawn 80 248, desert 11%, plains 37%, desert path 101 blocks, water 2%, sheep 68, food 11 (0 chickens), trees 601, lava 52 blocks, cave 35 blocks (100 iron), fortress 7.2 chunks
-2972842924498706383  # Plains, spawn 0 0, desert 9%, plains 51%, desert path 107 blocks, water 0%, sheep 4, food 13 (0 chickens), trees 344, lava 97 blocks, cave 44 blocks (35 iron), fortress 7.8 chunks
-5620106515073077793  # Plains, spawn 248 200, desert 17%, plains 54%, desert path 83 blocks, water 2%, sheep 56, food 8 (0 chickens), trees 214, lava 55 blocks, cave 49 blocks (40 iron), fortress 7.2 chunks
-4434264722787023606  # Plains, spawn 228 60, desert 13%, plains 37%, desert path 104 blocks, water 5%, sheep 35, food 20 (4 chickens), trees 66, lava 81 blocks, cave 32 blocks (139 iron), fortress 5.8 chunks
--4793096337346846731  # Plains, spawn 204 256, desert 32%, plains 22%, desert path 40 blocks, water 2%, sheep 16, food 23 (23 chickens), trees 118, lava 96 blocks, cave 62 blocks (78 iron), fortress 5.0 chunks
-3808381011451116992  # Plains, spawn 168 -160, desert 17%, plains 30%, desert path 68 blocks, water 0%, sheep 17, food 8 (0 chickens), trees 66, lava 84 blocks, cave 30 blocks (146 iron), fortress 7.8 chunks
--954118949593992078  # Plains, spawn 0 0, desert 27%, plains 45%, desert path 53 blocks, water 0%, sheep 8, food 23 (0 chickens), trees 16, lava 68 blocks, cave 58 blocks (106 iron), fortress 7.1 chunks
--2553010000876350029  # Plains, spawn 0 0, desert 13%, plains 53%, desert path 8 blocks, water 2%, sheep 4, food 20 (0 chickens), trees 365, lava 44 blocks, cave 34 blocks (14 iron), fortress 7.2 chunks
-1040964143228642883  # Plains, spawn -216 228, desert 21%, plains 27%, desert path 8 blocks, water 6%, sheep 13, food 12 (0 chickens), trees 312, lava 59 blocks, cave 60 blocks (15 iron), fortress 6.4 chunks
-8676173383804505102  # Plains, spawn -76 256, desert 21%, plains 37%, desert path 24 blocks, water 0%, sheep 44, food 4 (0 chickens), trees 411, lava 72 blocks, cave 62 blocks (15 iron), fortress 5.4 chunks
-3562021651498858007  # Plains, spawn 40 248, desert 25%, plains 28%, desert path 35 blocks, water 8%, sheep 56, food 4 (0 chickens), trees 338, lava 77 blocks, cave 54 blocks (110 iron), fortress 7.8 chunks
-1745810781134888011  # Plains, spawn -92 256, desert 8%, plains 41%, desert path 142 blocks, water 0%, sheep 4, food 33 (8 chickens), trees 468, lava 87 blocks, cave 63 blocks (84 iron), fortress 7.8 chunks
-8434612602054220978  # Plains, spawn 123 -218, desert 17%, plains 56%, desert path 101 blocks, water 1%, sheep 8, food 22 (22 chickens), trees 8, lava 33 blocks, cave 42 blocks (114 iron), fortress 5.8 chunks
-7995580684695150441  # Plains, spawn 130 136, desert 19%, plains 24%, desert path 48 blocks, water 1%, sheep 44, food 8 (0 chickens), trees 231, lava 68 blocks, cave 46 blocks (55 iron), fortress 5.8 chunks
-1157745422089931977  # Plains, spawn 0 0, desert 9%, plains 73%, desert path 25 blocks, water 3%, sheep 4, food 10 (8 chickens), trees 63, lava 94 blocks, cave 62 blocks (128 iron), fortress 6.4 chunks
--1932099284294559854  # Plains, spawn 240 68, desert 18%, plains 33%, desert path 111 blocks, water 11%, sheep 16, food 8 (0 chickens), trees 597, lava 100 blocks, cave 64 blocks (90 iron), fortress 5.8 chunks
--5550140436738056427  # Plains, spawn 134 120, desert 19%, plains 26%, desert path 51 blocks, water 5%, sheep 11, food 12 (12 chickens), trees 17, lava 66 blocks, cave 34 blocks (95 iron), fortress 7.8 chunks
--3384316004844733988  # Plains, spawn -244 232, desert 12%, plains 26%, desert path 11 blocks, water 0%, sheep 72, food 5 (0 chickens), trees 1260, lava 72 blocks, cave 55 blocks (18 iron), fortress 5.0 chunks
--7298510075656199562  # Plains, spawn 200 120, desert 20%, plains 34%, desert path 75 blocks, water 0%, sheep 12, food 31 (11 chickens), trees 377, lava 72 blocks, cave 27 blocks (15 iron), fortress 7.2 chunks
-8052421220815369661  # Plains, spawn -8 232, desert 26%, plains 36%, desert path 101 blocks, water 1%, sheep 12, food 8 (0 chickens), trees 684, lava 56 blocks, cave 55 blocks (42 iron), fortress 5.8 chunks
-59857927576177413  # Plains, spawn -325 249, desert 10%, plains 44%, desert path 88 blocks, water 14%, sheep 8, food 16 (0 chickens), trees 16, lava 72 blocks, cave 14 blocks (102 iron), fortress 7.1 chunks
-5073004912256427874  # Plains, spawn 256 208, desert 23%, plains 26%, desert path 32 blocks, water 2%, sheep 4, food 8 (0 chickens), trees 581, lava 68 blocks, cave 15 blocks (151 iron), fortress 7.2 chunks
--3875637723528422636  # Plains, spawn 248 -12, desert 26%, plains 35%, desert path 67 blocks, water 0%, sheep 60, food 8 (0 chickens), trees 347, lava 56 blocks, cave 20 blocks (133 iron), fortress 7.2 chunks
--4100143747705556361  # Plains, spawn -84 96, desert 18%, plains 35%, desert path 121 blocks, water 0%, sheep 52, food 12 (0 chickens), trees 117, lava 88 blocks, cave 62 blocks (10 iron), fortress 7.1 chunks
-1279434184452796774  # Plains, spawn 73 177, desert 20%, plains 51%, desert path 60 blocks, water 6%, sheep 12, food 12 (8 chickens), trees 217, lava 72 blocks, cave 52 blocks (7 iron), fortress 6.7 chunks
--1131149416340155027  # Plains, spawn 12 252, desert 19%, plains 8%, desert path 75 blocks, water 4%, sheep 4, food 7 (7 chickens), trees 24, lava 33 blocks, cave 30 blocks (25 iron), fortress 7.8 chunks
--7885102930571014524  # Plains, spawn -4 -16, desert 10%, plains 51%, desert path 107 blocks, water 3%, sheep 49, food 4 (4 chickens), trees 78, lava 11 blocks, cave 8 blocks (116 iron), fortress 5.7 chunks
--5959088450982408539  # Plains, spawn 176 236, desert 22%, plains 26%, desert path 100 blocks, water 0%, sheep 53, food 8 (0 chickens), trees 214, lava 43 blocks, cave 63 blocks (9 iron), fortress 7.8 chunks
-5084598707562500768  # Plains, spawn 240 88, desert 15%, plains 54%, desert path 73 blocks, water 0%, sheep 36, food 4 (0 chickens), trees 100, lava 44 blocks, cave 55 blocks (37 iron), fortress 7.1 chunks
--149174073621700408  # Plains, spawn 0 0, desert 27%, plains 67%, desert path 78 blocks, water 1%, sheep 12, food 8 (0 chickens), trees 279, lava 48 blocks, cave 38 blocks (131 iron), fortress 5.7 chunks
--1518617435242344331  # Plains, spawn 224 -12, desert 30%, plains 49%, desert path 53 blocks, water 0%, sheep 19, food 12 (12 chickens), trees 237, lava 93 blocks, cave 62 blocks (117 iron), fortress 5.8 chunks
--1627838060272971137  # Plains, spawn 120 266, desert 12%, plains 41%, desert path 93 blocks, water 11%, sheep 16, food 24 (4 chickens), trees 461, lava 16 blocks, cave 14 blocks (12 iron), fortress 4.5 chunks
--1865776605700664478  # Plains, spawn 188 40, desert 8%, plains 56%, desert path 152 blocks, water 1%, sheep 12, food 20 (20 chickens), trees 456, lava 54 blocks, cave 45 blocks (14 iron), fortress 5.8 chunks
--2882356803811554910  # Plains, spawn 57 -16, desert 15%, plains 21%, desert path 57 blocks, water 2%, sheep 8, food 8 (0 chickens), trees 24, lava 39 blocks, cave 18 blocks (32 iron), fortress 7.1 chunks
--2917007934620896498  # Plains, spawn 188 -160, desert 14%, plains 49%, desert path 83 blocks, water 1%, sheep 41, food 12 (4 chickens), trees 30, lava 45 blocks, cave 35 blocks (14 iron), fortress 7.1 chunks
--3457479929305959777  # Plains, spawn -84 -32, desert 32%, plains 27%, desert path 17 blocks, water 0%, sheep 4, food 8 (8 chickens), trees 74, lava 4 blocks, cave 4 blocks (8 iron), fortress 7.8 chunks
--351706260639710268  # Plains, spawn -68 104, desert 21%, plains 20%, desert path 93 blocks, water 0%, sheep 8, food 13 (0 chickens), trees 65, lava 58 blocks, cave 64 blocks (7 iron), fortress 7.8 chunks
--3657622296745646758  # Plains, spawn -196 252, desert 25%, plains 42%, desert path 8 blocks, water 14%, sheep 74, food 4 (4 chickens), trees 86, lava 92 blocks, cave 47 blocks (114 iron), fortress 5.0 chunks
--4591197790245608351  # Plains, spawn -104 256, desert 9%, plains 54%, desert path 91 blocks, water 0%, sheep 4, food 20 (0 chickens), trees 105, lava 84 blocks, cave 53 blocks (41 iron), fortress 6.4 chunks
--4904627470431567442  # Plains, spawn -192 252, desert 39%, plains 30%, desert path 32 blocks, water 0%, sheep 8, food 9 (5 chickens), trees 402, lava 48 blocks, cave 60 blocks (9 iron), fortress 6.7 chunks
--4981267082855535729  # Plains, spawn 248 244, desert 13%, plains 66%, desert path 136 blocks, water 12%, sheep 58, food 8 (4 chickens), trees 86, lava 36 blocks, cave 44 blocks (130 iron), fortress 5.0 chunks
--6565562160730532295  # Plains, spawn -232 44, desert 13%, plains 33%, desert path 68 blocks, water 4%, sheep 16, food 10 (0 chickens), trees 506, lava 27 blocks, cave 28 blocks (102 iron), fortress 6.4 chunks
--6768277710732355985  # Plains, spawn 116 188, desert 33%, plains 36%, desert path 32 blocks, water 0%, sheep 23, food 4 (0 chickens), trees 394, lava 93 blocks, cave 24 blocks (58 iron), fortress 7.8 chunks
--7155002324999534915  # Plains, spawn 190 204, desert 19%, plains 53%, desert path 22 blocks, water 14%, sheep 48, food 12 (0 chickens), trees 8, lava 28 blocks, cave 49 blocks (87 iron), fortress 7.8 chunks
--7239297743281697888  # Plains, spawn -20 256, desert 25%, plains 38%, desert path 139 blocks, water 9%, sheep 8, food 24 (16 chickens), trees 163, lava 27 blocks, cave 22 blocks (55 iron), fortress 6.4 chunks
--7652579004328761221  # Plains, spawn 22 -124, desert 38%, plains 41%, desert path 40 blocks, water 14%, sheep 16, food 4 (4 chickens), trees 13, lava 72 blocks, cave 39 blocks (24 iron), fortress 7.1 chunks
--7712669036378248746  # Plains, spawn -248 192, desert 18%, plains 26%, desert path 100 blocks, water 0%, sheep 12, food 17 (9 chickens), trees 483, lava 63 blocks, cave 32 blocks (122 iron), fortress 7.2 chunks
--7746067469710255210  # Plains, spawn -236 232, desert 26%, plains 12%, desert path 56 blocks, water 11%, sheep 40, food 8 (0 chickens), trees 218, lava 33 blocks, cave 58 blocks (24 iron), fortress 7.8 chunks
--8038933836058118530  # Plains, spawn 176 244, desert 27%, plains 30%, desert path 28 blocks, water 1%, sheep 8, food 12 (4 chickens), trees 273, lava 97 blocks, cave 51 blocks (7 iron), fortress 6.4 chunks
--8470118906845791532  # Plains, spawn 228 252, desert 21%, plains 30%, desert path 40 blocks, water 3%, sheep 8, food 19 (15 chickens), trees 150, lava 69 blocks, cave 28 blocks (7 iron), fortress 4.2 chunks
--8953273540464304141  # Plains, spawn 188 176, desert 25%, plains 46%, desert path 68 blocks, water 4%, sheep 4, food 32 (0 chickens), trees 222, lava 85 blocks, cave 36 blocks (13 iron), fortress 7.6 chunks
--9012588219842212982  # Plains, spawn 160 88, desert 21%, plains 46%, desert path 93 blocks, water 0%, sheep 20, food 18 (0 chickens), trees 271, lava 46 blocks, cave 48 blocks (35 iron), fortress 5.8 chunks
--9037221229162147825  # Plains, spawn -52 156, desert 40%, plains 28%, desert path 22 blocks, water 7%, sheep 4, food 18 (0 chickens), trees 317, lava 67 blocks, cave 62 blocks (8 iron), fortress 7.1 chunks
--9101460349237733284  # Plains, spawn 60 252, desert 15%, plains 46%, desert path 79 blocks, water 0%, sheep 33, food 8 (8 chickens), trees 300, lava 96 blocks, cave 52 blocks (33 iron), fortress 7.6 chunks
-1251056308436496294  # Plains, spawn 88 240, desert 12%, plains 23%, desert path 91 blocks, water 0%, sheep 16, food 15 (15 chickens), trees 133, lava 39 blocks, cave 22 blocks (94 iron), fortress 7.1 chunks
-1970946931400116771  # Plains, spawn -40 256, desert 28%, plains 33%, desert path 79 blocks, water 3%, sheep 16, food 15 (0 chickens), trees 464, lava 52 blocks, cave 49 blocks (114 iron), fortress 7.2 chunks
-2220897632037172522  # Plains, spawn -120 256, desert 12%, plains 14%, desert path 104 blocks, water 12%, sheep 3, food 32 (8 chickens), trees 496, lava 74 blocks, cave 64 blocks (48 iron), fortress 6.4 chunks
-2305388126981470289  # Plains, spawn 156 204, desert 22%, plains 39%, desert path 8 blocks, water 0%, sheep 20, food 20 (12 chickens), trees 100, lava 31 blocks, cave 34 blocks (80 iron), fortress 5.8 chunks
-3129362597265951792  # Plains, spawn 256 244, desert 14%, plains 70%, desert path 141 blocks, water 15%, sheep 4, food 30 (0 chickens), trees 59, lava 71 blocks, cave 25 blocks (62 iron), fortress 5.8 chunks
-3871263791692134297  # Plains, spawn 20 257, desert 29%, plains 8%, desert path 28 blocks, water 3%, sheep 41, food 4 (0 chickens), trees 49, lava 97 blocks, cave 62 blocks (75 iron), fortress 6.3 chunks
-5591338877688415906  # Plains, spawn -244 220, desert 21%, plains 31%, desert path 83 blocks, water 5%, sheep 24, food 35 (8 chickens), trees 197, lava 56 blocks, cave 58 blocks (6 iron), fortress 6.7 chunks
-5725868519341214875  # Plains, spawn -32 148, desert 9%, plains 43%, desert path 135 blocks, water 11%, sheep 8, food 12 (0 chickens), trees 133, lava 62 blocks, cave 60 blocks (87 iron), fortress 7.1 chunks
-5868799515137976228  # Plains, spawn 116 240, desert 22%, plains 29%, desert path 56 blocks, water 7%, sheep 40, food 12 (7 chickens), trees 91, lava 85 blocks, cave 26 blocks (120 iron), fortress 7.8 chunks
-6030116390758081951  # Plains, spawn -20 104, desert 22%, plains 46%, desert path 67 blocks, water 2%, sheep 8, food 18 (0 chickens), trees 196, lava 97 blocks, cave 59 blocks (80 iron), fortress 6.4 chunks
-6757768138968586837  # Plains, spawn 168 164, desert 29%, plains 26%, desert path 16 blocks, water 5%, sheep 24, food 27 (0 chickens), trees 30, lava 46 blocks, cave 54 blocks (16 iron), fortress 6.4 chunks
-7784000661155892211  # Plains, spawn 25 286, desert 26%, plains 48%, desert path 11 blocks, water 0%, sheep 12, food 7 (7 chickens), trees 151, lava 72 blocks, cave 27 blocks (93 iron), fortress 5.4 chunks
-8156621515813640941  # Plains, spawn 28 232, desert 9%, plains 55%, desert path 157 blocks, water 3%, sheep 20, food 18 (4 chickens), trees 126, lava 49 blocks, cave 23 blocks (139 iron), fortress 7.8 chunks
-8159475463882858199  # Plains, spawn -161 251, desert 20%, plains 27%, desert path 51 blocks, water 5%, sheep 27, food 20 (16 chickens), trees 401, lava 31 blocks, cave 45 blocks (105 iron), fortress 7.8 chunks
-8341283130763896441  # Plains, spawn -112 244, desert 11%, plains 36%, desert path 118 blocks, water 0%, sheep 12, food 16 (0 chickens), trees 171, lava 79 blocks, cave 32 blocks (90 iron), fortress 7.2 chunks
-8608562870684725716  # Plains, spawn 232 192, desert 9%, plains 26%, desert path 120 blocks, water 4%, sheep 10, food 12 (12 chickens), trees 42, lava 42 blocks, cave 23 blocks (73 iron), fortress 7.6 chunks
-8631929790364489100  # Plains, spawn 124 236, desert 37%, plains 30%, desert path 56 blocks, water 5%, sheep 4, food 8 (8 chickens), trees 32, lava 67 blocks, cave 62 blocks (17 iron), fortress 7.8 chunks
-8909690572771028027  # Plains, spawn 0 0, desert 14%, plains 62%, desert path 89 blocks, water 0%, sheep 4, food 34 (0 chickens), trees 20, lava 77 blocks, cave 14 blocks (132 iron), fortress 7.1 chunks
+-1038216190280443029
+-1076347389818943396
+-1167399444430927486
+-11793949300951345
+-1297745469442355641
+-136629440375407793
+-1367829817021812101
+-1382916289944409424
+-1388251013529474535
+-149174073621700408
+-1531737654418134459
+-1545758581697006432
+-1565239975506735286
+-1599836865208001105
+-1743397622536537395
+-1765489421139506199
+-1800011562779802798
+-1811862673254583315
+-1909296934325857554
+-2110422822992056499
+-2201863345498137450
+-230964235583620565
+-2366129772186969446
+-2519055385600952611
+-2595037960953359733
+-2677088700576349616
+-2913818643347186619
+-2936372833790807036
+-3092659103822861686
+-3321517635865959192
+-3384316004844733988
+-3396129303910033526
+-3435765237428951365
+-3497404115027963756
+-3500443935424727791
+-3521730232836552032
+-3731530868334145052
+-3750689131200450122
+-3847176216424534709
+-3875637723528422636
+-3897882321147654605
+-3909392921490300869
+-3947738260583958253
+-4019005737158829173
+-4063518369644383852
+-4100143747705556361
+-4100315547389613386
+-4154325094938865970
+-4218186044068429381
+-431080752112863245
+-4422424488037545475
+-4485732968378948399
+-4487333867427135276
+-4526732485961387937
+-4591197790245608351
+-4793096337346846731
+-4851841955226405217
+-4912247059866445724
+-5048483324071664362
+-51587395546142272
+-5174203406785360835
+-5295039533708725358
+-5354048700333738801
+-5437620788429758728
+-5570229000737016953
+-557879671270739614
+-5608816863513710147
+-561608337075343970
+-5674579171389483956
+-5925520453045189299
+-5959088450982408539
+-6113105223586280730
+-6272298312929509140
+-6363723195294462137
+-6432863496713886931
+-6451880707074153572
+-6468664796824672822
+-6525963020267246253
+-6545637839868470779
+-6569138712237658629
+-6579778989515514064
+-6646603125814971924
+-6677640412354879350
+-6769444761899430783
+-6791367603719312998
+-6838818037792215611
+-7050974352016665389
+-7056871589363659518
+-7186939565249617084
+-7412706013951007653
+-7572139295141536141
+-765277181563040162
+-7712669036378248746
+-7920443073048366036
+-8025043655590590833
+-8052716954582864456
+-8187568642759291255
+-8252639522727930287
+-8295683539579819011
+-8375508510008974162
+-9012588219842212982
+-903941263415205191
+-9054716674218889566
+-9066656837925915149
+1066322734379778323
+1157745422089931977
+117382334319424366
+1273387548956868695
+1392968981422634587
+1490089776609695444
+1540682161239980278
+1609668528915438934
+1635496244324531961
+1745810781134888011
+1779988244644668405
+1792089195971741262
+1799372951662987173
+1843532081738429106
+1941165255132466402
+1970946931400116771
+1997259884852249443
+2075141517021387401
+2087555703575567346
+2095366186421305020
+2251646061749639966
+2297603072766667278
+2335635710058921075
+233704426217626332
+2448864891552808732
+2513771611127252710
+2537342239184647342
+2597425401315762807
+2644082073906491671
+2668171904515215311
+2684947045415392804
+2723699972263757944
+2805930822646270932
+2824572304921526696
+2884420621483036070
+2909357977183347838
+2980087424919345058
+2998838205660713774
+3043001240255561710
+3107720153728535107
+3562021651498858007
+3613817500643855493
+3874293129394136811
+3923939849968181934
+4115594383987390412
+4169562766086470475
+4328294570908222637
+45110701202547518
+451159259523485306
+4575619324426661590
+4724987028969395463
+4860228388428254151
+4883424459958078530
+4891076784479367193
+4913220731951530290
+4989988598927685603
+5018119005026555700
+5045974058794489036
+5073004912256427874
+5083165438286402822
+5126094598237923550
+514594972630603655
+5186513277835971018
+5233009253937730349
+5390141249953251506
+5443511474373475287
+5575553178836557267
+5577051146928542181
+5800342367906600761
+5917599564312775132
+6097207670524179003
+6115443564952944972
+6233066571791646144
+6283331067750850019
+6366784724502139709
+6422720402660637848
+6430828286447922273
+6548649178731747245
+6586497012763075223
+6702021291445662335
+6738746319504973052
+6856749825043646247
+6914755310000525862
+6993756190618314955
+7056156680256918226
+7173225692633013474
+7191011542726693485
+7193988860195381206
+7240410838608282201
+732102494246677969
+7448192888972430517
+7449297547170457968
+7489034352120666048
+7489853969025110213
+751698916490620974
+7615997723928023367
+7732086630820468912
+7784000661155892211
+7786857841325907477
+7820207866396432686
+7832331999891167163
+7838049987260734397
+7964587995962921842
+8083408025371326243
+8156621515813640941
+8243285420378952530
+8268808387669012323
+8287594070416455668
+8334999721206840008
+8502421054004346475
+8566934255806002150
+8615955640268695223
+8640160799508999295
+8676173383804505102
+8743151570972921655
+876475433522226471
+8782563395382644468
+8830449038934706811
+8850949026226591909
+9049583396497057835
+9061137737451732071
+9064637822694725238
+9079022344006423465
+9096904263005018377
+9127325492947179044
+9141436545061905314
+9151493355452796136
+7136928322840018108
+-206731369503643960
+3913719299251191611
+-660089326442255670
+4948576216212621629
+4564327463335747656

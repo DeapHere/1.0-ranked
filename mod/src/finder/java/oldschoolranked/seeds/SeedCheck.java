@@ -78,6 +78,9 @@ public final class SeedCheck {
         }
         int waterPct = water * 100 / cells;
         if (waterPct > FinderSettings.waterMaxPercent) return "no: water " + waterPct + "%";
+        if (!Terrain.biomesOk(w.getBiomeSource(), sx, sz, 0)) return "no: hills or rivers";
+        String t = Terrain.check(w, sx, sz);
+        if (t != null) return t;
         area.ensure(FinderSettings.treeRadius);
         int logs = 0;
         for (int x = sx - FinderSettings.treeRadius; x <= sx + FinderSettings.treeRadius; x++) {
@@ -105,7 +108,7 @@ public final class SeedCheck {
                 }
             }
         }
-        if (lavaDist < 0) return "no: lava";
+        if (FinderSettings.lavaRadius > 0 && lavaDist < 0) return "no: lava";
         int towerDist = -1;
         if (FinderSettings.towerDepth > 0) {
             towerDist = towerSpot(area, desertAt, FinderSettings.towerArea, FinderSettings.towerDepth);
@@ -120,7 +123,7 @@ public final class SeedCheck {
             caveIron = c[1];
         }
         // 4. animals: placed when chunks are populated
-        area.ensure(FinderSettings.foodRadius);
+        if (FinderSettings.minFood > 0) area.ensure(FinderSettings.foodRadius);
         int food = 0, chickens = 0;
         for (Object o : w.entities) {
             Entity e = (Entity) o;
@@ -131,7 +134,7 @@ public final class SeedCheck {
         }
         if (food < FinderSettings.minFood) return "no: food " + food;
         int sheep = countSheep(w, sx, sz);
-        if (sheep < FinderSettings.minSheep) {
+        if (FinderSettings.minSheep > 0 && sheep < FinderSettings.minSheep) {
             // sheep can be further out than the terrain read so far: generate (and populate) the rest of the circle
             area.ensure(FinderSettings.sheepRadius);
             sheep = countSheep(w, sx, sz);
@@ -168,6 +171,7 @@ public final class SeedCheck {
         }
         if (desert * 100 / samples < FinderSettings.desertMinPercent - 2) return false; // the spawn moves a little, so a bit looser here
         if (openDesert(biomes, g[0], g[1]) == null) return false;
+        if (!Terrain.biomesOk(biomes, g[0], g[1], 16)) return false;
         return fortress(seed, (g[0] >> 3) >> 4, (g[1] >> 3) >> 4)[0] <= FinderSettings.fortressMaxChunks + 0.5;
     }
 

@@ -57,6 +57,9 @@ loom {
 			runDir 'run/a'
 			vmArg "-Dranked.selftest=TesterA"
 			vmArg "-Dranked.lbtest=${project.findProperty('lbtest') ?: 'false'}"
+			vmArg "-Dranked.tkey=${project.findProperty('tkey') ?: 'false'}"
+			if (project.hasProperty('privateSeed')) vmArg "-Dranked.privateSeed=${project.property('privateSeed')}"
+			if (project.hasProperty('normalcmds')) vmArg "-Dranked.normalcmds=${project.property('normalcmds')}"
 			if (project.hasProperty('oceanAt')) vmArg "-Dranked.oceanAt=${project.property('oceanAt')}"
 			vmArg "-Dranked.lbview=${project.findProperty('lbview') ?: '1'}"
 			vmArg "-Dranked.setuptest=${project.findProperty('setuptest') ?: 'false'}"
@@ -93,6 +96,7 @@ loom {
 			vmArg "-Xmx${project.findProperty('xmx') ?: '2G'}"
 			vmArg "-Dranked.finderDebug=${project.findProperty('debug') ?: 'false'}"
 			vmArg "-Dranked.finderSerial=${project.findProperty('serial') ?: 'false'}"
+			vmArg "-Dranked.finderMetrics=${project.findProperty('metrics') ?: 'false'}"
 		}
 		seedFinder2 {
 			client()

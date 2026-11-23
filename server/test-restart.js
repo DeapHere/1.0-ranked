@@ -18,7 +18,7 @@ async function post(p, body) {
   return { status: r.status, body: await r.json() };
 }
 async function poll(c) {
-  const r = await fetch(`${base}/api/poll?token=${c.token}&since=${c.since}`);
+  const r = await fetch(`${base}/api/poll?since=${c.since}`, { headers: { "X-Ranked-Token": c.token } });
   const b = await r.json();
   for (const e of b.events) c.since = Math.max(c.since, e.seq);
   return b;
@@ -34,8 +34,8 @@ async function until(c, type) {
 (async () => {
   let srv = start();
   await sleep(500);
-  const ah = (await post('/api/hello', { protocol: 3, name: 'Alice', mods: [] })).body;
-  const bh = (await post('/api/hello', { protocol: 3, name: 'Bob', mods: [] })).body;
+  const ah = (await post('/api/hello', { protocol: 5, name: 'Alice', mods: [] })).body;
+  const bh = (await post('/api/hello', { protocol: 5, name: 'Bob', mods: [] })).body;
   const a = { token: ah.token, since: ah.seq }, b = { token: bh.token, since: bh.seq };
   await post('/api/queue', { token: a.token });
   await post('/api/queue', { token: b.token });

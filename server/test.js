@@ -18,7 +18,7 @@ async function post(p, body) {
   return { status: r.status, body: await r.json() };
 }
 async function poll(c) {
-  const r = await fetch(`${base}/api/poll?token=${c.token}&since=${c.since}`);
+  const r = await fetch(`${base}/api/poll?since=${c.since}`, { headers: { "X-Ranked-Token": c.token } });
   const b = await r.json();
   for (const e of b.events) c.since = Math.max(c.since, e.seq);
   return b.events;
@@ -36,13 +36,13 @@ async function until(c, type) {
 
 (async () => {
   await sleep(500);
-  const a = (await post('/api/hello', { protocol: 3, name: 'Alice', mods: [] })).body;
-  const b = (await post('/api/hello', { protocol: 3, name: 'Bob', mods: [] })).body;
+  const a = (await post('/api/hello', { protocol: 5, name: 'Alice', mods: [] })).body;
+  const b = (await post('/api/hello', { protocol: 5, name: 'Bob', mods: [] })).body;
   assert.strictEqual(a.elo, 1000);
-  assert.strictEqual((await post('/api/hello', { protocol: 3, name: 'alice' })).status, 403, 'name theft blocked');
-  const old = await post('/api/hello', { protocol: 2, name: 'Oldie', mods: [] });
+  assert.strictEqual((await post('/api/hello', { protocol: 5, name: 'alice' })).status, 403, 'name theft blocked');
+  const old = await post('/api/hello', { protocol: 3, name: 'Oldie', mods: [] });
   assert.ok(old.status === 426 && /out of date/.test(old.body.error), 'old mod versions are locked out');
-  const bad = (await post('/api/hello', { protocol: 3, name: 'Cheater', mods: ['endpractice'] })).body;
+  const bad = (await post('/api/hello', { protocol: 5, name: 'Cheater', mods: ['endpractice'] })).body;
   assert.strictEqual((await post('/api/queue', { token: bad.token })).status, 403, 'blocked mod cannot queue');
   const A = { token: a.token, since: 0 }, B = { token: b.token, since: 0 };
   await post('/api/queue', { token: A.token });
@@ -103,6 +103,22 @@ async function until(c, type) {
   await until(C, 'result');
   const fp2 = await (await fetch(base + '/api/fastest-private')).json();
   assert.ok(fp2.players.length === 1 && fp2.players[0].name === 'Alice', 'blocked mods stay off the private board');
+  // a custom seed private room: that seed, and it never makes the board
+  assert.strictEqual((await post('/api/room/private', { token: B.token, seed: 'abc' })).status, 400, 'bad seed refused');
+  const xr = (await post('/api/room/private', { token: B.token, seed: '-123456789012345' })).body;
+  let xm;
+  do xm = await until(B, 'match'); while (xm.match !== xr.match);
+  assert.strictEqual(String(xm.seed), '-123456789012345', 'custom seed used');
+  await post('/api/ready', { token: B.token, match: xm.match });
+  let xs;
+  do xs = await until(B, 'start'); while (xs.match !== xm.match);
+  await sleep(xs.startAt - xs.serverTime + 100);
+  await post('/api/split', { token: B.token, match: xm.match, split: 'end' });
+  assert.strictEqual((await post('/api/finish', { token: B.token, match: xm.match, igt: 4 })).status, 200);
+  let xres;
+  do xres = await until(B, 'result'); while (xres.match !== xm.match);
+  const fp3 = await (await fetch(base + '/api/fastest-private')).json();
+  assert.ok(fp3.players.length === 1 && fp3.players[0].name === 'Alice', 'custom seed runs stay off the private board');
   // draw vote: ranked match, A offers, B accepts: a draw with no elo for either
   await post('/api/queue', { token: A.token });
   await post('/api/queue', { token: B.token });

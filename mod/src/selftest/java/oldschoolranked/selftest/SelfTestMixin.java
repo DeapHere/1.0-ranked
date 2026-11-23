@@ -22,6 +22,7 @@ public abstract class SelfTestMixin {
     private static int drawSeen, seedSeen;
     private static boolean queued, logged, forfeited;
     private static int[] oceanRoom;
+    private static int privateSeedAt = -1;
 
     private static int countItems(Minecraft mc, int id) {
         int n = 0;
@@ -96,6 +97,9 @@ public abstract class SelfTestMixin {
                 // stay in the lobby
             } else if (Boolean.getBoolean("ranked.lbtest")) {
                 mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen));
+            } else if (System.getProperty("ranked.privateSeed") != null) {
+                mc.openScreen(new oldschoolranked.PrivateRoomScreen(mc.screen));
+                privateSeedAt = t + 80;
             } else if (Boolean.getBoolean("ranked.private")) {
                 Ranked.privateRoom();
             } else if (!Ranked.blocked) {
@@ -122,6 +126,14 @@ public abstract class SelfTestMixin {
             StringBuilder sb = new StringBuilder();
             for (Object b : ((oldschoolranked.selftest.ScreenAccess) mc.screen).ranked$buttons()) sb.append(((net.minecraft.client.gui.widget.ButtonWidget) b).id).append(' ');
             System.out.println("[selftest] title buttons: " + sb);
+        }
+        if (t == privateSeedAt - 40 && mc.screen instanceof oldschoolranked.PrivateRoomScreen) ((oldschoolranked.selftest.ScreenAccess) mc.screen).ranked$buttons();
+        if (t == privateSeedAt) Ranked.privateRoom(System.getProperty("ranked.privateSeed"));
+        if (System.getProperty("ranked.normalcmds") != null) {
+            if (t == 60) mc.startGame("selftest-normal", "Normal", new net.minecraft.world.WorldSettings(1L, 0, true, false));
+            String[] cmds = System.getProperty("ranked.normalcmds").replace("_", " ").split(";");
+            int i = (t - 120) / 40;
+            if (t >= 120 && (t - 120) % 40 == 0 && i < cmds.length && mc.player != null) mc.player.sendChat(cmds[i]);
         }
         if (Boolean.getBoolean("ranked.difftest") && t == 5) mc.options.difficulty = 0; // start on Peaceful
         if (Boolean.getBoolean("ranked.lbtest") && t == 120) mc.openScreen(new oldschoolranked.LeaderboardScreen(mc.screen, Integer.getInteger("ranked.lbview", 1)));
@@ -159,7 +171,28 @@ public abstract class SelfTestMixin {
                     mc.player.setPositionAndAngles(bx + 0.5, gv[1] + 1 + 1.62, bz + 0.5, yaw, 45);
                     System.out.println("[selftest] at gravel " + java.util.Arrays.toString(gv) + " from " + bx + " " + bz);
                 }
+                if (runTicks == 90) mc.openScreen(new oldschoolranked.ConfirmLeaveScreen(new net.minecraft.client.gui.screen.GameMenuScreen(), () -> System.out.println("[selftest] leave confirmed")));
+                if (runTicks == 30) try {
+                    java.lang.reflect.Field f = net.minecraft.entity.EnderEyeEntity.class.getDeclaredField("dropsItem");
+                    f.setAccessible(true);
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < 12; i++) {
+                        net.minecraft.entity.EnderEyeEntity e = new net.minecraft.entity.EnderEyeEntity(mc.world, mc.player.x, mc.player.y, mc.player.z);
+                        e.setTarget(1000, 30, 1000);
+                        sb.append(f.getBoolean(e) ? 'D' : 'X');
+                    }
+                    System.out.println("[selftest] eyes " + sb);
+                } catch (Exception ex) { System.out.println("[selftest] eyes failed " + ex); }
                 if (runTicks == 25) System.out.println("[selftest] gravel " + oldschoolranked.MatchSetup.lastGravel + " cave " + java.util.Arrays.toString(oldschoolranked.MatchSetup.lastCave));
+            }
+            if (Boolean.getBoolean("ranked.tkey")) {
+                if (runTicks == 40) net.minecraft.client.options.KeyBinding.click(mc.options.chatKey.keyCode);
+                if (runTicks == 50) System.out.println("[selftest] after T: screen " + (mc.screen == null ? "none" : mc.screen.getClass().getSimpleName()));
+            }
+            if (System.getProperty("ranked.devcmds") != null) {
+                String[] cmds = System.getProperty("ranked.devcmds").replace("_", " ").split(";");
+                int i = (runTicks - 30) / 20;
+                if (runTicks >= 30 && (runTicks - 30) % 20 == 0 && i < cmds.length) mc.player.sendChat(cmds[i]);
             }
             if (System.getProperty("ranked.oceanAt") != null) {
                 String[] at = System.getProperty("ranked.oceanAt").split(",");
@@ -180,7 +213,7 @@ public abstract class SelfTestMixin {
                         oceanRoom = new int[] {fx, fy, fz};
                     } else System.out.println("[selftest] no portal room found near " + ox + " " + oz);
                 }
-                if (runTicks == 40 && oceanRoom != null) mc.player.setPositionAndAngles(oceanRoom[0] + 0.5, 75, oceanRoom[2] - 6 + 0.5, 0, 70);
+                if (runTicks == 40 && oceanRoom != null) mc.player.setPositionAndAngles(oceanRoom[0] + 0.5, 46, oceanRoom[2] - 9 + 0.5, 0, 35);
             }
             if (Boolean.getBoolean("ranked.difftest")) {
                 if (runTicks == 30) System.out.println("[selftest] difficulty at start: option " + mc.options.difficulty + ", world " + mc.world.difficulty);

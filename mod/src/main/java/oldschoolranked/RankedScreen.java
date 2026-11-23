@@ -138,7 +138,7 @@ public final class RankedScreen extends Screen {
                 else Ranked.createRoom();
                 break;
             case PRIVATE:
-                Ranked.privateRoom();
+                this.minecraft.openScreen(new PrivateRoomScreen(this));
                 break;
             case JOIN:
                 Ranked.joinRoom(this.code.getText());

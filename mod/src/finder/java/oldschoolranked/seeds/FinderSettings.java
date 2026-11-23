@@ -12,10 +12,21 @@ import net.fabricmc.loader.api.FabricLoader;
 public final class FinderSettings {
     public static int desertMinPercent = 8, desertRadius = 160;
     public static double fortressMaxChunks = 8;
-    public static int waterMaxPercent = 15, waterRadius = 24;
-    public static int lavaRadius = 100;
+    public static int waterMaxPercent = 15, waterRadius = 100;
+    public static int lavaRadius = 0; // match worlds always get a lava pool now
+    /** No Extreme Hills within this many blocks of spawn (0 = don't check). */
+    public static int hillsRadius = 100;
+    /** At most this much river biome within runLength blocks of spawn (percent, 100 = don't check). */
+    public static int riverMaxPercent = 100;
+    /** At most this much water within nearWaterRadius blocks of spawn (percent). */
+    public static int nearWaterMaxPercent = 8, nearWaterRadius = 48;
+    /** Within 100 blocks: at most highMaxPercent of the ground at y 78 or above, and heights spread at most maxSpread (standard deviation). */
+    public static int highMaxPercent = 2;
+    public static double maxSpread = 5.0;
+    /** At least minRuns of 32 straight lines from spawn, runLength blocks long, cross no water and no steep climbs. */
+    public static int minRuns = 6, runLength = 210;
     public static int minLogs = 8, treeRadius = 64;
-    public static int minFood = 4, foodRadius = 64, minSheep = 2, sheepRadius = 200;
+    public static int minFood = 0, foodRadius = 64, minSheep = 0, sheepRadius = 200; // match worlds get pigs, cows, sheep and chickens
     /** Worlds checked at once when Queue Wall is installed. 0 = cores minus 2. */
     public static int threads = 0;
     /** A cave open to the sky within this many blocks of spawn. 0 = don't check. */
@@ -44,14 +55,26 @@ public final class FinderSettings {
         desertMinPercent = i(p, "desertMinPercent", desertMinPercent);
         desertRadius = i(p, "desertRadius", desertRadius);
         fortressMaxChunks = d(p, "fortressMaxChunks", fortressMaxChunks);
-        waterMaxPercent = i(p, "waterMaxPercent", waterMaxPercent);
-        waterRadius = i(p, "waterRadius", waterRadius);
-        lavaRadius = i(p, "lavaRadius", lavaRadius);
+        if (i(p, "settingsVersion", 1) >= 2) {
+            waterMaxPercent = i(p, "waterMaxPercent", waterMaxPercent);
+            waterRadius = i(p, "waterRadius", waterRadius);
+        }
+        // settings from before version 2 still ask for lava and animals, which match worlds now get anyway
+        boolean old = i(p, "settingsVersion", 1) < 2;
+        if (!old) lavaRadius = i(p, "lavaRadius", lavaRadius);
+        hillsRadius = i(p, "hillsRadius", hillsRadius);
+        riverMaxPercent = i(p, "riverMaxPercent", riverMaxPercent);
+        nearWaterMaxPercent = i(p, "nearWaterMaxPercent", nearWaterMaxPercent);
+        nearWaterRadius = i(p, "nearWaterRadius", nearWaterRadius);
+        minRuns = i(p, "minRuns", minRuns);
+        highMaxPercent = i(p, "highMaxPercent", highMaxPercent);
+        maxSpread = d(p, "maxSpread", maxSpread);
+        runLength = i(p, "runLength", runLength);
         minLogs = i(p, "minLogs", minLogs);
         treeRadius = i(p, "treeRadius", treeRadius);
-        minFood = i(p, "minFood", minFood);
+        if (!old) minFood = i(p, "minFood", minFood);
         foodRadius = i(p, "foodRadius", foodRadius);
-        minSheep = i(p, "minSheep", minSheep);
+        if (!old) minSheep = i(p, "minSheep", minSheep);
         sheepRadius = i(p, "sheepRadius", sheepRadius);
         threads = i(p, "threads", threads);
         caveRadius = i(p, "caveRadius", caveRadius);
@@ -68,10 +91,14 @@ public final class FinderSettings {
                     + "desertMinPercent: how much of the area within desertRadius blocks of spawn is desert (percent)\n"
                     + "fortressMaxChunks: fortress start within this many chunks of spawn/8 in the nether\n"
                     + "waterMaxPercent: at most this much water within waterRadius blocks of spawn (percent)\n"
-                    + "lavaRadius: a surface lava pool within this many blocks of spawn (straight-line distance)\n"
+                    + "lavaRadius: a surface lava pool within this many blocks of spawn, 0 to skip (match worlds always get one)\n"
+                    + "hillsRadius: no Extreme Hills within this many blocks of spawn, 0 to skip\n"
+                    + "riverMaxPercent: at most this much river within runLength blocks of spawn (percent)\n"
+                    + "nearWaterMaxPercent: at most this much water within nearWaterRadius blocks of spawn (percent)\n"
+                    + "highMaxPercent, maxSpread: within 100 blocks, at most this much ground at y 78+ (percent), and how uneven the ground is (lower is flatter)\n"
+                    + "minRuns: of 32 straight lines from spawn, runLength blocks long, at least this many cross no water and no steep climbs\n"
                     + "minLogs: trees within treeRadius blocks (counts columns with a log in them)\n"
-                    + "minFood: pigs, cows and chickens within foodRadius blocks of spawn\n"
-                    + "minSheep: sheep within sheepRadius blocks of spawn (a big radius makes each check slower)\n"
+                    + "minFood, minSheep: animals near spawn, 0 to skip (match worlds always get pigs, cows, chickens and sheep)\n"
                     + "desertPathRadius: a desert you can walk to from spawn over plains (no forest in the way), within this many blocks\n"
                     + "towerDepth, towerArea: a towerArea x towerArea spot in that desert where digging down towerDepth blocks hits no cave, water or lava (off by default: match worlds have no caves in desert chunks)\n"
                     + "minLavaBlocks: lava blocks showing at the surface for it to count as a lava pool\n"
@@ -89,7 +116,16 @@ public final class FinderSettings {
             outP.setProperty("fortressMaxChunks", "" + fortressMaxChunks);
             outP.setProperty("waterMaxPercent", "" + waterMaxPercent);
             outP.setProperty("waterRadius", "" + waterRadius);
+            outP.setProperty("settingsVersion", "2");
             outP.setProperty("lavaRadius", "" + lavaRadius);
+            outP.setProperty("hillsRadius", "" + hillsRadius);
+            outP.setProperty("riverMaxPercent", "" + riverMaxPercent);
+            outP.setProperty("nearWaterMaxPercent", "" + nearWaterMaxPercent);
+            outP.setProperty("nearWaterRadius", "" + nearWaterRadius);
+            outP.setProperty("minRuns", "" + minRuns);
+            outP.setProperty("highMaxPercent", "" + highMaxPercent);
+            outP.setProperty("maxSpread", "" + maxSpread);
+            outP.setProperty("runLength", "" + runLength);
             outP.setProperty("minLogs", "" + minLogs);
             outP.setProperty("treeRadius", "" + treeRadius);
             outP.setProperty("minFood", "" + minFood);

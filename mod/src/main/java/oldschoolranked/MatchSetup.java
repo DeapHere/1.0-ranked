@@ -9,8 +9,8 @@ import net.minecraft.world.gen.feature.LakeFeature;
 /**
  * Things every match world gets on top of the seed, placed right after the world is created (before the countdown),
  * from a sequence seeded by the match seed, so both players get exactly the same:
- * a surface lava pool in plains or desert within 100 blocks of spawn, a pack of chickens near spawn, and gravel on the
- * floor of the iron cave near spawn.
+ * a surface lava pool in plains or desert within 100 blocks of spawn, a pack of chickens near spawn, and a patch of
+ * gravel on the floor of the iron cave near spawn, in sight of the iron.
  */
 public final class MatchSetup {
     /** Where the last lava pool and chickens went (for tests). */
@@ -22,23 +22,34 @@ public final class MatchSetup {
     private MatchSetup() {
     }
 
+    /** Eyes of ender thrown in this match world so far; the first SAFE_EYES never break. */
+    public static int eyesThrown;
+    public static final int SAFE_EYES = 2;
+
     public static void apply(World w, long seed) {
+        eyesThrown = 0;
         try {
             long t0 = System.currentTimeMillis();
             int sx = w.getData().getSpawnX(), sz = w.getData().getSpawnZ();
             int[] lava = lavaPool(w, seed, sx, sz);
             int[] hens = chickens(w, seed, sx, sz);
+            animals(w, seed, sx, sz);
             lastLava = lava;
             lastChickens = hens;
             lastCave = null;
-            lastGravel = gravel(w, sx, sz);
+            lastGravel = gravel(w, seed, sx, sz);
             Ranked.log("match setup: lava pool " + (lava == null ? "none" : (int) Math.hypot(lava[0] - sx, lava[1] - sz) + " blocks")
                     + ", chickens " + (hens == null ? "none" : (int) Math.hypot(hens[0] - sx, hens[1] - sz) + " blocks")
+                    + ", pigs " + far(lastPigs, sx, sz) + ", cows " + far(lastCows, sx, sz) + ", sheep packs " + sheepPacks + " (nearest " + far(lastSheep, sx, sz) + ")"
                     + ", cave gravel " + lastGravel + (lastCave == null ? "" : " (cave " + (int) Math.hypot(lastCave[0] - sx, lastCave[2] - sz) + " blocks)")
                     + ", " + (System.currentTimeMillis() - t0) + " ms");
         } catch (RuntimeException e) {
             Ranked.log("match setup failed: " + e);
         }
+    }
+
+    private static String far(int[] at, int sx, int sz) {
+        return at == null ? "none" : (int) Math.hypot(at[0] - sx, at[1] - sz) + " blocks";
     }
 
     private static boolean plainsOrDesert(World w, int x, int z) {
@@ -100,18 +111,42 @@ public final class MatchSetup {
     }
 
     private static int[] chickens(World w, long seed, int sx, int sz) {
-        Random r = new Random(seed * 31L + 0xC41CL);
+        return herd(w, new Random(seed * 31L + 0xC41CL), sx, sz, 8, 24, 4, ChickenEntity::new);
+    }
+
+    /**
+     * Food and wool near spawn every match, so seeds don't have to be picked for animals. Chickens are always there;
+     * each seed adds nothing more, cows, pigs, or both. Sheep come in 3 packs of 4 for wool.
+     */
+    public static int[] lastPigs, lastCows, lastSheep;
+    public static int sheepPacks;
+
+    private static void animals(World w, long seed, int sx, int sz) {
+        int mix = new Random(seed * 31L + 0xA1A1L).nextInt(4); // 0 chickens only, 1 + cows, 2 + pigs, 3 + both
+        lastCows = (mix & 1) != 0 ? herd(w, new Random(seed * 31L + 0xC0C0L), sx, sz, 12, 40, 3, net.minecraft.entity.mob.animal.CowEntity::new) : null;
+        lastPigs = (mix & 2) != 0 ? herd(w, new Random(seed * 31L + 0x9165L), sx, sz, 12, 40, 3, net.minecraft.entity.mob.animal.PigEntity::new) : null;
+        lastSheep = null;
+        sheepPacks = 0;
+        int[][] bands = {{16, 40}, {24, 56}, {32, 64}};
+        for (int i = 0; i < bands.length; i++) {
+            int[] at = herd(w, new Random(seed * 31L + 0x5EE9L + i * 0x101L), sx, sz, bands[i][0], bands[i][1], 4, net.minecraft.entity.mob.animal.SheepEntity::new);
+            if (at != null) { sheepPacks++; if (lastSheep == null) lastSheep = at; }
+        }
+    }
+
+    /** count animals within 2 blocks of a grass spot min to max blocks from spawn. */
+    private static int[] herd(World w, Random r, int sx, int sz, int min, int max, int count, java.util.function.Function<World, net.minecraft.entity.Entity> make) {
         for (int attempt = 0; attempt < 60; attempt++) {
             double a = r.nextDouble() * Math.PI * 2;
-            int d = 8 + r.nextInt(17); // 8 to 24 blocks from spawn
+            int d = min + r.nextInt(max - min + 1);
             int x = sx + (int) Math.round(Math.cos(a) * d), z = sz + (int) Math.round(Math.sin(a) * d);
             int y = w.getHeight(x, z);
             if (w.getBlock(x, y - 1, z) != 2) continue;
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < count; i++) {
                 int cx = x + r.nextInt(5) - 2, cz = z + r.nextInt(5) - 2;
                 int cy = w.getHeight(cx, cz);
                 if (w.getBlock(cx, cy - 1, cz) == 8 || w.getBlock(cx, cy - 1, cz) == 9) { cx = x; cz = z; cy = y; }
-                ChickenEntity c = new ChickenEntity(w);
+                net.minecraft.entity.Entity c = make.apply(w);
                 c.setPositionAndAngles(cx + 0.5, cy, cz + 0.5, r.nextFloat() * 360, 0);
                 w.addEntity(c);
             }
@@ -122,13 +157,16 @@ public final class MatchSetup {
 
     // ---- gravel in the iron cave ----
 
-    private static final int CAVE_RADIUS = 64, CAVE_REACH = 40, GRAVEL = 14;
+    private static final int CAVE_RADIUS = 64, CAVE_REACH = 40;
 
     /**
      * Finds the cave open to the sky near spawn with the most iron showing (the same search the seed finder uses, so it's
      * the cave every pool seed was picked for), and turns the stone floor right next to that iron into gravel.
      */
-    private static int gravel(World w, int sx, int sz) {
+    private static int gravel(World w, long seed, int sx, int sz) {
+        Random gr = new Random(seed * 31L + 0x6EA7L);
+        int count = 8 + gr.nextInt(9); // 8 to 16, different every seed
+        long jitter = gr.nextLong();
         int r = CAVE_RADIUS + CAVE_REACH + 16;
         for (int cx = (sx - r) >> 4; cx <= (sx + r) >> 4; cx++) {
             for (int cz = (sz - r) >> 4; cz <= (sz + r) >> 4; cz++) w.getChunkAt(cx, cz);
@@ -160,31 +198,63 @@ public final class MatchSetup {
         }
         if (best == null || best.iron.isEmpty()) return 0;
         lastCave = best.open;
-        // stone floor under the cave's air, closest to the iron first
-        java.util.ArrayList<long[]> spots = new java.util.ArrayList<>();
+        // a patch of gravel on the cave floor, a few blocks from the iron and in plain sight of it
+        java.util.ArrayList<long[]> floor = new java.util.ArrayList<>(), spots = new java.util.ArrayList<>();
         for (long k : best.air) {
             int x = kx(k), y = ky(k), z = kz(k);
             if (w.getBlock(x, y - 1, z) != 1) continue;
+            floor.add(new long[] {x, y - 1, z});
             int near = Integer.MAX_VALUE;
+            long seen = -1;
             for (long ik : best.iron) {
-                int dx = kx(ik) - x, dy = ky(ik) - y, dz = kz(ik) - z;
-                near = Math.min(near, dx * dx + dy * dy + dz * dz);
+                int dx = kx(ik) - x, dy = ky(ik) - y, dz = kz(ik) - z, d = dx * dx + dy * dy + dz * dz;
+                if (d < near && d >= 4 * 4 && d <= 12 * 12 && canSee(w, x, y, z, kx(ik), ky(ik), kz(ik))) {
+                    near = d;
+                    seen = ik;
+                }
             }
-            if (near > 8 * 8) continue;
-            spots.add(new long[] {near, x, y - 1, z});
+            if (seen >= 0) spots.add(new long[] {near, x, y - 1, z});
         }
-        spots.sort((a, b) -> {
-            for (int i = 0; i < 4; i++) if (a[i] != b[i]) return Long.compare(a[i], b[i]);
-            return 0;
-        });
+        if (spots.isEmpty()) return 0;
+        spots.sort(MatchSetup::compare);
+        long[] c = spots.get(0);
+        // the floor around that spot, nearest first
+        java.util.ArrayList<long[]> patch = new java.util.ArrayList<>();
+        for (long[] f : floor) {
+            long dx = f[0] - c[1], dy = f[1] - c[2], dz = f[2] - c[3];
+            if (Math.abs(dy) <= 2 && dx * dx + dz * dz <= 20) {
+                // nearest first, with some noise so the patch isn't a neat circle
+                long noise = new Random(jitter ^ (f[0] * 341873128712L + f[1] * 132897987541L + f[2])).nextInt(8);
+                patch.add(new long[] {(dx * dx + dy * dy + dz * dz) * 2 + noise, f[0], f[1], f[2]});
+            }
+        }
+        patch.sort(MatchSetup::compare);
         int n = 0;
-        for (long[] s : spots) {
-            if (n >= GRAVEL) break;
+        for (long[] s : patch) {
+            if (n >= count) break;
             w.setBlock((int) s[1], (int) s[2], (int) s[3], 13);
             if (n == 0) lastGravelAt = new int[] {(int) s[1], (int) s[2], (int) s[3]};
             n++;
         }
         return n;
+    }
+
+    private static int compare(long[] a, long[] b) {
+        for (int i = 0; i < a.length; i++) if (a[i] != b[i]) return Long.compare(a[i], b[i]);
+        return 0;
+    }
+
+    /** Nothing but air between the block at (x, y, z) and the block at (tx, ty, tz). */
+    private static boolean canSee(World w, int x, int y, int z, int tx, int ty, int tz) {
+        double dx = tx - x, dy = ty - y, dz = tz - z;
+        int steps = (int) Math.ceil(Math.sqrt(dx * dx + dy * dy + dz * dz) * 2);
+        for (int i = 1; i < steps; i++) {
+            double f = (double) i / steps;
+            int bx = (int) Math.floor(x + 0.5 + dx * f), by = (int) Math.floor(y + 0.5 + dy * f), bz = (int) Math.floor(z + 0.5 + dz * f);
+            if (bx == tx && by == ty && bz == tz) return true;
+            if (w.getBlock(bx, by, bz) != 0) return false;
+        }
+        return true;
     }
 
     private static final class Cave {

@@ -9,8 +9,10 @@ const crypto = require('crypto');
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-const PROTOCOL = 3; // the mod's protocol must match: bump both to lock out older mod versions
+const PROTOCOL = 5; // the mod's protocol must match: bump both to lock out older mod versions
 const START_ELO = 1000;
+const NEW_ACCOUNTS_PER_MIN = 20;
+let newAccounts = [];
 const K_FACTOR = parseInt(process.env.K_FACTOR || '32', 10);
 const PLACEMENT_K = 48; // first 5 ranked games move faster
 const MIN_RUN_MS = parseInt(process.env.MIN_RUN_MS || '90000', 10); // a finish faster than this is rejected
@@ -22,7 +24,7 @@ const CHAT_MAX = 100, CHAT_GAP_MS = 600;
 const AFK_MS = 60000; // no poll for this long while in a match = forfeit
 const MAX_MATCH_MS = 3 * 60 * 60 * 1000;
 const POLL_WAIT_MS = 20000;
-const BLOCKED_MODS = (process.env.BLOCKED_MODS || 'endpractice,oldschoolprac').split(',').map(s => s.trim()).filter(Boolean);
+const BLOCKED_MODS = (process.env.BLOCKED_MODS || 'endpractice,oldschoolprac,oldschoolranked-dev').split(',').map(s => s.trim()).filter(Boolean);
 const SPLITS = ['nether', 'fortress', 'blaze', 'eye', 'stronghold', 'end', 'finish'];
 
 // ---------- storage ----------
@@ -131,18 +133,18 @@ function restoreMatches() {
 }
 
 // bKey null = a private room: one player racing the clock alone
-function createMatch(aKey, bKey, ranked) {
+function createMatch(aKey, bKey, ranked, customSeed) {
   const id = String(db.nextMatch++);
   const players = bKey ? [aKey, bKey] : [aKey];
   const splits = {};
   for (const k of players) splits[k] = {};
   const m = {
-    id, ranked: ranked && !!bKey, solo: !bKey, seed: pickSeed(players), created: Date.now(), state: 'loading', startAt: 0,
+    id, ranked: ranked && !!bKey, solo: !bKey, seed: customSeed || pickSeed(players), custom: !!customSeed, created: Date.now(), state: 'loading', startAt: 0,
     players, ready: {}, splits,
   };
   matches.set(id, m);
   for (const k of m.players) {
-    remember(k, m.seed);
+    if (!m.custom) remember(k, m.seed);
     const l = liveOf(k);
     l.match = id;
     l.queuedAt = 0;
@@ -182,7 +184,7 @@ function endMatch(m, winnerKey, reason) {
   // private room (solo) runs get their own best time, kept apart from ranked
   // (not with a blocked mod loaded, e.g. the practice mod's /gamemode)
   const cleanRun = !(liveOf(winnerKey || m.players[0]).blocked || []).length;
-  if (m.solo && winnerKey && reason === 'finish' && elapsed > 0 && cleanRun) {
+  if (m.solo && winnerKey && reason === 'finish' && elapsed > 0 && cleanRun && !m.custom) {
     const p = db.players[winnerKey];
     if (!p.soloBest || elapsed < p.soloBest) { p.soloBest = elapsed; p.soloBestAt = Date.now(); }
   }
@@ -343,6 +345,11 @@ const routes = {
       if (!token || hash(token) !== p.tokenHash) throw { status: 403, error: 'that name is registered on another PC' };
       p.name = name;
     } else {
+      // a cap on new accounts, so nobody can flood the server with them
+      const now = Date.now();
+      newAccounts = newAccounts.filter(t => now - t < 60000);
+      if (newAccounts.length >= NEW_ACCOUNTS_PER_MIN) throw { status: 429, error: 'too many new players right now, try again in a minute' };
+      newAccounts.push(now);
       token = crypto.randomBytes(24).toString('hex');
       p = db.players[key] = { name, tokenHash: hash(token), elo: START_ELO, wins: 0, losses: 0, joined: Date.now() };
       byToken.set(p.tokenHash, key);
@@ -403,7 +410,14 @@ const routes = {
     const l = liveOf(key);
     if (l.match) throw { status: 409, error: 'already in a match' };
     if (l.room) { rooms.delete(l.room); l.room = null; }
-    const m = createMatch(key, null, false);
+    // an optional seed of your own (custom seed runs stay off the leaderboard)
+    let seed = null;
+    if (b.seed !== undefined && b.seed !== null && b.seed !== '') {
+      seed = String(b.seed).trim();
+      if (!/^-?\d{1,20}$/.test(seed) || BigInt(seed) > 9223372036854775807n || BigInt(seed) < -9223372036854775808n) throw { status: 400, error: 'bad seed' };
+      seed = BigInt(seed).toString();
+    }
+    const m = createMatch(key, null, false, seed);
     return { match: m.id };
   },
 
@@ -490,14 +504,15 @@ const routes = {
   // fastest private room (solo) runs
   'GET /api/fastest-private': () => ({ players: fastestPrivate().map(p => ({ name: p.name, time: p.soloBest, at: p.soloBestAt || null, elo: p.elo })) }),
 
-  'GET /api/matches': () => ({ matches: db.matches.slice(-50).reverse() }),
+  // never the seeds: they come from a pool, so a public list of them would let people learn the pool
+  'GET /api/matches': () => ({ matches: db.matches.slice(-50).reverse().map(({ seed, ...m }) => m) }),
 
   'GET /health': () => ({ ok: true, protocol: PROTOCOL }),
 };
 
 function poll(req, res, url) {
   let key;
-  try { key = auth({ token: url.searchParams.get('token') }); } catch (e) { return send(res, e.status, { error: e.error }); }
+  try { key = auth({ token: req.headers['x-ranked-token'] || url.searchParams.get('token') }); } catch (e) { return send(res, e.status, { error: e.error }); }
   const l = liveOf(key);
   const since = parseInt(url.searchParams.get('since') || '0', 10);
   const reply = () => {
@@ -547,7 +562,7 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   try {
     if (req.method === 'GET' && url.pathname === '/') {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'", 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' });
       return res.end(page());
     }
     if (req.method === 'GET' && url.pathname === '/api/poll') return poll(req, res, url);

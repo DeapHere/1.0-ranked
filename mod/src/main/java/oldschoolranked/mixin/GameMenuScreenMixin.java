@@ -85,7 +85,16 @@ public abstract class GameMenuScreenMixin extends Screen {
 
     @Inject(method = "buttonClicked", at = @At("HEAD"), cancellable = true)
     private void ranked$clicked(ButtonWidget button, CallbackInfo ci) {
-        if (button.id == SAVE_AND_QUIT && Ranked.inMatch()) Ranked.forfeit();
+        if (button.id == SAVE_AND_QUIT && Ranked.inMatch()) {
+            ci.cancel();
+            net.minecraft.client.Minecraft mc = this.minecraft;
+            mc.openScreen(new oldschoolranked.ConfirmLeaveScreen((net.minecraft.client.gui.screen.Screen) (Object) this, () -> {
+                Ranked.forfeit();
+                mc.setWorld(null);
+                mc.openScreen(new net.minecraft.client.gui.screen.TitleScreen());
+            }));
+            return;
+        }
         if (button.id == RESET) {
             ci.cancel();
             if (System.currentTimeMillis() < ranked$resetConfirmUntil) {

@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
  * game thread; results come back through {@link #inbox} and are handled in the client tick.
  */
 public final class Net {
-    public static final int PROTOCOL = 3; // 3: 1.0.7 (match world setup changed). Bump to lock out older mods.
+    public static final int PROTOCOL = 5; // 5: 1.0.9 (forced animals, safe first eyes). Bump to lock out older mods.
 
     /** Something that happened off the game thread: a server event, or the reply (or error) of a request. */
     public static final class Message {
@@ -94,12 +94,18 @@ public final class Net {
     }
 
     static Map<String, Object> request(String method, String path, String body, int timeout) throws IOException {
+        return request(method, path, body, timeout, null);
+    }
+
+    /** token goes in a header, never the URL, so it can't end up in a log of addresses. */
+    static Map<String, Object> request(String method, String path, String body, int timeout, String token) throws IOException {
         URL url = new URL(Ranked.cfg.server.replaceAll("/+$", "") + path);
         HttpURLConnection c = (HttpURLConnection) url.openConnection();
         c.setRequestMethod(method);
         c.setConnectTimeout(10000);
         c.setReadTimeout(timeout);
         c.setRequestProperty("User-Agent", "OldschoolRanked/" + Ranked.VERSION);
+        if (token != null) c.setRequestProperty("X-Ranked-Token", token);
         if (body != null) {
             c.setDoOutput(true);
             c.setRequestProperty("Content-Type", "application/json");
@@ -151,7 +157,7 @@ public final class Net {
                     Thread.sleep(1000);
                     continue;
                 }
-                Map<String, Object> r = request("GET", "/api/poll?token=" + URLEncoder.encode(t, "UTF-8") + "&since=" + since, null, 35000);
+                Map<String, Object> r = request("GET", "/api/poll?since=" + since, null, 35000, t);
                 connected = true;
                 failing = false;
                 failures = 0;

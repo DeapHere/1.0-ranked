@@ -91,6 +91,7 @@ public final class ParallelFinder {
                 spawnX = w.getData().getSpawnX();
                 spawnZ = w.getData().getSpawnZ();
                 verdict = SeedCheck.check(w, spawnX, spawnZ);
+                if (Boolean.getBoolean("ranked.finderMetrics")) System.out.println("[metrics] " + seed + " " + Terrain.metrics(w, spawnX, spawnZ));
                 entities = w.entities.size();
             } catch (Throwable t) {
                 System.out.println("[finder] seed " + seed + " failed to check: " + t);

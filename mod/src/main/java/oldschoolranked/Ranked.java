@@ -268,8 +268,13 @@ public final class Ranked {
 
     /** A solo match on a random seed: same load, countdown, timer and splits, no opponent, no elo. */
     public static void privateRoom() {
+        privateRoom(null);
+    }
+
+    /** seed: a custom seed (as a number), or null for one from the pool. */
+    public static void privateRoom(String seed) {
         lastError = null;
-        Net.post("/api/room/private", null, (r, err) -> {
+        Net.post("/api/room/private", seed == null ? null : Net.map("seed", seed), (r, err) -> {
             if (err != null) lastError = err;
         });
     }
@@ -542,6 +547,10 @@ public final class Ranked {
         // no Peaceful in a match (it would wipe every hostile mob, endermen included): runs before the game copies the
         // option into the world this tick, so the world never sees Peaceful
         if (inMatch() && mc.options != null && mc.options.difficulty == 0) mc.options.difficulty = 1;
+        // 1.0 only opens chat with T in multiplayer: open it for match chat
+        if (canChat() && mc.world != null && mc.screen == null && !mc.isMultiplayer() && mc.options.chatKey.consumeClick()) {
+            mc.openScreen(new net.minecraft.client.gui.screen.ChatScreen());
+        }
         Runnable r;
         while ((r = Net.inbox.poll()) != null) {
             try {
@@ -629,7 +638,7 @@ public final class Ranked {
         state = State.RUNNING;
         ticks = 0;
         if (mc.screen instanceof WaitingScreen) mc.openScreen(null);
-        if (solo) chat("§a§lGO!§r Private room: just you and the clock.");
+        if (solo) chat("§a§lGO!");
         else chat("§a§lGO!§r " + (rankedMatch ? "Ranked" : "Room") + " match vs §e" + opponent + "§r" + (rankedMatch ? " (" + opponentElo + ")" : ""));
     }
 

@@ -60,9 +60,11 @@ public final class WaitingScreen extends Screen {
     @Override
     protected void buttonClicked(ButtonWidget button) {
         if (button.id == FORFEIT) {
-            Ranked.forfeit();
-            this.minecraft.setWorld(null);
-            this.minecraft.openScreen(new RankedScreen(new net.minecraft.client.gui.screen.TitleScreen()));
+            this.minecraft.openScreen(new ConfirmLeaveScreen(this, () -> {
+                Ranked.forfeit();
+                this.minecraft.setWorld(null);
+                this.minecraft.openScreen(new RankedScreen(new net.minecraft.client.gui.screen.TitleScreen()));
+            }));
         }
     }
 
