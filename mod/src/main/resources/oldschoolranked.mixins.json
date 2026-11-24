@@ -19,6 +19,7 @@
     "IntCacheAccessor",
     "MinecraftMixin",
     "MobEntityMixin",
+    "OceanRiverMixerLayerMixin",
     "OverworldChunkGeneratorMixin",
     "SkeletonEntityMixin",
     "StrongholdStructureMixin",

@@ -66,9 +66,15 @@ public final class SeedCheck {
         // 2. fortress, from 1.0's placement maths: a portal built near spawn comes out at spawn / 8
         double fortress = fortress(w.getSeed(), (sx >> 3) >> 4, (sz >> 3) >> 4)[0];
         if (fortress > FinderSettings.fortressMaxChunks) return "no: fortress " + (int) fortress + " chunks";
-        // 3. terrain: reading blocks generates it
+        // 3. terrain: reading blocks generates it. First the run toward the desert, which only needs the chunks along it
+        int[] run = Terrain.desertRun(w, sx, sz);
+        if (run == null) return "no: desert run";
+        String t = Terrain.check(w, sx, sz);
+        if (t != null) return t;
+        int water = 0, cells = 1;
+        if (FinderSettings.waterMaxPercent < 100) {
         area.ensure(FinderSettings.waterRadius);
-        int water = 0, cells = 0;
+        cells = 0;
         for (int x = sx - FinderSettings.waterRadius; x <= sx + FinderSettings.waterRadius; x += 2) {
             for (int z = sz - FinderSettings.waterRadius; z <= sz + FinderSettings.waterRadius; z += 2) {
                 cells++;
@@ -76,11 +82,10 @@ public final class SeedCheck {
                 if (id == 8 || id == 9 || id == 79) water++;
             }
         }
+        }
         int waterPct = water * 100 / cells;
         if (waterPct > FinderSettings.waterMaxPercent) return "no: water " + waterPct + "%";
         if (!Terrain.biomesOk(w.getBiomeSource(), sx, sz, 0)) return "no: hills or rivers";
-        String t = Terrain.check(w, sx, sz);
-        if (t != null) return t;
         area.ensure(FinderSettings.treeRadius);
         int logs = 0;
         for (int x = sx - FinderSettings.treeRadius; x <= sx + FinderSettings.treeRadius; x++) {
@@ -91,7 +96,19 @@ public final class SeedCheck {
                 }
             }
         }
-        if (logs < FinderSettings.minLogs) return "no: trees " + logs;
+        if (logs < FinderSettings.minLogs) {
+            if (Boolean.getBoolean("ranked.finderDebug")) {
+                int pop = 0, all = 0;
+                java.util.Map<String, Integer> bs = new java.util.TreeMap<>();
+                for (int cx = (sx - 64) >> 4; cx <= (sx + 64) >> 4; cx++) for (int cz = (sz - 64) >> 4; cz <= (sz + 64) >> 4; cz++) {
+                    all++;
+                    if (w.getChunkAt(cx, cz).terrainPopulated) pop++;
+                    bs.merge(w.getBiomeSource().getBiome(cx * 16 + 8, cz * 16 + 8).name, 1, Integer::sum);
+                }
+                System.out.println("[finder] debug trees: populated " + pop + "/" + all + " biomes " + bs);
+            }
+            return "no: trees " + logs;
+        }
         int lavaDist = -1;
         for (int r = 4; r <= FinderSettings.lavaRadius && lavaDist < 0; r += 4) {
             area.ensure(r);
@@ -140,7 +157,7 @@ public final class SeedCheck {
             sheep = countSheep(w, sx, sz);
         }
         if (sheep < FinderSettings.minSheep) return "no: sheep " + sheep;
-        return "OK Plains, spawn " + sx + " " + sz + ", desert " + desertPct + "%, plains " + plainsPct + "%, desert path " + desertDist + " blocks, water " + waterPct + "%, sheep " + sheep
+        return "OK Plains, spawn " + sx + " " + sz + ", desert " + desertPct + "%, plains " + plainsPct + "%, desert path " + desertDist + " blocks, clear run " + run[0] + " blocks (desert at " + run[1] + "), sheep " + sheep
                 + ", food " + food + " (" + chickens + " chickens), trees " + logs + ", lava " + lavaDist + " blocks"
                 + (caveDist >= 0 ? ", cave " + caveDist + " blocks (" + caveIron + " iron)" : "") + (towerDist >= 0 ? ", dig spot " + towerDist + " blocks" : "") + ", fortress "
                 + String.format(java.util.Locale.ROOT, "%.1f", fortress) + " chunks";

@@ -2,11 +2,11 @@
 
 1v1 ranked races for Minecraft 1.0. Two players are matched, get the same seed and start at the same moment. The first to kill the dragon and jump into the exit portal wins and gains elo. Both players' splits show live during the race.
 
-Current version: **1.0.9**
+Current version: **1.1**
 
 ## Installing
 
-1. Put `oldschoolranked-1.0.9.jar` (from [Releases](https://github.com/DeapHere/1.0-ranked/releases)) in your 1.0 instance's `mods` folder. Needs Fabric Loader 0.18.1 or newer.
+1. Put `oldschoolranked-1.1.jar` (from [Releases](https://github.com/DeapHere/1.0-ranked/releases)) in your 1.0 instance's `mods` folder. Needs Fabric Loader 0.18.1 or newer.
 2. Launch the game and click the **blaze rod button** next to Singleplayer on the title screen.
 
 The mod connects to the ranked server by itself. Your Minecraft username is your ranked name. On first connect, the server gives your PC a private sign-in token, so nobody else can play under your name. It's saved in `.oldschoolranked` in your user folder and shared by every instance on that PC. Don't share it.
@@ -64,6 +64,7 @@ These apply only in match worlds, and are the same for both players:
 - **A pack of 4 chickens** within 24 blocks of spawn.
 - **More food and wool:** depending on the seed, a few cows, pigs, both or neither within 40 blocks of spawn, and always 3 packs of 4 sheep within 64 blocks.
 - **The first 2 eyes of ender** you throw never break.
+- **No rivers within 256 blocks of spawn.** The land where a river would be is ordinary land. Rivers further out are unchanged.
 - **Gravel in the iron cave:** the cave near spawn always has a patch of 8 to 16 gravel on its floor, in sight of the iron.
 - **No strongholds under mountains.** Strongholds are never placed in or next to Extreme Hills, so you never have to dig down from y 100.
 - **No disconnected portal rooms.** In vanilla 1.0, stronghold corridors that touch water or lava are left out, which can cut the portal room off. Every stronghold piece is always built.
@@ -76,17 +77,15 @@ The mod also fixes the vanilla 1.0 bug where the same seed can put the spawn or 
 Every match seed comes from a checked pool, and no one gets a seed they've already played until they've played them all. Every seed has:
 
 - A plains spawn, with desert making up at least 8% of the area within 160 blocks
-- A desert reachable from spawn in a straight line over plains, within 160 blocks
+- A straight run from spawn through plains into the desert, 210 blocks long (or 48 blocks into the desert), with no water and no big climbs
+- No more than 20% water within 48 blocks of spawn
 - A fortress within 8 chunks of where a portal built near spawn comes out
-- Little water: no more than 8% within 48 blocks of spawn and 15% within 100
-- No hills or mountains within 100 blocks, and flat ground around spawn
-- Several clear routes of 210 blocks out of spawn with no water and no big climbs
 - Trees within 64 blocks
 - A cave open to the sky within 64 blocks, with at least 6 visible iron ore
 
 ## Changes
 
-- **1.0.9:** T opens match chat in game. Private rooms can use a seed of your choice. Every match world gets 3 packs of sheep and, depending on the seed, cows or pigs near spawn, and the first 2 eyes of ender never break. New seed pool: flatter spawns with less water and no rivers or hills across the run.
+- **1.1:** No rivers within 256 blocks of spawn. Every match world gets 3 packs of sheep and, depending on the seed, cows or pigs near spawn, and the first 2 eyes of ender never break. New, bigger seed pool, picked for a clear run from spawn into the desert. T opens match chat in game. Private rooms can use a seed of your choice. Older versions can no longer connect.
 - **1.0.8:** Ocean portal rooms are no longer flooded. Only the ground over the roof is cleared, and only when the sea floor is below y 50. Server improvements. Older versions can no longer connect.
 - **1.0.7:** Every match world gets a surface lava pool in plains or desert within 100 blocks, a pack of chickens near spawn and gravel in the iron cave. No strongholds under mountains. Portal rooms under the ocean are open to the sea, and portal rooms are never cut off. Leave match and Forfeit and quit ask to confirm. Older versions can no longer connect.
 - **1.0.6:** Peaceful can't be used in matches. Older versions can no longer connect.

@@ -12,19 +12,21 @@ import net.fabricmc.loader.api.FabricLoader;
 public final class FinderSettings {
     public static int desertMinPercent = 8, desertRadius = 160;
     public static double fortressMaxChunks = 8;
-    public static int waterMaxPercent = 15, waterRadius = 100;
+    public static int waterMaxPercent = 100, waterRadius = 100; // 100 = don't check: the desert run check covers water
     public static int lavaRadius = 0; // match worlds always get a lava pool now
     /** No Extreme Hills within this many blocks of spawn (0 = don't check). */
-    public static int hillsRadius = 100;
+    public static int hillsRadius = 0;
     /** At most this much river biome within runLength blocks of spawn (percent, 100 = don't check). */
     public static int riverMaxPercent = 100;
     /** At most this much water within nearWaterRadius blocks of spawn (percent). */
-    public static int nearWaterMaxPercent = 8, nearWaterRadius = 48;
+    public static int nearWaterMaxPercent = 20, nearWaterRadius = 48;
     /** Within 100 blocks: at most highMaxPercent of the ground at y 78 or above, and heights spread at most maxSpread (standard deviation). */
-    public static int highMaxPercent = 2;
-    public static double maxSpread = 5.0;
+    public static int highMaxPercent = 100;
+    public static double maxSpread = 99;
     /** At least minRuns of 32 straight lines from spawn, runLength blocks long, cross no water and no steep climbs. */
-    public static int minRuns = 6, runLength = 210;
+    public static int minRuns = 0, runLength = 210;
+    /** The run toward the desert: a strip 2*runWidth+1 wide and runLength long (or 48 blocks into the desert if further) with no water, climbing at most maxClimb blocks in total. */
+    public static int runWidth = 2, maxClimb = 12;
     public static int minLogs = 8, treeRadius = 64;
     public static int minFood = 0, foodRadius = 64, minSheep = 0, sheepRadius = 200; // match worlds get pigs, cows, sheep and chickens
     /** Worlds checked at once when Queue Wall is installed. 0 = cores minus 2. */
@@ -55,21 +57,27 @@ public final class FinderSettings {
         desertMinPercent = i(p, "desertMinPercent", desertMinPercent);
         desertRadius = i(p, "desertRadius", desertRadius);
         fortressMaxChunks = d(p, "fortressMaxChunks", fortressMaxChunks);
-        if (i(p, "settingsVersion", 1) >= 2) {
+        // settings from before version 3 checked a full circle around spawn; now only the run toward the desert has to be clear
+        boolean v3 = i(p, "settingsVersion", 1) >= 3;
+        if (v3) {
             waterMaxPercent = i(p, "waterMaxPercent", waterMaxPercent);
             waterRadius = i(p, "waterRadius", waterRadius);
         }
         // settings from before version 2 still ask for lava and animals, which match worlds now get anyway
         boolean old = i(p, "settingsVersion", 1) < 2;
         if (!old) lavaRadius = i(p, "lavaRadius", lavaRadius);
-        hillsRadius = i(p, "hillsRadius", hillsRadius);
-        riverMaxPercent = i(p, "riverMaxPercent", riverMaxPercent);
-        nearWaterMaxPercent = i(p, "nearWaterMaxPercent", nearWaterMaxPercent);
-        nearWaterRadius = i(p, "nearWaterRadius", nearWaterRadius);
-        minRuns = i(p, "minRuns", minRuns);
-        highMaxPercent = i(p, "highMaxPercent", highMaxPercent);
-        maxSpread = d(p, "maxSpread", maxSpread);
+        if (v3) {
+            hillsRadius = i(p, "hillsRadius", hillsRadius);
+            riverMaxPercent = i(p, "riverMaxPercent", riverMaxPercent);
+            nearWaterMaxPercent = i(p, "nearWaterMaxPercent", nearWaterMaxPercent);
+            nearWaterRadius = i(p, "nearWaterRadius", nearWaterRadius);
+            minRuns = i(p, "minRuns", minRuns);
+            highMaxPercent = i(p, "highMaxPercent", highMaxPercent);
+            maxSpread = d(p, "maxSpread", maxSpread);
+        }
         runLength = i(p, "runLength", runLength);
+        runWidth = i(p, "runWidth", runWidth);
+        maxClimb = i(p, "maxClimb", maxClimb);
         minLogs = i(p, "minLogs", minLogs);
         treeRadius = i(p, "treeRadius", treeRadius);
         if (!old) minFood = i(p, "minFood", minFood);
@@ -96,7 +104,8 @@ public final class FinderSettings {
                     + "riverMaxPercent: at most this much river within runLength blocks of spawn (percent)\n"
                     + "nearWaterMaxPercent: at most this much water within nearWaterRadius blocks of spawn (percent)\n"
                     + "highMaxPercent, maxSpread: within 100 blocks, at most this much ground at y 78+ (percent), and how uneven the ground is (lower is flatter)\n"
-                    + "minRuns: of 32 straight lines from spawn, runLength blocks long, at least this many cross no water and no steep climbs\n"
+                    + "minRuns: of 32 straight lines from spawn, runLength blocks long, at least this many cross no water and no steep climbs (0 to skip)\n"
+                    + "runLength, runWidth, maxClimb: the run from spawn toward the desert, runLength blocks long (and at least 48 into the desert) and 2*runWidth+1 wide, must have no water and climb at most maxClimb blocks\n"
                     + "minLogs: trees within treeRadius blocks (counts columns with a log in them)\n"
                     + "minFood, minSheep: animals near spawn, 0 to skip (match worlds always get pigs, cows, chickens and sheep)\n"
                     + "desertPathRadius: a desert you can walk to from spawn over plains (no forest in the way), within this many blocks\n"
@@ -116,7 +125,7 @@ public final class FinderSettings {
             outP.setProperty("fortressMaxChunks", "" + fortressMaxChunks);
             outP.setProperty("waterMaxPercent", "" + waterMaxPercent);
             outP.setProperty("waterRadius", "" + waterRadius);
-            outP.setProperty("settingsVersion", "2");
+            outP.setProperty("settingsVersion", "3");
             outP.setProperty("lavaRadius", "" + lavaRadius);
             outP.setProperty("hillsRadius", "" + hillsRadius);
             outP.setProperty("riverMaxPercent", "" + riverMaxPercent);
@@ -126,6 +135,8 @@ public final class FinderSettings {
             outP.setProperty("highMaxPercent", "" + highMaxPercent);
             outP.setProperty("maxSpread", "" + maxSpread);
             outP.setProperty("runLength", "" + runLength);
+            outP.setProperty("runWidth", "" + runWidth);
+            outP.setProperty("maxClimb", "" + maxClimb);
             outP.setProperty("minLogs", "" + minLogs);
             outP.setProperty("treeRadius", "" + treeRadius);
             outP.setProperty("minFood", "" + minFood);

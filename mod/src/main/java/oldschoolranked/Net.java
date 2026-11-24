@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
  * game thread; results come back through {@link #inbox} and are handled in the client tick.
  */
 public final class Net {
-    public static final int PROTOCOL = 5; // 5: 1.0.9 (forced animals, safe first eyes). Bump to lock out older mods.
+    public static final int PROTOCOL = 6; // 6: 1.1 (no rivers near spawn, forced animals, safe first eyes). Bump to lock out older mods.
 
     /** Something that happened off the game thread: a server event, or the reply (or error) of a request. */
     public static final class Message {

@@ -34,8 +34,8 @@ async function until(c, type) {
 (async () => {
   let srv = start();
   await sleep(500);
-  const ah = (await post('/api/hello', { protocol: 5, name: 'Alice', mods: [] })).body;
-  const bh = (await post('/api/hello', { protocol: 5, name: 'Bob', mods: [] })).body;
+  const ah = (await post('/api/hello', { protocol: 6, name: 'Alice', mods: [] })).body;
+  const bh = (await post('/api/hello', { protocol: 6, name: 'Bob', mods: [] })).body;
   const a = { token: ah.token, since: ah.seq }, b = { token: bh.token, since: bh.seq };
   await post('/api/queue', { token: a.token });
   await post('/api/queue', { token: b.token });

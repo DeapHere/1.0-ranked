@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
-const PROTOCOL = 5; // the mod's protocol must match: bump both to lock out older mod versions
+const PROTOCOL = 6; // the mod's protocol must match: bump both to lock out older mod versions
 const START_ELO = 1000;
 const NEW_ACCOUNTS_PER_MIN = 20;
 let newAccounts = [];

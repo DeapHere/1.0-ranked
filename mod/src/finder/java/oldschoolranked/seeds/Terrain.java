@@ -45,6 +45,58 @@ public final class Terrain {
         return true;
     }
 
+    /** Generates and decorates the chunks around block (x, z), so lakes are there too. */
+    private static void around(World w, int x, int z) {
+        int cx = x >> 4, cz = z >> 4;
+        for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) w.getChunkAt(cx + i, cz + j);
+    }
+
+    private static boolean wet(int id) {
+        return id == 8 || id == 9 || id == 79;
+    }
+
+    /**
+     * The run toward the desert: of 64 directions from spawn whose biomes are only plains until they reach desert within
+     * desertPathRadius, the first (nearest desert) where a strip 2*runWidth+1 wide, out to runLength blocks or 48 blocks
+     * into the desert, has no water and climbs at most maxClimb blocks along its middle. {run length, desert distance},
+     * or null if no direction works. Only the chunks along the tried strips get generated.
+     */
+    public static int[] desertRun(World w, int sx, int sz) {
+        net.minecraft.world.biome.source.BiomeSource b = w.getBiomeSource();
+        java.util.List<int[]> dirs = new java.util.ArrayList<>();
+        for (int d = 0; d < 64; d++) {
+            double a = d * Math.PI * 2 / 64, ca = Math.cos(a), sa = Math.sin(a);
+            for (int t = 8; t <= FinderSettings.desertPathRadius; t += 4) {
+                Biome bi = b.getBiome(sx + (int) Math.round(ca * t), sz + (int) Math.round(sa * t));
+                if (bi == Biome.DESERT) { dirs.add(new int[] {d, t}); break; }
+                if (bi != Biome.PLAINS) break;
+            }
+        }
+        dirs.sort((p, q) -> Integer.compare(p[1], q[1]));
+        int rw = FinderSettings.runWidth;
+        for (int[] dir : dirs) {
+            double a = dir[0] * Math.PI * 2 / 64, ca = Math.cos(a), sa = Math.sin(a);
+            int len = Math.max(FinderSettings.runLength, dir[1] + 48);
+            boolean ok = true;
+            int climb = 0, prev = -1;
+            for (int t = 2; t <= len && ok; t += 2) {
+                for (int side = -rw; side <= rw && ok; side++) {
+                    int x = sx + (int) Math.round(ca * t - sa * side), z = sz + (int) Math.round(sa * t + ca * side);
+                    around(w, x, z);
+                    int g = ground(w, x, z);
+                    if (wet(w.getBlock(x, g, z))) ok = false;
+                    if (side == 0) {
+                        if (prev >= 0) climb += Math.max(0, Math.abs(g - prev) - 1);
+                        prev = g;
+                        if (climb > FinderSettings.maxClimb) ok = false;
+                    }
+                }
+            }
+            if (ok) return new int[] {len, dir[1]};
+        }
+        return null;
+    }
+
     /** Null if the land around spawn is fine, or why not: too much water close by, or not enough clear runs. */
     public static String check(World w, int sx, int sz) {
         if (FinderSettings.nearWaterMaxPercent < 100) {
@@ -53,13 +105,14 @@ public final class Terrain {
                 for (int z = sz - r; z <= sz + r; z += 4) {
                     if ((x - sx) * (x - sx) + (z - sz) * (z - sz) > r * r) continue;
                     n++;
+                    around(w, x, z);
                     int g = ground(w, x, z), id = w.getBlock(x, g, z);
                     if (id == 8 || id == 9 || id == 79) water++;
                 }
             }
             if (water * 100 / n > FinderSettings.nearWaterMaxPercent) return "no: water near spawn " + water * 100 / n + "%";
         }
-        {
+        if (FinderSettings.highMaxPercent < 100 || FinderSettings.maxSpread < 99) {
             int r = 100, n = 0, high = 0;
             double sum = 0, sq = 0;
             for (int x = sx - r; x <= sx + r; x += 4) {

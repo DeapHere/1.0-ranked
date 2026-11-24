@@ -23,6 +23,11 @@ public final class Standard {
      * in the desert never drops you into a cave. Set while a match world exists.
      */
     public static volatile boolean noDesertCaves;
+    /**
+     * Set while BiomeSource.findBiome runs (spawn and stronghold placement): those still see 1.0's rivers, so the spawn
+     * and strongholds land exactly where vanilla 1.0 puts them for the seed, while the terrain itself has no rivers.
+     */
+    public static final ThreadLocal<int[]> placingWithRivers = ThreadLocal.withInitial(() -> new int[1]);
     private static Random pearls, rods, spots;
     /** The dragon's choices (charge you or fly to a point, and which point), the same sequence for both players. */
     private static Random dragon;

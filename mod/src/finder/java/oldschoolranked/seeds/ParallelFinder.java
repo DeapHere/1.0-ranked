@@ -19,7 +19,7 @@ import net.minecraft.world.storage.WorldStorageSource;
  */
 public final class ParallelFinder {
     private static final AtomicInteger tried = new AtomicInteger(), built = new AtomicInteger(), found = new AtomicInteger();
-    private static final AtomicLong started = new AtomicLong();
+    private static final AtomicLong started = new AtomicLong(), preNanos = new AtomicLong(), worldNanos = new AtomicLong(), checkNanos = new AtomicLong();
     /** Seeds to check instead of random ones (testing: -Dranked.finderSeeds=1,2,3). */
     private static final ConcurrentLinkedQueue<Long> fixed = new ConcurrentLinkedQueue<>();
     private static boolean fixedMode;
@@ -74,23 +74,31 @@ public final class ParallelFinder {
                 tried.incrementAndGet();
             } else {
                 // the biome prefilter also uses the biome layers, so it runs on this thread's own IntCache too
+                long p0 = System.nanoTime();
                 do {
                     queuewall.ThreadSafety.freshIntCache();
                     seed = random.nextLong();
                     tried.incrementAndGet();
                 } while (!SeedCheck.worthMaking(seed));
+                preNanos.addAndGet(System.nanoTime() - p0);
             }
             String verdict;
             int spawnX = 0, spawnZ = 0, entities = 0;
+            long thisMs = 0;
             try {
                 source.delete(folder);
                 queuewall.ThreadSafety.freshIntCache();
                 WorldStorage storage = source.get(folder, false);
+                long w0 = System.nanoTime();
                 World w = new World(storage, "Seed finder", new WorldSettings(seed, 0, true, false));
+                long w1 = System.nanoTime();
+                worldNanos.addAndGet(w1 - w0);
                 built.incrementAndGet();
                 spawnX = w.getData().getSpawnX();
                 spawnZ = w.getData().getSpawnZ();
                 verdict = SeedCheck.check(w, spawnX, spawnZ);
+                checkNanos.addAndGet(System.nanoTime() - w1);
+                thisMs = (System.nanoTime() - w0) / 1000000L;
                 if (Boolean.getBoolean("ranked.finderMetrics")) System.out.println("[metrics] " + seed + " " + Terrain.metrics(w, spawnX, spawnZ));
                 entities = w.entities.size();
             } catch (Throwable t) {
@@ -109,7 +117,7 @@ public final class ParallelFinder {
                 }
                 FinderStatus.lastGood = seed + "  " + verdict.substring(3);
             }
-            System.out.println("[finder] " + tried.get() + " tried, " + found.get() + " found: " + seed + " " + verdict + (verdict.startsWith("OK") ? "" : " (spawn " + spawnX + " " + spawnZ + ", " + entities + " entities)"));
+            System.out.println("[finder] " + tried.get() + " tried, " + found.get() + " found [pre " + preNanos.get() / 1000000000L + "s world " + worldNanos.get() / 1000000000L + "s check " + checkNanos.get() / 1000000000L + "s] " + thisMs + "ms: " + seed + " " + verdict + (verdict.startsWith("OK") ? "" : " (spawn " + spawnX + " " + spawnZ + ", " + entities + " entities)"));
             FinderStatus.status = status();
         }
     }
