@@ -6,6 +6,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const zlib = require('zlib');
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
@@ -25,6 +26,11 @@ const AFK_MS = 60000; // no poll for this long while in a match = forfeit
 const MAX_MATCH_MS = 3 * 60 * 60 * 1000;
 const POLL_WAIT_MS = 20000;
 const BLOCKED_MODS = (process.env.BLOCKED_MODS || 'endpractice,oldschoolprac,oldschoolranked-dev').split(',').map(s => s.trim()).filter(Boolean);
+// Discord pace feed (PaceTracker1.0, see pacebot.js): every split of every tracked run gets its own post
+const pacebot = require('./pacebot');
+// 'exit' and 'stronghold' still come from older trackers; they're accepted but never posted
+const PACE_SPLITS = ['nether', 'fortress', 'exit', 'pit', 'stronghold', 'end', 'finish'];
+const paceRuns = new Map(); // player key -> { id, splits: {split: ms}, at }
 const SPLITS = ['nether', 'fortress', 'blaze', 'eye', 'stronghold', 'end', 'finish'];
 
 // ---------- storage ----------
@@ -308,6 +314,16 @@ function send(res, status, obj) {
   res.end(body);
 }
 
+function readRaw(req) {
+  return new Promise((resolve, reject) => {
+    const parts = [];
+    let n = 0;
+    req.on('data', c => { n += c.length; if (n > 65536) { reject(new Error('too big')); req.destroy(); } else parts.push(c); });
+    req.on('end', () => resolve(Buffer.concat(parts)));
+    req.on('error', reject);
+  });
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let data = '';
@@ -449,6 +465,77 @@ const routes = {
     return { ok: true, time: t };
   },
 
+  // the pace tracker app (not a mod): its own sign-in, or a ranked player's token for their own name
+  'POST /api/pace/hello': (b) => {
+    const name = String(b.name || '');
+    if (!/^[A-Za-z0-9_]{1,16}$/.test(name)) throw { status: 400, error: 'bad name' };
+    const key = name.toLowerCase();
+    let token = typeof b.token === 'string' ? b.token : null;
+    // optional Twitch name, linked in Discord pace posts ('' clears it)
+    const twitch = typeof b.twitch === 'string' && /^[A-Za-z0-9_]{0,25}$/.test(b.twitch) ? b.twitch : null;
+    const setTwitch = () => {
+      if (twitch === null) return;
+      db.twitch = db.twitch || {};
+      if (twitch) db.twitch[key] = twitch; else delete db.twitch[key];
+      save();
+    };
+    db.pacers = db.pacers || {};
+    const owner = db.players[key] || db.pacers[key];
+    if (owner) {
+      if (!token || hash(token) !== owner.tokenHash) throw { status: 403, error: 'that name is registered on another PC' };
+      if (db.pacers[key]) db.pacers[key].name = name;
+      setTwitch();
+      return { ok: true, name };
+    }
+    const now = Date.now();
+    newAccounts = newAccounts.filter(t => now - t < 60000);
+    if (newAccounts.length >= NEW_ACCOUNTS_PER_MIN) throw { status: 429, error: 'too many new players right now, try again in a minute' };
+    newAccounts.push(now);
+    token = crypto.randomBytes(24).toString('hex');
+    db.pacers[key] = { name, tokenHash: hash(token), joined: now };
+    save();
+    setTwitch();
+    return { ok: true, name, token };
+  },
+
+  'POST /api/pace': (b) => {
+    const tk = typeof b.token === 'string' ? hash(b.token) : '';
+    let key = byToken.get(tk);
+    if (!key) for (const [k, p] of Object.entries(db.pacers || {})) if (p.tokenHash === tk) { key = k; break; }
+    if (!key) throw { status: 401, error: 'not signed in' };
+    const run = String(b.run || '');
+    const split = String(b.split || '');
+    const igt = Number(b.igt) * 50;
+    if (!/^[0-9a-f]{1,16}$/.test(run) || !PACE_SPLITS.includes(split) || !(igt > 0) || igt > 6 * 3600 * 1000) throw { status: 400, error: 'bad pace' };
+    let r = paceRuns.get(key);
+    if (!r || r.id !== run) {
+      r = { id: run, splits: {}, at: Date.now(), queue: Promise.resolve() };
+      paceRuns.set(key, r);
+    }
+    if (r.splits[split]) return { ok: true };
+    // splits only go forward in time, and the game clock can't run faster than the real one
+    const prev = Math.max(0, ...Object.values(r.splits));
+    if (igt < prev) throw { status: 400, error: 'bad pace' };
+    if (Date.now() - r.at + 60000 < igt - Math.min(...Object.values(r.splits).concat([igt]))) throw { status: 400, error: 'bad pace' };
+    r.splits[split] = igt;
+    // each split gets its own message; the bot pings the roles of every pace it beats
+    if (pacebot.SPLITS.includes(split) && pacebot.enabled()) {
+      const who = (db.players[key] || (db.pacers || {})[key] || { name: key }).name;
+      const tw = (db.twitch || {})[key];
+      const embed = {
+        author: { name: who, icon_url: `https://mc-heads.net/avatar/${encodeURIComponent(who)}/64` },
+        title: `${fmt(igt).replace(/\.\d+$/, '')} - ${pacebot.NAMES[split]}`,
+        description: tw ? `[twitch.tv/${tw}](https://twitch.tv/${tw})` : undefined,
+        color: 0x2b2d31, // same as Discord's dark embed background, so there's no visible bar
+        timestamp: new Date().toISOString(),
+        image: { url: `${PUBLIC_URL}/pace-spacer.png` },
+      };
+      r.queue = r.queue.then(() => pacebot.post(split, embed, igt)).catch(e => console.error('pace post:', e.message || e));
+    }
+    for (const [k, v] of paceRuns) if (Date.now() - v.at > 6 * 3600 * 1000) paceRuns.delete(k);
+    return { ok: true };
+  },
+
   'POST /api/finish': (b) => {
     const key = auth(b);
     const m = ownMatch(key, b.match);
@@ -553,6 +640,23 @@ function page() {
 <h2>Recent matches</h2><table><tr><th>Match</th><th>Winner</th><th>How</th><th>Time</th></tr>${recent || '<tr><td colspan=4>None yet</td></tr>'}</table>`;
 }
 
+// a see-through 400x1 picture under each pace post makes every box the same (full) width
+const PUBLIC_URL = (process.env.PUBLIC_URL || 'https://ranked-1-0.fly.dev').replace(/\/$/, '');
+const SPACER_PNG = (() => {
+  const crcTable = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+  const crc = (buf) => { let c = 0xffffffff; for (const b of buf) c = crcTable[(c ^ b) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
+  const chunk = (type, data) => {
+    const len = Buffer.alloc(4); len.writeUInt32BE(data.length);
+    const td = Buffer.concat([Buffer.from(type), data]);
+    const c = Buffer.alloc(4); c.writeUInt32BE(crc(td));
+    return Buffer.concat([len, td, c]);
+  };
+  const W = 400, H = 1;
+  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(W, 0); ihdr.writeUInt32BE(H, 4); ihdr[8] = 8; ihdr[9] = 6;
+  const raw = Buffer.alloc((W * 4 + 1) * H); // filter byte 0, all pixels transparent
+  return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', ihdr), chunk('IDAT', zlib.deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);
+})();
+
 function fmt(ms) {
   const s = Math.floor(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}.${String(Math.floor(ms % 1000 / 10)).padStart(2, '0')}`;
@@ -564,6 +668,15 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && url.pathname === '/') {
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'", 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' });
       return res.end(page());
+    }
+    if (req.method === 'GET' && url.pathname === '/pace-spacer.png') {
+      res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=31536000' });
+      return res.end(SPACER_PNG);
+    }
+    if (req.method === 'POST' && url.pathname === '/api/discord') {
+      const raw = await readRaw(req);
+      const out = pacebot.interaction(raw, req.headers);
+      return send(res, out.status, out.body);
     }
     if (req.method === 'GET' && url.pathname === '/api/poll') return poll(req, res, url);
     const route = routes[req.method + ' ' + url.pathname];
@@ -578,6 +691,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 restoreMatches();
+pacebot.init({ db, save });
 server.on('error', e => { console.error('server error:', e); process.exit(1); }); // e.g. the port is taken
 
 // a bug in one request must never take the whole server (and every match in progress) down

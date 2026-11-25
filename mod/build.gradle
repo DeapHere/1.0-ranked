@@ -95,6 +95,7 @@ loom {
 			vmArg "-Dranked.finderSeeds=${project.findProperty('seeds') ?: ''}"
 			vmArg "-Xmx${project.findProperty('xmx') ?: '2G'}"
 			vmArg "-Dranked.finderDebug=${project.findProperty('debug') ?: 'false'}"
+			vmArg "-Dranked.exportRadius=${project.findProperty('export') ?: '0'}"
 			vmArg "-Dranked.finderSerial=${project.findProperty('serial') ?: 'false'}"
 			vmArg "-Dranked.finderMetrics=${project.findProperty('metrics') ?: 'false'}"
 		}

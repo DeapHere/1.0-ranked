@@ -83,6 +83,16 @@ Every match seed comes from a checked pool, and no one gets a seed they've alrea
 - Trees within 64 blocks
 - A cave open to the sky within 64 blocks, with at least 6 visible iron ore
 
+## Pace tracker
+
+An optional app (not a mod) that posts your normal speedrun splits to the Discord pace channel: Nether, Fortress, Pit start, End and Finish. It needs StatsPerWorld in your instances and works with a wall of several instances.
+
+1. Download `oldschool-pace-tracker.zip` from the latest release and unzip it.
+2. Open `oldschool-pace-tracker.jar`, enter your Minecraft name and pick your instance folders.
+3. Leave the window open while you play. Set your Twitch from the gear to link it in your posts.
+
+In the Discord, pick the Pit start and End paces you want to be pinged for from the PaceTracker1.0 dropdowns.
+
 ## Changes
 
 - **1.1:** No rivers within 256 blocks of spawn. Every match world gets 3 packs of sheep and, depending on the seed, cows or pigs near spawn, and the first 2 eyes of ender never break. New, bigger seed pool, picked for a clear run from spawn into the desert. T opens match chat in game. Private rooms can use a seed of your choice. Older versions can no longer connect.

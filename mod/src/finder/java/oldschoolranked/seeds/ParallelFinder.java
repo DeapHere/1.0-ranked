@@ -101,6 +101,19 @@ public final class ParallelFinder {
                 thisMs = (System.nanoTime() - w0) / 1000000L;
                 if (Boolean.getBoolean("ranked.finderMetrics")) System.out.println("[metrics] " + seed + " " + Terrain.metrics(w, spawnX, spawnZ));
                 entities = w.entities.size();
+                int export = Integer.getInteger("ranked.exportRadius", 0);
+                if (export > 0) {
+                    // a copy of the match world to look at: the match setup, every chunk within export blocks, then saved
+                    oldschoolranked.MatchSetup.apply(w, seed);
+                    for (int cx = (spawnX - export) >> 4; cx <= (spawnX + export) >> 4; cx++)
+                        for (int cz = (spawnZ - export) >> 4; cz <= (spawnZ + export) >> 4; cz++) w.getChunkAt(cx, cz);
+                    w.save(true, new net.minecraft.util.ProgressListener() {
+                        public void progressStartNoAbort(String s) { }
+                        public void progressStage(String s) { }
+                        public void progressStagePercentage(int i) { }
+                    });
+                    System.out.println("[finder] exported " + folder + " for " + seed);
+                }
             } catch (Throwable t) {
                 System.out.println("[finder] seed " + seed + " failed to check: " + t);
                 t.printStackTrace();
