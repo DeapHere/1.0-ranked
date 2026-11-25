@@ -17,7 +17,6 @@ public abstract class WorldMixin {
 
     @Inject(method = "save", at = @At("HEAD"), cancellable = true)
     private void ranked$noSave(boolean all, ProgressListener listener, CallbackInfo ci) {
-        if (Integer.getInteger("ranked.exportRadius", 0) > 0) return; // exporting a world to look at
         ci.cancel();
     }
 }
